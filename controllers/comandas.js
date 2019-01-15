@@ -140,7 +140,8 @@ function SetComandas(req,res)
      // }
     //}
    // else {
-    comanda.remove({codigoStr:Comandas.codigoStr,Fecha_Creada: { $regex: '.*' + newdate[0] + '.*' }},1);
+   // comanda.remove({codigoStr:Comandas.codigoStr,Fecha_Creada: { $regex: '.*' + newdate[0] + '.*' }},1);
+    comanda.remove({codigoStr:Comandas.codigoStr},1);
 
   
     Comandas.save((err,ComandaGuardada) =>{
