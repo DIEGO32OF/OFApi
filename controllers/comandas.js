@@ -126,21 +126,37 @@ function SetComandas(req,res)
     Comandas.Estatus=params.Estatus;
 
   var newdate=Comandas.Fecha_Creada.split(' ');
+    
 
- // comanda.find({codigoStr:Comandas.codigoStr,Fecha_Creada: { $regex: '.*' + newdate[0] + '.*' }}, function(err, Comandexistente) {
-  //console.log(Comandexistente);
-   // if(Comandexistente!=''){
-     //   console.log( params.platillos[0].fechaCreado);
-//for(var e=0;e<params.platillos.length;e++){
- //     comanda.findByIdAndUpdate(Comandexistente[0].id,
-  //     { $push : { platillos: {id:new mongoose.Types.ObjectId(),isCode: true, fechaCreado: params.platillos[e].fechaCreado,Platillo:params.platillos[e].Platillo, costo:params.platillos[e].costo,callMesero:params.platillos[e].callMesero,Mesa:params.platillos[e].Mesa,Estatus:params.platillos[e].Estatus,Cantidad:params.platillos[e].Cantidad, precio:params.platillos[e].precio}}},
-  //      (err,PlatoGuarda)=>{
-  //             res.status('200').send({Comandas:PlatoGuarda});
- //       });
- //     }
-  //  }
-  //  else {
-    comanda.remove({codigoStr:Comandas.codigoStr,Fecha_Creada: { $regex: '.*' + newdate[0] + '.*' }},1);
+  comanda.find({codigoStr:Comandas.codigoStr,Fecha_Creada: { $regex: '.*' + newdate[0] + '.*' }}, function(err, Comandexistente) {
+  console.log(Comandexistente);
+    if(Comandexistente!=''){
+        console.log( params.platillos[0].fechaCreado);
+for(var e=0;e<params.platillos.length;e++){
+   // var existeUpdate=false;
+   // for(var l=0; l<Comandexistente[0].platillos.length;l++){
+   //     if(params.platillos[e].id==Comandexistente[0].platillos.id){
+   //     existeUpdate=true;
+   //     l=Comandexistente[0].platillos.length;
+   //     }
+   // }
+   // if(existeUpdate){
+        comanda.findByIdAndUpdate(Comandexistente[0].id,{platillos: {isCode: true, fechaCreado: params.platillos[e].fechaCreado,Platillo:params.platillos[e].Platillo, costo:params.platillos[e].costo,callMesero:params.platillos[e].callMesero,Mesa:params.platillos[e].Mesa,Estatus:params.platillos[e].Estatus,Cantidad:params.platillos[e].Cantidad, precio:params.platillos[e].precio}},
+        (err,PlatoUpdate)=>{
+               res.status('200').send({Comandas:PlatoUpdate});
+        });
+    //}
+   // else{
+   //   comanda.findByIdAndUpdate(Comandexistente[0].id,
+   //    { $push : { platillos: {id:new mongoose.Types.ObjectId(),isCode: true, fechaCreado: params.platillos[e].fechaCreado,Platillo:params.platillos[e].Platillo, costo:params.platillos[e].costo,callMesero:params.platillos[e].callMesero,Mesa:params.platillos[e].Mesa,Estatus:params.platillos[e].Estatus,Cantidad:params.platillos[e].Cantidad, precio:params.platillos[e].precio}}},
+   //     (err,PlatoGuarda)=>{
+   //            res.status('200').send({Comandas:PlatoGuarda});
+   //     });
+    //}
+      }
+    }
+    else {
+    //comanda.remove({codigoStr:Comandas.codigoStr,Fecha_Creada: { $regex: '.*' + newdate[0] + '.*' }},1);
    // comanda.remove({codigoStr:Comandas.codigoStr},1);
 
   
@@ -159,8 +175,8 @@ else
 }
 
 });
-//}
-//});
+}
+});
 }
 
 //busca comanda
