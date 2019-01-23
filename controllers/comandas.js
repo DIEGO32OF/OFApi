@@ -131,7 +131,7 @@ function SetComandas(req,res)
   comanda.find({codigoStr:Comandas.codigoStr,Fecha_Creada: { $regex: '.*' + newdate[0] + '.*' }}, function(err, Comandexistente) {
   console.log(Comandexistente);
     if(Comandexistente!=''){
-          comanda.findByIdAndUpdate(Comandexistente[0].id,{platillos: {[]}},
+          comanda.findByIdAndUpdate(Comandexistente[0].id,{platillos: []},
         (err,PlatoUpdate)=>{
             
       
