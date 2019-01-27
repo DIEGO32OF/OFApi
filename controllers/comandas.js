@@ -150,7 +150,7 @@ for(var e=0;e<params.platillos.length;e++){
       comanda.findByIdAndUpdate(Comandexistente[0].id,
        { $push : { platillos: {id:new mongoose.Types.ObjectId(),isCode: true, fechaCreado: params.platillos[e].fechaCreado,Platillo:params.platillos[e].Platillo, costo:params.platillos[e].costo,callMesero:params.platillos[e].callMesero,Mesa:params.platillos[e].Mesa,Estatus:params.platillos[e].Estatus,Cantidad:params.platillos[e].Cantidad, precio:params.platillos[e].precio}}},
         (err,PlatoGuarda)=>{
-          if(e+1==platillos.length)
+          if(e+1==params.platillos.length)
                res.status('200').send({Comandas:PlatoGuarda});
         });
     //}
