@@ -79,7 +79,7 @@ function payComand(req, res){
   //console.log(parametros);
   comanda.findByIdAndUpdate(parametros.id,{Estatus:7},(err, Comand)=>{
     if(err)
-    res.status(500).send({message:'error al actualizar la comanda'});
+    res.status(500).send({message:'error al actualizar la comanda'+err});
     else{
       Codigos.findByIdAndUpdate(parametros.Codigo,{status:'Cerrado'},(err,Code)=>{
         if(err)
