@@ -83,7 +83,7 @@ function payComand(req, res){
     else{
       Codigos.findByIdAndUpdate(parametros.Codigo,{status:'Cerrado'},(err,Code)=>{
         if(err)
-        res.status(500).send({message:'error al actualizar el Codigo'});
+        res.status(500).send({message:'error al actualizar el Codigo'+err});
       });
     }
   });
