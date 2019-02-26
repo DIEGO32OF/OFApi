@@ -112,6 +112,37 @@ function GetComandByCode(req,res){
   }
 }
 
+function formatoDate(date) {
+	 var d = date,//new Date(),//date.replace("GMT+0000","").replace("GMT+0100","")),
+			 month = '' + (d.getMonth() + 1),
+			 day = '' + d.getDate(),
+			 year = d.getFullYear(),
+       hour= '' +d.getHours(),
+       minute='' +d.getMinutes();
+
+
+	 if (month.length < 2) month = '0' + month;
+	 if (day.length < 2) day = '0' + day;
+   if (hour.length < 2) hour = '0' + hour;
+   if (minute.length < 2) minute = '0' + minute;
+
+	 return [day,month,year ].join('/')+' '+hour+':'+minute;
+}
+
+function setCodigoCocina(req,res){
+    
+    var date=new Date();
+         var fecha=formatoDate(date);
+    
+   var mycode=new Codigos();
+    var myparames=req.body;
+    mycode.Codigo=myparames.Codigo;
+    mycode.Mesa=myparames.Mesa;
+   mycode.Local=myparames.Local;
+   mycode.status= 'creado';
+    mycode.fecha_Creacion=fecha;
+}
+
 //guarda comanda
 function SetComandas(req,res)
 {
