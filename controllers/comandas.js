@@ -136,7 +136,7 @@ function guardaCodigoCocina(req,res){
     
    var mycode=new Codigos();
     var myparames=req.body;
-	console.log(myparames);
+	console.log(req.body);
     mycode.Codigo=myparames.Codigo;
     mycode.Mesa=myparames.Mesa;
    mycode.Local=myparames.Local;
