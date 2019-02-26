@@ -141,6 +141,22 @@ function setCodigoCocina(req,res){
    mycode.Local=myparames.Local;
    mycode.status= 'creado';
     mycode.fecha_Creacion=fecha;
+	
+	mycode.save((err,codigoGuardado) =>{
+if(err)
+  res.status('500').send({message:'error al guardar'+err});
+else{
+if(!codigoGuardado)
+res.status('500').send({message:'no se registro el codigo'});
+else
+{
+  console.log('si guarda el codigo');
+    console.log(codigoGuardado);
+     res.status('200').send({Mycodigo:codigoGuardado});
+}
+}
+
+});
 }
 
 //guarda comanda
