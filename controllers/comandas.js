@@ -129,7 +129,7 @@ function formatoDate(date) {
 	 return [day,month,year ].join('/')+' '+hour+':'+minute;
 }
 
-function setCodigoCocina(req,res){
+function guardaCodigoCocina(req,res){
     
     var date=new Date();
          var fecha=formatoDate(date);
@@ -336,6 +336,6 @@ module.exports = {GetComand,
         getComandsCuenta,
         GetComandByCode,
         payComand,
-		  setCodigoCocina
+		  guardaCodigoCocina
       };
 //};
