@@ -335,6 +335,7 @@ module.exports = {GetComand,
         MetePlatoExtra,
         getComandsCuenta,
         GetComandByCode,
-        payComand
+        payComand,
+		  setCodigoCocina
       };
 //};
