@@ -142,8 +142,9 @@ function guardaCodigoCocina(req,res){
    mycode.Local=myparames.Local;
    mycode.status= 'creado';
     mycode.fecha_Creacion=fecha;
+	var meson=parseInt(myparames.Mesa);
 	
-	Codigos.update({Local:myparames.Local, Mesa:myparames.Mesa},{$set: {status:'Cerrado'}}, function(err, cerrados) {
+	Codigos.update({Local:myparames.Local, Mesa:meson},{$set: {status:'Cerrado'}}, function(err, cerrados) {
     if (err) {
       res.status('500').send({message:'error en el cerrar codigos'+err});
     }
