@@ -145,7 +145,7 @@ function guardaCodigoCocina(req,res){
 	
 	Codigos.update({Local:myparames.Local, Mesa:myparames.Mesa},{status:'Cerrado'}, function(err, cerrados) {
     if (err) {
-      res.send(err);
+      res.status('500').send({message:'error en el cerrar codigos'+err});
     }
    else
    {
