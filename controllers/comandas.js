@@ -143,13 +143,13 @@ function guardaCodigoCocina(req,res){
    mycode.status= 'creado';
     mycode.fecha_Creacion=fecha;
 	
-	Codigos.update({Local:myparames.Local, Mesa:myparames.Mesa},{status:'Cerrado'}, function(err, cerrados) {
+	Codigos.update({Local:myparames.Local, Mesa:myparames.Mesa},{$set: {status:'Cerrado'}}, function(err, cerrados) {
     if (err) {
       res.status('500').send({message:'error en el cerrar codigos'+err});
     }
    else
    {
-  
+  console.log(cerrados);
 	
 	mycode.save((err,codigoGuardado) =>{
 if(err)
