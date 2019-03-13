@@ -143,6 +143,14 @@ function guardaCodigoCocina(req,res){
    mycode.status= 'creado';
     mycode.fecha_Creacion=fecha;
 	
+	Codigos.update({Local:myparames.Local, Mesa:myparames.Mesa},{status:'Cerrado'}, function(err, cerrados) {
+    if (err) {
+      res.send(err);
+    }
+   else
+   {
+  
+	
 	mycode.save((err,codigoGuardado) =>{
 if(err)
   res.status('500').send({message:'error al guardar'+err});
@@ -157,6 +165,9 @@ else
 }
 }
 
+});
+	    }
+  });
 });
 }
 
