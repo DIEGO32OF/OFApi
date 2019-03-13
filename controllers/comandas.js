@@ -168,7 +168,7 @@ else
 });
 	    }
   });
-});
+//});
 }
 
 //guarda comanda
