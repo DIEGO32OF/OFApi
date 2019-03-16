@@ -112,7 +112,7 @@ function GetComandByCode(req,res){
   }
 }
 
-function SetCaracter(){
+function SetCaracter(req, res){
 	
 	var d = new Date();
 	var  hour= '' +d.getHours(),
