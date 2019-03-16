@@ -116,7 +116,7 @@ function SetCaracter(req, res){
 	
 	var parametros =req.body;
 	
-	 Codigos.find([{Local: parametros.Local, status:'creado',Mesa:parametros.Mesa}]}, function(err, CodeFounit) {
+	 Codigos.find([{Local: parametros.Local, status:'creado',Mesa:parametros.Mesa}], function(err, CodeFounit) {
       if (err) throw err;
     else{
 	    if(CodeFounit){
