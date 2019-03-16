@@ -120,7 +120,7 @@ function SetCaracter(req, res){
       if (err) throw err;
     else{
 	    if(CodeFounit){
-		    console.log({Caracter:CodeFounit.Codigo, Open:1}));
+		    console.log({Caracter:CodeFounit.Codigo, Open:1});
 	    res.status(200).send({Caracter:CodeFounit.Codigo, Open:1});
 	    }
 	    else{
@@ -210,7 +210,7 @@ var id=parseInt(hour);
 
 
           }
-		    console.log({Caracter:CodeFounit.Codigo, Open:0}));
+		    console.log({Caracter:CodeFounit.Codigo, Open:0});
 	 res.status(200).send({Caracter:minute+""+idC, Open:0});
 	    }
     }
