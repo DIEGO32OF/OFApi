@@ -120,7 +120,7 @@ function SetCaracter(req, res){
       if (err) throw err;
     else{
 	    if(CodeFounit){
-		    console.log(1);
+		    console.log(CodeFounit);
 	    res.status(200).send({Caracter:CodeFounit.Codigo, Open:1});
 	    }
 	    else{
