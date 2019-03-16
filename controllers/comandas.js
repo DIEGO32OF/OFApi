@@ -114,8 +114,18 @@ function GetComandByCode(req,res){
 
 function SetCaracter(req, res){
 	
-	var d = new Date();
-	var hour= '' +d.getHours();
+	var parametros =req.body;
+	
+	 Codigos.find([{Local: parametros.Local, status:'creado',Mesa:parametros.Mesa}]}, function(err, CodeFounit) {
+      if (err) throw err;
+    else{
+	    if(CodeFounit){
+		    console.log({Caracter:CodeFounit.Codigo, Open:1}));
+	    res.status(200).send({Caracter:CodeFounit.Codigo, Open:1});
+	    }
+	    else{
+      var d = new Date();
+      var hour= '' +d.getHours();
       var minute='' +d.getMinutes();
 	
 var idC='a';
@@ -200,7 +210,12 @@ var id=parseInt(hour);
 
 
           }
-	 res.status(200).send({Caracter:minute+""+idC});
+		    console.log({Caracter:CodeFounit.Codigo, Open:0}));
+	 res.status(200).send({Caracter:minute+""+idC, Open:0});
+	    }
+    }
+  });
+	
  
       }
 
