@@ -15,6 +15,8 @@ api.post('/myCount',ComandasControllers.getComandsCuenta);
 api.post('/GetComandByCode',ComandasControllers.GetComandByCode);
 api.post('/PayComand',ComandasControllers.payComand);
 api.post('/guardaCodigoCocina',ComandasControllers.guardaCodigoCocina);
+api.post('/SetCaracter',ComandasControllers.SetCaracter);
+
 
 
 
