@@ -115,8 +115,8 @@ function GetComandByCode(req,res){
 function SetCaracter(req, res){
 	
 	var d = new Date();
-	var  hour= '' +d.getHours(),
-      var  minute='' +d.getMinutes();
+	var hour= '' +d.getHours();
+      var minute='' +d.getMinutes();
 	
 var idC='a';
 var id=parseInt(hour);
