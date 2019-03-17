@@ -115,7 +115,7 @@ function GetComandByCode(req,res){
 function SetCaracter(req, res){
 	
 	var parametros =req.body;
-	  console.log(parametros);
+	  console.log(parametros.Local);
 	 Codigos.findOne({Local: parametros.Local, status:'creado',Mesa:parametros.Mesa}, (err, CodeFounit)=> {
       if (err) throw err;
     else{
