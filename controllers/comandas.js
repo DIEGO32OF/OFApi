@@ -119,7 +119,7 @@ function SetCaracter(req, res){
 	 Codigos.findOne({Local: parametros.Local, status:'creado',Mesa:parametros.Mesa}, (err, CodeFounit)=> {
       if (err) throw err;
     else{
-	    if(CodeFounit && parametros.Local != '' ){
+	    if(CodeFounit && parametros.Local != undefined ){
 		    console.log(CodeFounit);
 	    res.status(200).send({Caracter:CodeFounit.Codigo, Open:1});
 	    }
