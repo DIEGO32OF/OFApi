@@ -116,12 +116,20 @@ function SetCaracter(req, res){
 	
 	var parametros =req.body;
 	var parames = req.params;
-	console.log(parames);
-	  console.log(parametros);
-	 Codigos.findOne({Local: parametros.Local, status:'creado',Mesa:parametros.Mesa}, (err, CodeFounit)=> {
+	var local=parametros.Local;
+	var meson=parametros.Mesa;
+	var Origen=parametros.Origen;
+	if(local==undefined)
+	{
+		local=parames.Local;
+		meson=parames.Mesa;
+		Origen=parames.Origen;
+	}
+		
+	 Codigos.findOne({Local: local, status:'creado',Mesa:meson,Origen:1}, (err, CodeFounit)=> {
       if (err) throw err;
     else{
-	    if(CodeFounit && parametros.Local != undefined ){
+	    if(CodeFounit ){
 		    console.log(CodeFounit);
 	    res.status(200).send({Caracter:CodeFounit.Codigo, Open:1});
 	    }
