@@ -125,9 +125,19 @@ function SetCaracter(req, res){
 		meson=parames.Mesa;
 		Origen=parames.Origen;
 	}
-	console.log(Origen  ); 
+	console.log(Origen); 
+	var VariableCompara=0;
+	var otraVariable=0;
+	if(Origen==0){
+		VariableCompara=1;
+		otraVariable=1;
+	}
+	else if(Origen==1)
+	{
+	VariableCompara=1;	
+	}
 		
-	 Codigos.findOne({Local: local, status:'creado',Mesa:meson,Origen:1}, (err, CodeFounit)=> {
+	 Codigos.findOne($or:{Local: local, status:'creado',Mesa:meson,Origen:VariableCompara},{Local: local, status:'creado',Mesa:meson,Origen:otraVariable}, (err, CodeFounit)=> {
       if (err) throw err;
     else{
 	    if(CodeFounit && Origen!=2){
