@@ -130,7 +130,7 @@ function SetCaracter(req, res){
       if (err) throw err;
     else{
 	    if(CodeFounit ){
-		    console.log(CodeFounit);
+		    console.log(CodeFounit && Origen!=2 );
 	    res.status(200).send({Caracter:CodeFounit.Codigo, Open:1});
 	    }
 	    else{
