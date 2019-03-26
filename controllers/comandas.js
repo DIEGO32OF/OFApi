@@ -137,7 +137,7 @@ function SetCaracter(req, res){
 	VariableCompara=1;	
 	}
 		
-	 Codigos.findOne({$or:{Local: local, status:'creado',Mesa:meson,Origen:VariableCompara},{Local: local, status:'creado',Mesa:meson,Origen:otraVariable}}, (err, CodeFounit)=> {
+	 Codigos.findOne({$or:[{Local: local, status:'creado',Mesa:meson,Origen:VariableCompara},{Local: local, status:'creado',Mesa:meson,Origen:otraVariable}]}, (err, CodeFounit)=> {
       if (err) throw err;
     else{
 	    if(CodeFounit && Origen!=2){
