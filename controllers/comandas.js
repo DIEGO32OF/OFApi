@@ -115,7 +115,9 @@ function GetComandByCode(req,res){
 function SetCaracter(req, res){
 	
 	var parametros =req.body;
-	  console.log(parametros.Local);
+	var parames = req.params;
+	console.log(parames);
+	  console.log(parametros);
 	 Codigos.findOne({Local: parametros.Local, status:'creado',Mesa:parametros.Mesa}, (err, CodeFounit)=> {
       if (err) throw err;
     else{
@@ -248,6 +250,7 @@ function guardaCodigoCocina(req,res){
     mycode.Mesa=myparames.Mesa;
    mycode.Local=myparames.Local;
    mycode.status= 'creado';
+   mycode.Origen=myparames.Origen;
     mycode.fecha_Creacion=fecha;
 	var meson=parseInt(myparames.Mesa);
 	
