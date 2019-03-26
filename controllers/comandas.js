@@ -125,12 +125,13 @@ function SetCaracter(req, res){
 		meson=parames.Mesa;
 		Origen=parames.Origen;
 	}
+	console.log(Origen  ); 
 		
 	 Codigos.findOne({Local: local, status:'creado',Mesa:meson,Origen:1}, (err, CodeFounit)=> {
       if (err) throw err;
     else{
-	    if(CodeFounit ){
-		    console.log(CodeFounit && Origen!=2 );
+	    if(CodeFounit && Origen!=2){
+		    console.log(CodeFounit  );
 	    res.status(200).send({Caracter:CodeFounit.Codigo, Open:1});
 	    }
 	    else{
