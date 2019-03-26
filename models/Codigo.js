@@ -9,7 +9,7 @@ var CodigoSchema = esquema({
     Local: Number,
     fecha_Creacion: String,    
     status: String,
-    Origen:Number
+    Origen:Number,
     fecha_Modificado: String,
  
 
