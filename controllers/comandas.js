@@ -141,6 +141,7 @@ function SetCaracter(req, res){
       if (err) throw err;
     else{
 	    if(CodeFounit && Origen!=2){
+		    console.log('Si habia');
 		    console.log(CodeFounit  );
 	    res.status(200).send({Caracter:CodeFounit.Codigo, Open:1});
 	    }
@@ -231,7 +232,7 @@ var id=parseInt(hour);
 
 
           }
-		    console.log(0);
+		    console.log('Sno habia');
 	 res.status(200).send({Caracter:minute+""+idC, Open:0});
 	    }
     }
