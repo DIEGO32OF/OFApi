@@ -138,7 +138,7 @@ function SetCaracter(req, res){
         otraVariable=0;
 	}
 		
-	 Codigos.findone({Local: local, status:'creado',Mesa:meson}, (err, CodeFounit)=> {
+	 Codigos.findOne({Local: local, status:'creado',Mesa:meson}, (err, CodeFounit)=> {
       if (err) throw err;
     else{
 	    if(CodeFounit && Origen!=2){
