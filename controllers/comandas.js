@@ -134,16 +134,17 @@ function SetCaracter(req, res){
 	}
 	else if(Origen==1)
 	{
-	VariableCompara=1;	
+	VariableCompara=1;
+        otraVariable=0;
 	}
 		
-	 Codigos.find({$or:[{Local: local, status:'creado',Mesa:meson,Origen:VariableCompara},{Local: local, status:'creado',Mesa:meson,Origen:otraVariable}]}, (err, CodeFounit)=> {
+	 Codigos.findone({Local: local, status:'creado',Mesa:meson}, (err, CodeFounit)=> {
       if (err) throw err;
     else{
-	    if(CodeFounit.length>0 && Origen!=2){
+	    if(CodeFounit && Origen!=2){
 		    console.log('Si habia');
 		    console.log(CodeFounit  );
-	    res.status(200).send({Caracter:CodeFounit[0].Codigo, Open:1});
+	    res.status(200).send({Caracter:CodeFounit.Codigo, Open:1});
 	    }
 	    else{
       var d = new Date();
