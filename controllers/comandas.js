@@ -141,7 +141,7 @@ function SetCaracter(req, res){
 		    }	
 		    if(CodeFounit.Origen==1)
 		    {
-			    if(Origen==0)
+			    //if(Origen==0)
 			  NoloTruenes=true
 		    }	
 		    console.log(NoloTruenes);
