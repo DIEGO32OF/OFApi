@@ -131,6 +131,7 @@ function SetCaracter(req, res){
       if (err) throw err;
     else{
 	    console.log(Origen+' primerPArte');
+	    console.log(CodeFounit);
 	    if(CodeFounit && Origen!=2){
 		    var NoloTruenes=false;
 		    if(CodeFounit.Origen==0)
@@ -143,6 +144,7 @@ function SetCaracter(req, res){
 			    if(Origen==0)
 			  NoloTruenes=true
 		    }	
+		    console.log(NoloTruenes);
 		    if(NoloTruenes)
 	    res.status(200).send({Caracter:CodeFounit.Codigo, Open:1});
 		    
