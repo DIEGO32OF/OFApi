@@ -125,26 +125,114 @@ function SetCaracter(req, res){
 		meson=parames.Mesa;
 		Origen=parames.Origen;
 	}
-	console.log(Origen); 
-	var VariableCompara=0;
-	var otraVariable=0;
-	if(Origen==0){
-		VariableCompara=1;
-		otraVariable=1;
-	}
-	else if(Origen==1)
-	{
-	VariableCompara=1;
-        otraVariable=0;
-	}
+
 		
 	 Codigos.findOne({Local: local, status:'creado',Mesa:meson}, (err, CodeFounit)=> {
       if (err) throw err;
     else{
 	    if(CodeFounit && Origen!=2){
-		    console.log('Si habia');
-		    console.log(CodeFounit  );
+		    var NoloTruenes=false;
+	if(CodeFounit.Origen==0)
+		    {
+			    if(Origen==1)
+			  NoloTruenes=true
+		    }		     
+		    if(NoloTruenes)
 	    res.status(200).send({Caracter:CodeFounit.Codigo, Open:1});
+		    
+		    else{
+      var d = new Date();
+      var hour= '' +d.getHours();
+      var minute='' +d.getMinutes();
+	
+var idC='a';
+var id=parseInt(hour);
+          switch (id)
+          {
+              case 0:
+                  idC = 'A';
+                  break;
+              case 1:
+                  idC = 'B';
+                  break;
+              case 2:
+                  idC = 'C';
+                  break;
+              case 3:
+                  idC = 'D';
+                  break;
+              case 4:
+                  idC = 'E';
+                  break;
+              case 5:
+                  idC = 'F';
+                  break;
+              case 6:
+                  idC = 'G';
+                  break;
+              case 7:
+                  idC = 'H';
+                  break;
+              case 8:
+                  idC = 'I';
+                  break;
+              case 9:
+                  idC = 'J';
+                  break;
+              case 10:
+                  idC = 'K';
+                  break;
+              case 11:
+                  idC = 'L';
+                  break;
+              case 12:
+                  idC = 'M';
+                  break;
+              case 13:
+                  idC = 'N';
+                  break;
+              case 14:
+                  idC = 'O';
+                  break;
+              case 15:
+                  idC = 'P';
+                  break;
+              case 16:
+                  idC = 'Q';
+                  break;
+              case 17:
+                  idC = 'R';
+                  break;
+              case 18:
+                  idC = 'S';
+                  break;
+              case 19:
+                  idC = 'T';
+                  break;
+              case 20:
+                  idC = 'U';
+                  break;
+              case 21:
+                  idC = 'V';
+                  break;
+              case 22:
+                  idC = 'X';
+                  break;
+              case 23:
+                  idC = 'Y';
+                  break;
+              case 24:
+                  idC = 'Z';
+                  break;
+
+
+          }
+		    console.log('Sno habia');
+	 res.status(200).send({Caracter:minute+""+idC, Open:0});
+	    }
+		    
+		    
+		    
 	    }
 	    else{
       var d = new Date();
