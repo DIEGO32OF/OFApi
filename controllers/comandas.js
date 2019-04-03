@@ -130,13 +130,19 @@ function SetCaracter(req, res){
 	 Codigos.findOne({Local: local, status:'creado',Mesa:meson}, (err, CodeFounit)=> {
       if (err) throw err;
     else{
+	    console.log(Origen+' primerPArte');
 	    if(CodeFounit && Origen!=2){
 		    var NoloTruenes=false;
-	if(CodeFounit.Origen==0)
+		    if(CodeFounit.Origen==0)
 		    {
 			    if(Origen==1)
 			  NoloTruenes=true
-		    }		     
+		    }	
+		    if(CodeFounit.Origen==1)
+		    {
+			    if(Origen==0)
+			  NoloTruenes=true
+		    }	
 		    if(NoloTruenes)
 	    res.status(200).send({Caracter:CodeFounit.Codigo, Open:1});
 		    
