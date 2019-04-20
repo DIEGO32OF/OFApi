@@ -319,7 +319,7 @@ var id=parseInt(minute);
 			   case 53:
                   idC = '3F';
                   break;
-			   case 54
+		  case 54:
                   idC = '4G';
                   break;
 			   case 55:
@@ -521,7 +521,7 @@ var id=parseInt(minute);
 			   case 53:
                   idC = '3F';
                   break;
-			   case 54
+		  case 54:
                   idC = '4G';
                   break;
 			   case 55:
