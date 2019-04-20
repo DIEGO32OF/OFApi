@@ -150,11 +150,11 @@ function SetCaracter(req, res){
 		    
 		    else{
       var d = new Date();
-      var hour= '' +d.getHours();
+      var hour= '' +d.getSeconds();
       var minute='' +d.getMinutes();
 	
 var idC='a';
-var id=parseInt(hour);
+var id=parseInt(minute);
           switch (id)
           {
               case 0:
@@ -232,11 +232,119 @@ var id=parseInt(hour);
               case 24:
                   idC = 'Z';
                   break;
+			   case 25:
+                  idC = 'A1';
+                  break;
+			   case 26:
+                  idC = 'B2';
+                  break;
+			   case 27:
+                  idC = 'C3';
+                  break;
+			   case 28:
+                  idC = 'D4';
+                  break;
+			   case 29:
+                  idC = 'E5';
+                  break;
+			   case 30:
+                  idC = 'F6';
+                  break;
+			   case 31:
+                  idC = 'G7';
+                  break;
+			   case 32:
+                  idC = 'H8';
+                  break;
+			   case 33:
+                  idC = 'I9';
+                  break;
+			   case 34:
+                  idC = 'J0';
+                  break;
+			   case 35:
+                  idC = 'KA';
+                  break;
+			   case 36:
+                  idC = 'L1';
+                  break;
+			   case 37:
+                  idC = 'MB';
+                  break;
+			   case 38:
+                  idC = 'N2';
+                  break;
+			   case 39:
+                  idC = 'OC';
+                  break;
+			   case 40:
+                  idC = 'P3';
+                  break;
+			   case 41:
+                  idC = 'QD';
+                  break;
+			   case 42:
+                  idC = 'R4';
+                  break;
+			   case 43:
+                  idC = 'SE';
+                  break;
+			   case 44:
+                  idC = 'T5';
+                  break;
+			   case 45:
+                  idC = 'UF';
+                  break;
+			   case 46:
+                  idC = 'V6';
+                  break;
+			   case 47:
+                  idC = 'W7';
+                  break;
+			   case 48:
+                  idC = 'X8';
+                  break;
+			   case 49:
+                  idC = 'Y9';
+                  break;
+			   case 50:
+                  idC = 'Z0';
+                  break;
+			   case 51:
+                  idC = '1D';
+                  break;
+			   case 52:
+                  idC = '2E';
+                  break;
+			   case 53:
+                  idC = '3F';
+                  break;
+			   case 54
+                  idC = '4G';
+                  break;
+			   case 55:
+                  idC = '5H';
+                  break;
+			   case 56:
+                  idC = '6I';
+                  break;
+			   case 57:
+                  idC = '7J';
+                  break;
+			   case 58:
+                  idC = '8K';
+                  break;
+			   case 59:
+                  idC = '9L';
+                  break;
+			   case 60:
+                  idC = '0M';
+                  break;
 
 
           }
 		    console.log('Sno habia');
-	 res.status(200).send({Caracter:minute+""+idC, Open:0});
+	 res.status(200).send({Caracter:hour+""+idC, Open:0});
 	    }
 		    
 		    
@@ -248,7 +356,7 @@ var id=parseInt(hour);
       var minute='' +d.getMinutes();
 	
 var idC='a';
-var id=parseInt(hour);
+var id=parseInt(minute);
           switch (id)
           {
               case 0:
@@ -325,12 +433,120 @@ var id=parseInt(hour);
                   break;
               case 24:
                   idC = 'Z';
+                 break;
+			   case 25:
+                  idC = 'A1';
+                  break;
+			   case 26:
+                  idC = 'B2';
+                  break;
+			   case 27:
+                  idC = 'C3';
+                  break;
+			   case 28:
+                  idC = 'D4';
+                  break;
+			   case 29:
+                  idC = 'E5';
+                  break;
+			   case 30:
+                  idC = 'F6';
+                  break;
+			   case 31:
+                  idC = 'G7';
+                  break;
+			   case 32:
+                  idC = 'H8';
+                  break;
+			   case 33:
+                  idC = 'I9';
+                  break;
+			   case 34:
+                  idC = 'J0';
+                  break;
+			   case 35:
+                  idC = 'KA';
+                  break;
+			   case 36:
+                  idC = 'L1';
+                  break;
+			   case 37:
+                  idC = 'MB';
+                  break;
+			   case 38:
+                  idC = 'N2';
+                  break;
+			   case 39:
+                  idC = 'OC';
+                  break;
+			   case 40:
+                  idC = 'P3';
+                  break;
+			   case 41:
+                  idC = 'QD';
+                  break;
+			   case 42:
+                  idC = 'R4';
+                  break;
+			   case 43:
+                  idC = 'SE';
+                  break;
+			   case 44:
+                  idC = 'T5';
+                  break;
+			   case 45:
+                  idC = 'UF';
+                  break;
+			   case 46:
+                  idC = 'V6';
+                  break;
+			   case 47:
+                  idC = 'W7';
+                  break;
+			   case 48:
+                  idC = 'X8';
+                  break;
+			   case 49:
+                  idC = 'Y9';
+                  break;
+			   case 50:
+                  idC = 'Z0';
+                  break;
+			   case 51:
+                  idC = '1D';
+                  break;
+			   case 52:
+                  idC = '2E';
+                  break;
+			   case 53:
+                  idC = '3F';
+                  break;
+			   case 54
+                  idC = '4G';
+                  break;
+			   case 55:
+                  idC = '5H';
+                  break;
+			   case 56:
+                  idC = '6I';
+                  break;
+			   case 57:
+                  idC = '7J';
+                  break;
+			   case 58:
+                  idC = '8K';
+                  break;
+			   case 59:
+                  idC = '9L';
+                  break;
+			   case 60:
+                  idC = '0M';
                   break;
 
 
           }
 		    console.log('Sno habia');
-	 res.status(200).send({Caracter:minute+""+idC, Open:0});
+	 res.status(200).send({Caracter:hour+""+idC, Open:0});
 	    }
     }
   });
