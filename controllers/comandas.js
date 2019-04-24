@@ -96,7 +96,7 @@ function GetComandByTable(req,res){
     console.log('x aca');
   console.log(codigo+'---'+Local);
   if(codigo!=''){
-      var Codigoget = comanda.findOne({ mesa: codigo ,local:Local  },(err,ComandFounder)=>{
+      var Codigoget = comanda.find({ mesa: codigo ,local:Local  },(err,ComandFounder)=>{
           if (err)
               res.status(500).send({ message: 'Error en Peticion' });
           else {
