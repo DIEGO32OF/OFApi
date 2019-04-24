@@ -13,6 +13,7 @@ api.put('/update-user/:id', md_Auth.ensureAuth, ComandasControllers.EntregaCOman
 api.post('/newPlatillo',ComandasControllers.MetePlatoExtra);
 api.post('/myCount',ComandasControllers.getComandsCuenta);
 api.post('/GetComandByCode',ComandasControllers.GetComandByCode);
+api.post('/GetComandByTable',ComandasControllers.GetComandByTable);
 api.post('/PayComand',ComandasControllers.payComand);
 api.post('/guardaCodigoCocina',ComandasControllers.guardaCodigoCocina);
 api.post('/SetCaracter/:Local/:Mesa/:Origen',ComandasControllers.SetCaracter);
