@@ -89,6 +89,29 @@ function payComand(req, res){
   });
 }
 
+function GetComandByTable(req,res){
+  var parames = req.body;
+  var codigo=parames.code;
+  var Local=parames.Local;
+    console.log('x aca');
+  console.log(codigo+'---'+Local);
+  if(codigo!=''){
+      var Codigoget = comanda.findOne({ mesa: codigo ,local:Local  },(err,ComandFounder)=>{
+          if (err)
+              res.status(500).send({ message: 'Error en Peticion' });
+          else {
+              if (!ComandFounder)
+                 // res.status(404).send({ message: 'No existen locales' });
+              res.status(200).send({ComandFounder});
+              else {
+                  console.log(ComandFounder);
+                  res.status(200).send({ComandFounder});
+              }
+          }
+      });
+  }
+}
+
 function GetComandByCode(req,res){
   var parames = req.body;
   var codigo=parames.code;
@@ -792,6 +815,7 @@ module.exports = {GetComand,
         MetePlatoExtra,
         getComandsCuenta,
         GetComandByCode,
+		  GetComandByTable,
         payComand,
 		  guardaCodigoCocina,
 		  SetCaracter
