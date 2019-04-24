@@ -627,6 +627,7 @@ function SetComandas(req,res)
     Comandas.platillos=params.platillos;
     Comandas.fecha_Entrega=params.fecha_Entrega;
     Comandas.Estatus=params.Estatus;
+	Comandas.mesa=params.mesa;
 
   var newdate=Comandas.Fecha_Creada.split(' ');
     
