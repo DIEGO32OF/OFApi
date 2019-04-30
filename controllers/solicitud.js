@@ -186,7 +186,7 @@ function getdashbord(req,res){
 
 			if(Comanda){
 				visita.find({$or:[{local: locales, Fecha_Creada: new RegExp(eldiadHoy, 'i')  },
-				{local: locales, Fecha_Creada: new RegExp(separados[2]+'/'+separados[1]+'/'+separados[0], 'i')  }}])
+				{local: locales, Fecha_Creada: new RegExp(separados[2]+'/'+separados[1]+'/'+separados[0], 'i')  }]})
 					.sort({ 'Fecha_Creada': 1 }).exec((errComent, visitasionEncontradas) => {
 					console.log(visitasionEncontradas);
 				var counter=Comanda.length;
