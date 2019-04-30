@@ -156,6 +156,7 @@ function getdashbord(req,res){
 	var hoy = cambiaTipo(parames.Time);//formatoDate(dato).split(' ');
 
 	var eldiadHoy=hoy;
+	console.log(eldiadHoy);
 	var horasLocal=0;
 	var separados=eldiadHoy.split('/');
 
@@ -184,6 +185,7 @@ function getdashbord(req,res){
 
 			if(Comanda){
 				visita.find({local: locales, Fecha_Creada: new RegExp(eldiadHoy, 'i')  }).sort({ 'Fecha_Creada': 1 }).exec((errComent, visitasionEncontradas) => {
+					console.log(visitasionEncontradas);
 				var counter=Comanda.length;
 				var platillos=new Array();
 				var Time_tarde_cancel=new Array();
