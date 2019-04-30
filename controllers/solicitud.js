@@ -174,7 +174,8 @@ function getdashbord(req,res){
              else
  		 tiempoAbierto=(parseInt(horafin[0])-parseInt(horaIni[0]))/8;
 
-	comanda.find({local: locales, fecha_Entrega: new RegExp(eldiadHoy, 'i')  }).sort({ 'fecha_Entrega': 1 }).exec((err, Comanda) => {
+	comanda.find({local: locales, fecha_Entrega: new RegExp(eldiadHoy, 'i')  }).sort({ 'fecha_Entrega': 1 })
+		.exec((err, Comanda) => {
 
 
 		if(err){
@@ -184,7 +185,9 @@ function getdashbord(req,res){
 		else{
 
 			if(Comanda){
-				visita.find({local: locales, Fecha_Creada: new RegExp(eldiadHoy, 'i')  }).sort({ 'Fecha_Creada': 1 }).exec((errComent, visitasionEncontradas) => {
+				visita.find({$or:[{local: locales, Fecha_Creada: new RegExp(eldiadHoy, 'i')  },
+				{local: locales, Fecha_Creada: new RegExp(separados[2]+'/'+separados[1]+'/'+separados[0], 'i')  }}])
+					.sort({ 'Fecha_Creada': 1 }).exec((errComent, visitasionEncontradas) => {
 					console.log(visitasionEncontradas);
 				var counter=Comanda.length;
 				var platillos=new Array();
