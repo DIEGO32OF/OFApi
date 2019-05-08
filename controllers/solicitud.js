@@ -254,7 +254,7 @@ function getdashbord(req, res) {
                                                 incre = 8;
                                             if (horaVisit >= parseInt(Time_tarde_cancel[p].time.replace(':', '')) && horaVisit <= parseInt(Time_tarde_cancel[incre].time.replace(':', ''))) {
                                                 
-                                                Time_tarde_cancel[p].ingresos = Time_tarde_cancel[p].ingresos + 1;
+                                                Time_tarde_cancel[incre].ingresos = Time_tarde_cancel[incre].ingresos + 1;
                                             }
                                             //if (incre == 8) {
                                             //    if (horaVisit >= parseInt(Time_tarde_cancel[p].time.replace(':', '')))
@@ -273,7 +273,7 @@ function getdashbord(req, res) {
                                                 incre = 8;
 
                                             if (horaCoamnda >= parseInt(Time_tarde_cancel[p].time.replace(':', '')) && horaCoamnda <= parseInt(Time_tarde_cancel[incre].time.replace(':', ''))) {
-                                                Time_tarde_cancel[p].comandas = Time_tarde_cancel[p].comandas + 1;
+                                                Time_tarde_cancel[incre].comandas = Time_tarde_cancel[incre].comandas + 1;
                                                 
                                             }
                                         }
