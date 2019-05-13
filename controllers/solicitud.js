@@ -280,10 +280,11 @@ function getdashbord(req, res) {
 
 
                                         for (var g = 0; g < Comanda[t].platillos.length; g++) {
+						var cantidades = Comanda[t].platillos[g].Cantidad;
                                             if (Comanda[t].platillos[g].Estatus == "2") {
                                                
                                                  var platilloCheca = Comanda[t].platillos[g].Platillo;
-                                                var cantidades = Comanda[t].platillos[g].Cantidad;
+                                                
 
                                                 var yatarde = Comanda[t].platillos[g].fechaCreado.split(' ');
                                                 var hora = yatarde[1].replace(':', '');
@@ -360,7 +361,10 @@ function getdashbord(req, res) {
                                                         incre = 8;
 
                                                     if (hora > parseInt(Time_tarde_cancel[p].time.replace(':', '')) && hora <= parseInt(Time_tarde_cancel[incre].time.replace(':', ''))) {
-                                                        Time_tarde_cancel[p].Canceladas = Time_tarde_cancel[p].Canceladas + 1;
+							    if(parseInt(cantidades)==1)
+                                                        Time_tarde_cancel[incre].Canceladas = Time_tarde_cancel[increv].Canceladas + 1;
+							    else
+							 Time_tarde_cancel[incre].Canceladas = Time_tarde_cancel[increv].Canceladas + parseInt(cantidades);
                                                     }
                                                 }
                                             }
