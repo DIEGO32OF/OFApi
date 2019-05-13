@@ -297,11 +297,11 @@ function getdashbord(req, res) {
                                                         //console.log();
                                                         if (horahoy - hora >= 30) {
                                                             //va tarde
-                                                            Time_tarde_cancel[p].retrasadas = Time_tarde_cancel[p].retrasadas + 1;
+                                                            Time_tarde_cancel[incre].retrasadas = Time_tarde_cancel[incre].retrasadas + 1;
 
                                                         }
                                                         else {
-                                                            Time_tarde_cancel[p].Atiempo = Time_tarde_cancel[p].Atiempo + 1;
+                                                            Time_tarde_cancel[incre].Atiempo = Time_tarde_cancel[incre].Atiempo + 1;
                                                         }
                                                         
                                                     }
