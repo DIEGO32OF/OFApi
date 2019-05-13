@@ -252,7 +252,7 @@ function getdashbord(req, res) {
                                             var incre = p + 1;
                                             if (p + 1 >= 9)
                                                 incre = 8;
-                                            if (horaVisit >= parseInt(Time_tarde_cancel[p].time.replace(':', '')) && horaVisit <= parseInt(Time_tarde_cancel[incre].time.replace(':', ''))) {
+                                            if (horaVisit > parseInt(Time_tarde_cancel[p].time.replace(':', '')) && horaVisit <= parseInt(Time_tarde_cancel[incre].time.replace(':', ''))) {
                                                 
                                                 Time_tarde_cancel[incre].ingresos = Time_tarde_cancel[incre].ingresos + 1;
                                             }
@@ -272,7 +272,7 @@ function getdashbord(req, res) {
                                             if (p + 1 >= 9)
                                                 incre = 8;
 
-                                            if (horaCoamnda >= parseInt(Time_tarde_cancel[p].time.replace(':', '')) && horaCoamnda <= parseInt(Time_tarde_cancel[incre].time.replace(':', ''))) {
+                                            if (horaCoamnda > parseInt(Time_tarde_cancel[p].time.replace(':', '')) && horaCoamnda <= parseInt(Time_tarde_cancel[incre].time.replace(':', ''))) {
                                                 Time_tarde_cancel[incre].comandas = Time_tarde_cancel[incre].comandas + 1;
                                                 
                                             }
@@ -293,7 +293,7 @@ function getdashbord(req, res) {
                                                     if (p + 1 >= 9)
                                                         incre = 8;
 
-                                                    if (hora >= parseInt(Time_tarde_cancel[p].time.replace(':', '')) && hora <= parseInt(Time_tarde_cancel[incre].time.replace(':', ''))) {
+                                                    if (hora > parseInt(Time_tarde_cancel[p].time.replace(':', '')) && hora <= parseInt(Time_tarde_cancel[incre].time.replace(':', ''))) {
                                                         //console.log();
                                                         if (horahoy - hora >= 30) {
                                                             //va tarde
@@ -353,7 +353,7 @@ function getdashbord(req, res) {
                                                     if (p + 1 >= 9)
                                                         incre = 8;
 
-                                                    if (hora >= parseInt(Time_tarde_cancel[p].time.replace(':', '')) && hora <= parseInt(Time_tarde_cancel[incre].time.replace(':', ''))) {
+                                                    if (hora > parseInt(Time_tarde_cancel[p].time.replace(':', '')) && hora <= parseInt(Time_tarde_cancel[incre].time.replace(':', ''))) {
                                                         Time_tarde_cancel[p].Canceladas = Time_tarde_cancel[p].Canceladas + 1;
                                                     }
                                                 }
