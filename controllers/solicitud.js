@@ -362,9 +362,9 @@ function getdashbord(req, res) {
 
                                                     if (hora > parseInt(Time_tarde_cancel[p].time.replace(':', '')) && hora <= parseInt(Time_tarde_cancel[incre].time.replace(':', ''))) {
 							    if(parseInt(cantidades)==1)
-                                                        Time_tarde_cancel[incre].Canceladas = Time_tarde_cancel[increv].Canceladas + 1;
+                                                        Time_tarde_cancel[incre].Canceladas = Time_tarde_cancel[incre].Canceladas + 1;
 							    else
-							 Time_tarde_cancel[incre].Canceladas = Time_tarde_cancel[increv].Canceladas + parseInt(cantidades);
+							 Time_tarde_cancel[incre].Canceladas = Time_tarde_cancel[incre].Canceladas + parseInt(cantidades);
                                                     }
                                                 }
                                             }
