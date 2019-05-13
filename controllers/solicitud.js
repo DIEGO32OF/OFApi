@@ -296,7 +296,7 @@ function getdashbord(req, res) {
                                                     if (p + 1 >= 9)
                                                         incre = 8;
 
-                                                    if (hora >= cTime_tarde_cancel[p].time.replace(':', '')) && hora <= parseInt(Time_tarde_cancel[incre].time.replace(':', ''))) {
+                                                   if (hora > parseInt(Time_tarde_cancel[p].time.replace(':', '')) && hora <= parseInt(Time_tarde_cancel[incre].time.replace(':', ''))) {
                                                         //console.log();
                                                         if (horahoy - hora >= 30) {
                                                             //va tarde
