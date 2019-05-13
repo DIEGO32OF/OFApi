@@ -282,6 +282,9 @@ function getdashbord(req, res) {
                                         for (var g = 0; g < Comanda[t].platillos.length; g++) {
                                             if (Comanda[t].platillos[g].Estatus == "2") {
                                                
+                                                 var platilloCheca = Comanda[t].platillos[g].Platillo;
+                                                var cantidades = Comanda[t].platillos[g].Cantidad;
+
                                                 var yatarde = Comanda[t].platillos[g].fechaCreado.split(' ');
                                                 var hora = yatarde[1].replace(':', '');
 
@@ -293,22 +296,25 @@ function getdashbord(req, res) {
                                                     if (p + 1 >= 9)
                                                         incre = 8;
 
-                                                    if (hora > parseInt(Time_tarde_cancel[p].time.replace(':', '')) && hora <= parseInt(Time_tarde_cancel[incre].time.replace(':', ''))) {
+                                                    if (hora >= cTime_tarde_cancel[p].time.replace(':', '')) && hora <= parseInt(Time_tarde_cancel[incre].time.replace(':', ''))) {
                                                         //console.log();
                                                         if (horahoy - hora >= 30) {
                                                             //va tarde
-                                                            Time_tarde_cancel[incre].retrasadas = Time_tarde_cancel[incre].retrasadas + 1;
+                                                            if (parseInt(cantidades) == 1)
+                                                                Time_tarde_cancel[incre].retrasadas = Time_tarde_cancel[incre].retrasadas + 1;
+                                                            else
+                                                                Time_tarde_cancel[incre].retrasadas = Time_tarde_cancel[incre].retrasadas + parseInt(cantidades);
 
                                                         }
                                                         else {
-                                                            Time_tarde_cancel[incre].Atiempo = Time_tarde_cancel[incre].Atiempo + 1;
+                                                            if (parseInt(cantidades) == 1)
+                                                                Time_tarde_cancel[incre].Atiempo = Time_tarde_cancel[incre].Atiempo + 1;
+                                                            else
+                                                                Time_tarde_cancel[incre].Atiempo = Time_tarde_cancel[incre].Atiempo + parseInt(cantidades);
                                                         }
                                                         
                                                     }
                                                 }
-
-                                                var platilloCheca = Comanda[t].platillos[g].Platillo;
-                                                var cantidades = Comanda[t].platillos[g].Cantidad;
                                                 if (t == 0 && g == 0) {
                                                     platillos.push({
                                                         value: cantidades,
