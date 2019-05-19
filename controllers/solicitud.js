@@ -244,7 +244,7 @@ function getdashbord(req, res) {
 
                                     }
                                     //los Ingresos o visitas
-                                    
+                                    console.log(visitasionEncontradas);
                                     for (var v = 0; v < visitasionEncontradas.length; v++) {
                                         var horaVisita = visitasionEncontradas[v].Fecha_Creada.split(' ');
                                         var horaVisit = horaVisita[1].replace(':', '');
