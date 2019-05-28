@@ -5,14 +5,16 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var paqespe = Schema({
   _id:String,
-    Desc: String,
+    descrip: String,
     Nombre: String,
     precio: String,
     Typo: Number,
     Local:Number,
-    imagen: String,
+    NomImg: String,
     etiquetas: String,
-    Is_Active: Number
+    Is_Active: Number,
+  tamaPrice:String,
+  piezas=Number
 });
 
 module.exports = mongoose.model('paqespe', paqespe);
