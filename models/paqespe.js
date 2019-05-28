@@ -14,7 +14,7 @@ var paqespe = Schema({
     etiquetas: String,
     Is_Active: Number,
   tamaPrice:String,
-  piezas=Number
+  piezas:Number
 });
 
 module.exports = mongoose.model('paqespe', paqespe);
