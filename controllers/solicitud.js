@@ -743,8 +743,9 @@ else {
 
 
 function validaHook(req, res) {
-	console.log(req.query);
+	
     const mode = req.query['hub.mode'];
+	console.log(mode);
     const challenge = req.query['hub.challenge'];
     const token = req.query['hub.verify_token'];
     if (mode && token) {
