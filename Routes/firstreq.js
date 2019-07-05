@@ -15,6 +15,7 @@ api.post('/newValidateUser/:mail/:pass/:LocalContact', SolicitudPrimera.creauser
 api.post('/saverComent', SolicitudPrimera.guardaComentarios);
 api.post('/getdash/:typer/:Esta/:Time', SolicitudPrimera.getdashbord);
 api.post('/rankeo', SolicitudPrimera.GuardaRank);
+api.get('/webhook', SolicitudPrimera.validaHook);
 
 
 module.exports = api;
