@@ -745,10 +745,11 @@ else {
 function validaHook(req, res) {
 	
     const mode = req.query['hub.mode'];
-	console.log(mode);
+	
     const challenge = req.query['hub.challenge'];
     const token = req.query['hub.verify_token'];
     if (mode && token) {
+	    console.log(process.env.VERIFYTOKEN+' '+mode);
         if (mode === 'subscribe' && token === process.env.VERIFYTOKEN) {
             console.log('si llega');
             res.status(200).send(challenge);
