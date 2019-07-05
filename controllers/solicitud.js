@@ -742,6 +742,21 @@ else {
 }
 
 
+function validaHook(req, res) {
+    const mode = req.query['hub.mode'];
+    const challenge = req.query['hub.challenge'];
+    const token = req.query['hub.verify_token'];
+    if (mode && token) {
+        if (mode === 'subscribe' && token === process.env.VERIFYTOKEN) {
+            console.log('si llega');
+            res.status(200).send(challenge);
+        }
+        else {
+            res.status(403);
+        }
+    }
+}
 
 
-module.exports = { GetInfo, VerifyCode, makeToken, GetBusca, validateToken,getActives,creauser, getdashbord,GuardaRank,guardaComentarios};
+
+module.exports = { GetInfo, VerifyCode, makeToken, GetBusca, validateToken,getActives,creauser, getdashbord,GuardaRank,guardaComentarios,validaHook};
