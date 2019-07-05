@@ -754,10 +754,12 @@ function validaHook(req, res) {
             res.status(200).send(challenge);
         }
         else {
+		console.log('primer else');
             res.status(403);
         }
     }
 	else{
+		console.log('segunod else');
 		res.status(403);
 	}
 }
