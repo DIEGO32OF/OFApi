@@ -17,6 +17,8 @@ var comanda = require('../models/comandas');
 var rank = require('../models/rank');
 var visita=require('../models/Visitas');
 
+require('dotenv').config();
+
 //var express = require('express')();
 //var app = express;
 
@@ -750,7 +752,7 @@ function validaHook(req, res) {
     const token = req.query['hub.verify_token'];
     if (mode && token) {
 	    console.log(process.env.VERIFYTOKEN+' '+mode);
-        if (mode === 'subscribe' ){//&& token === process.env.VERIFYTOKEN) {
+        if (mode === 'subscribe' && token === process.env.VERIFYTOKEN) {
             console.log('si llega');
             res.status(200).send(challenge);
         }
