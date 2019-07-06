@@ -767,6 +767,20 @@ function validaHook(req, res) {
 	}
 }
 
+function recibeMesage(req,res){
+	const body=req.body;
+	if(body.object==='page'){
+		res.status(200).send('EVENT_RECEIVED');
+		body.entry.foreach(function(entry){
+			let webhookEvent=entry.messaging[0];
+			console.log(webhookEvent);
+		});
+	}
+	else{
+		res.sendStatus(404);
+	}
+}
 
 
-module.exports = { GetInfo, VerifyCode, makeToken, GetBusca, validateToken,getActives,creauser, getdashbord,GuardaRank,guardaComentarios,validaHook};
+
+module.exports = { GetInfo, VerifyCode, makeToken, GetBusca, validateToken,getActives,creauser, getdashbord,GuardaRank,guardaComentarios,validaHook,recibeMesage};
