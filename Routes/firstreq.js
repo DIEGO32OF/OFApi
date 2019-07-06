@@ -16,6 +16,7 @@ api.post('/saverComent', SolicitudPrimera.guardaComentarios);
 api.post('/getdash/:typer/:Esta/:Time', SolicitudPrimera.getdashbord);
 api.post('/rankeo', SolicitudPrimera.GuardaRank);
 api.get('/webhook', SolicitudPrimera.validaHook);
+api.post('/webhook', SolicitudPrimera.recibeMesage);
 
 
 module.exports = api;
