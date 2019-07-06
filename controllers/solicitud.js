@@ -771,7 +771,7 @@ function recibeMesage(req,res){
 	const body=req.body;
 	if(body.object==='page'){
 		res.status(200).send('EVENT_RECEIVED');
-		body.entry.foreach(function(entry){
+		body.entry.forEach(function(entry){
 			let webhookEvent=entry.messaging[0];
 			console.log(webhookEvent);
 		});
