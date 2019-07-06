@@ -24,7 +24,7 @@ exports.getProfile=(senderID)=>{
     const url=`https://graph.facebook.com/v3.3/${senderID}`;
     request({
         uri:url,
-             qs: { access_token: process.env.ACCES_TOKE,
+             qs: { access_token: process.env.ACCES_TOKEN,
                  fields:'first_name,last_name,gender,locale,timezone'
                  },
                      method:'GET'
