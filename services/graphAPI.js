@@ -25,13 +25,14 @@ exports.getProfile=(senderID)=>{
     request({
         uri:url,
              qs: { access_token: process.env.ACCES_TOKE,
-                 fields:'first_name,last_name,gender,locale,timezone',
+                 fields:'first_name,last_name,gender,locale,timezone'
                  },
-                     method:'GET',
+                     method:'GET'
                          
     },(error,_res,body)=>{
         if(!error){
             let response=JSON.parse(body);
+            console.log(response);
             console.log(`Nombre:${response.first_name} Apellido: ${response.last_name}`)
         }
     }
