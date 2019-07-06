@@ -11,10 +11,10 @@ exports.callSendAPI = (requestBody) => {
         json: requestBody,
     }, (error, Body) => {
         if (!error) {
-            console.log('peticion enviada', Body);
+           // console.log('peticion enviada', Body);
         }
         else {
-            console.log('no se pudo enviar la peticion', error);
+           // console.log('no se pudo enviar la peticion', error);
         }
     }
     );
@@ -32,7 +32,7 @@ exports.getProfile=(senderID)=>{
     },(error,_res,body)=>{
         if(!error){
             let response=JSON.parse(body);
-            console.log(`Nombre:${response.first_name}`)
+            console.log(`Nombre:${response.first_name} Apellido: ${response.last_name}`)
         }
     }
            );
