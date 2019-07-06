@@ -18,6 +18,7 @@ var rank = require('../models/rank');
 var visita=require('../models/Visitas');
 
 require('dotenv').config();
+const actions = requiere('../services/actions');
 
 //var express = require('express')();
 //var app = express;
@@ -774,6 +775,7 @@ function recibeMesage(req,res){
 		body.entry.forEach(function(entry){
 			let webhookEvent=entry.messaging[0];
 			console.log(webhookEvent);
+			actions.sendTextMessage('Hola como estas?',webhookEvent);
 		});
 	}
 	else{
