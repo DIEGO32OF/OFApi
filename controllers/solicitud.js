@@ -18,7 +18,7 @@ var rank = require('../models/rank');
 var visita=require('../models/Visitas');
 
 require('dotenv').config();
-const actions = requiere('../services/actions');
+const actions = require('../services/actions');
 
 //var express = require('express')();
 //var app = express;
