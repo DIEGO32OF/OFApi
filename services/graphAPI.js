@@ -16,5 +16,6 @@ exports.callSendAPI = (requestBody) => {
         else {
             console.log('no se pudo enviar la peticion', error);
         }
+    }
     );
 }
