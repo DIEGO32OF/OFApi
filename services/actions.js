@@ -2,7 +2,7 @@ const sendAPI = require('./graphAPI');
 
 exports.sendTextMessage = (texto, webhookEvent) => {
     let response = {
-        recipient={
+        recipient:{
             id: webhookEvent.sender.id
         },
         message: {
