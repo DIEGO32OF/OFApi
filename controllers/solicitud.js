@@ -752,13 +752,13 @@ function validaHook(req, res) {
     const challenge = req.query['hub.challenge'];
     const token = req.query['hub.verify_token'];
     if (mode && token) {
-	    console.log(process.env.VERIFYTOKEN+' '+mode);
+	    //console.log(process.env.VERIFYTOKEN+' '+mode);
         if (mode === 'subscribe' && token === process.env.VERIFYTOKEN) {
             console.log('si llega');
             res.status(200).send(challenge);
         }
         else {
-		console.log('primer else');
+		//console.log('primer else');
             res.status(403);
         }
     }
@@ -774,7 +774,7 @@ function recibeMesage(req,res){
 		res.status(200).send('EVENT_RECEIVED');
 		body.entry.forEach(function(entry){
 			let webhookEvent=entry.messaging[0];
-			console.log(webhookEvent);
+			//console.log(webhookEvent);
 			actions.sendTextMessage('Hola como estas?',webhookEvent);
 		});
 	}
