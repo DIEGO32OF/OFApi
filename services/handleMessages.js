@@ -12,11 +12,12 @@ exports.handleMessage = (webhookEvent) => {
         else if (mensaje.text) {
             actions.sendTextMessage('has enviado texto', webhookEvent);
         }
-         else if (webhookEvent.postback) {
+         
+    }
+    else if (webhookEvent.postback) {
              console.log('pasa x aqui');
             handlePostback(webhookEvent);
         }
-    }
 }
 
 handlePostback = (webhookEvent) => {
