@@ -13,6 +13,7 @@ exports.handleMessage = (webhookEvent) => {
             actions.sendTextMessage('has enviado texto', webhookEvent);
         }
          else if (webhookEvent.postback) {
+             console.log('pasa x aqui');
             handlePostback(webhookEvent);
         }
     }
