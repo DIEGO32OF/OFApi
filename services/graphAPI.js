@@ -11,10 +11,10 @@ exports.callSendAPI = (requestBody) => {
         json: requestBody,
     }, (error, Body) => {
         if (!error) {
-           // console.log('peticion enviada', Body);
+            console.log('peticion enviada', Body);
         }
         else {
-           // console.log('no se pudo enviar la peticion', error);
+            console.log('no se pudo enviar la peticion', error);
         }
     }
     );
