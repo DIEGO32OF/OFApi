@@ -68,7 +68,7 @@ exports.ubicacion = (webhookEvent) => {
                         subtitle: 'direccion corta de los tacos',
                         default_action: {
                             type: 'https://www.google.com.mx/maps/@19.6308773,-99.1367803,3a,75y,195.59h,90t/data=!3m5!1e1!3m3!1sViqkrI4BQ4zQ1iCz2VZeHA!2e0!6s%2F%2Fgeo3.ggpht.com%2Fcbk%3Fpanoid%3DViqkrI4BQ4zQ1iCz2VZeHA%26output%3Dthumbnail%26cb_client%3Dsearch.TACTILE.gps%26thumb%3D2%26w%3D96%26h%3D64%26yaw%3D195.59064%26pitch%3D0%26thumbfov%3D100',
-                            messenger_extension: 'FALSE',
+                            messenger_extensions: 'FALSE',
                             webview_height_ratio:'COMPACT'
                         },
                         buttons: [{
