@@ -31,7 +31,8 @@ handlePostback = (webhookEvent) => {
 
 
         case 'Informacion':
-            actions.sendTextMessage('oprimiste mas info', webhookEvent);
+            handleLocation(webhookEvent);
+           // actions.sendTextMessage('oprimiste mas info', webhookEvent);
             break;
 
         case 'inicio':
@@ -63,4 +64,16 @@ handlequickReplies = (webhookEvent) => {
         actions.sendTextMessage('Gracias por ayudarnos a mejorar', webhookEvent);
     }
 
+}
+
+
+
+handleLocation = (webhookEvent) => {
+    const replyLocation = {
+        texto: 'por favor compartenos tu ubicacion',
+        replies: [{
+            content_type:'location'
+        }]
+    }
+    actions.quickReplies(webhookEvent, replyLocation);
 }
