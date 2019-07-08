@@ -8,7 +8,8 @@ exports.handleMessage = (webhookEvent) => {
             handlequickReplies(webhookEvent);
         }
         else if (mensaje.attachments) {
-            console.log('se envio un adjunto');
+            //console.log('se envio un adjunto');
+            actions.ubicacion(webhookEvent);
         }
         else if (mensaje.text) {
             actions.sendTextMessage('has enviado texto', webhookEvent);
