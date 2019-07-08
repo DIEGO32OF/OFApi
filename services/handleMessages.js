@@ -24,7 +24,8 @@ handlePostback = (webhookEvent) => {
     let evento = webhookEvent.postback.payload;
     switch (evento) {
         case 'encuestas':
-            console.log('se eligio las encuestas ');
+            //console.log('se eligio las encuestas ');
+            actions.quickReplies(webhookEvent)
             break;
 
 
