@@ -28,7 +28,7 @@ exports.quickReplies = (webhookEvent, replies) => {
         replies = repliesSurvey;
     }
     let response = {
-        recipient = {
+        recipient :{
             id: webhookEvent.sender.id
         },
         message: {
