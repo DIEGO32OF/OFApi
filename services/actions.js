@@ -54,7 +54,7 @@ exports.sendTextMessage = (texto, webhookEvent) => {
 
 exports.ubicacion = (webhookEvent) => {
     let response = {
-        recipient={
+        recipient:{
             id: webhookEvent.sender.id
         },
         message: {
