@@ -12,7 +12,8 @@ exports.handleMessage = (webhookEvent) => {
             actions.ubicacion(webhookEvent);
         }
         else if (mensaje.text) {
-            actions.sendTextMessage('has enviado texto', webhookEvent);
+           // actions.sendTextMessage('has enviado texto', webhookEvent);
+            handleNlp(webhookEvent);
         }
          
     }
@@ -77,6 +78,19 @@ handleLocation = (webhookEvent) => {
         }]
     }
     actions.quickReplies(webhookEvent, replyLocation);
+}
+
+handleNlp=(webhookEvent)=>{
+    let nlp=webhookEvent.message.nlp;
+    if(nlp.entities.mensaje)
+    {
+            if(nlp.entities.mensaje[0].value=='servicioDomicilio'){
+                actions.sendTextMessage('si tenemos restaurantes asi', webhookEvent);
+            }
+    }
+    else{
+        actions.sendTextMessage('NO te entiendo pero te puedo mandar mas info', webhookEvent);
+    }
 }
 
 
