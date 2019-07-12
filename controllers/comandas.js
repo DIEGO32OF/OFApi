@@ -785,7 +785,7 @@ function GetComand(req, res)
         }
         else
         {
-            res.status('500').send({message:'Existe un problema por favor contacte al administrador'});
+            res.status('200').send({message:'Existe un problema por favor contacte al administrador'});
         }
 
     });
