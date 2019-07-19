@@ -18,7 +18,7 @@ var localFood = local({
     nom_ico: String,
     nom_img: String,
     isActive: Number,
-    setComand:Boolean,
+    setComand:Number,
     id_Menu: { type: local.ObjectId, ref: 'menu' },
     id_EvenPromo: [{ type: local.ObjectId, ref: 'eventorpromo' }],
     id_PaqEspe: [{ type: local.ObjectId, ref: 'paqespe' }]     ,
