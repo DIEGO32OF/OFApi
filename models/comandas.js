@@ -14,8 +14,7 @@ var ComandasSchema = esquema({
     platillos:[{}],
     mesa:Number,
     hashed:String,
-    Estatus:Number,
-    Origen:Number
+    Estatus:Number
     
 
 
