@@ -15,7 +15,8 @@ var ComandasSchema = esquema({
     mesa:Number,
     hashed:String,
     Estatus:Number,
-    mesa:Number
+    Origen:Number
+    
 
 
 });
