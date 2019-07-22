@@ -8,6 +8,7 @@ var bcrypt=require('bcrypt-nodejs');
 var Cookies = require( 'cookies' );
 var jwt=require('../services/jwt');
 var Codigos=require('../models/Codigo');
+var ServiceHome=require('../models/Servicio_Domicilio');
 var mongoose = require('mongoose');
 
 
@@ -15,6 +16,8 @@ function cambiaTipo(fechaResolve) {
     var fecha = fechaResolve.replace('|', '/').replace('|', '/').replace('-', ':').replace('_', ' ')
     return fecha;
 }
+
+
 
 function getComandsCuenta(req,res){
   var parametros =req.body;
@@ -600,6 +603,38 @@ function formatoDate(date) {
 	 return [day,month,year ].join('/')+' '+hour+':'+minute;
 }
 
+
+function ServicioDomGuarda(req,res){
+ var parametros =req.body;	
+	var date=new Date();
+         var fecha=formatoDate(date);
+	var servicio=new ServiceHome();
+	servicio.idLocal=parametros.Local;
+	servicio.Nombre=parametros.Nombre;
+	servicio.Correo=parametros.correo;
+	servicio.Telefono=parametros.telefono;
+	servicio.Direccion=parametros.direccion;
+	servicio.lat=parametros.lat;
+	servicio.lng=parametros.lng;
+	servicio.Fecha=fecha;
+	
+	servicio.save((err,ServicioGuardado) =>{
+if(err)
+  res.status('500').send({message:'error al guardar'+err});
+else{
+if(!ServicioGuardado)
+res.status('500').send({message:'no se registro el servicio'});
+else
+{ 
+    console.log(ServicioGuardado);
+     res.status('200').send({IdService:ServicioGuardado});
+}
+}
+});
+}
+
+
+
 function guardaCodigoCocina(req,res){
     
     var date=new Date();
@@ -825,6 +860,7 @@ module.exports = {GetComand,
 		  GetComandByTable,
         payComand,
 		  guardaCodigoCocina,
-		  SetCaracter
+		  SetCaracter,
+		  ServicioDomGuarda
       };
 //};
