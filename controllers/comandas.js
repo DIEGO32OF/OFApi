@@ -611,7 +611,7 @@ function DameServicio(req,res){
 	  var parames = req.body;
   var id=parames.Servicio;
   var Local=parames.Local;
-	var idOk=new ObjectId(id);
+	//var idOk=new ObjectId(id);
 	var date=new Date();
          var fecha=formatoDate(date);
 	var prefix=fecha.split(' ');
