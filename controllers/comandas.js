@@ -10,6 +10,7 @@ var jwt=require('../services/jwt');
 var Codigos=require('../models/Codigo');
 var ServiceHome=require('../models/Servicio_Domicilio');
 var mongoose = require('mongoose');
+var ObjectId = require('mongoose').Types.ObjectId; 
 
 
 function cambiaTipo(fechaResolve) {
@@ -610,8 +611,9 @@ function DameServicio(req,res){
 	  var parames = req.body;
   var id=parames.Servicio;
   var Local=parames.Local;
-	console.log(parames);
-	ServiceHome.findOne({id:id, idLocal:Local  },(err,ServiceFounder)=>{
+	var idOk=new ObjectId(id);
+	console.log(idOk);
+	ServiceHome.findOne({_id:idOk },(err,ServiceFounder)=>{
           if (err)
               res.status(500).send({ message: 'Error en Peticion' });
           else {
