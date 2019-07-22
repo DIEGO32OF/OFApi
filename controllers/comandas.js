@@ -612,16 +612,13 @@ function DameServicio(req,res){
   var id=parames.Servicio;
   var Local=parames.Local;
 	var idOk=new ObjectId(id);
-	console.log(idOk);
+	
 	ServiceHome.findOne({_id:idOk },(err,ServiceFounder)=>{
           if (err)
               res.status(500).send({ message: 'Error en Peticion' });
-          else {
-              if (!ServiceFounder)
-                 // res.status(404).send({ message: 'No existen locales' });
-              res.status(404).send({ServiceFounder});
+          else {            
               else {
-                  console.log(ServiceFounder);
+                  
                   res.status(200).send({ServiceFounder});
               }
           }
