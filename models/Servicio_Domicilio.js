@@ -10,7 +10,8 @@ var homeservice= Servciodomicilio ({
     Direccion:String,
     Fecha:String,
     lat:String,
-    lng:String
+    lng:String,
+    IsActive:Number
 });
 
 module.exports = mongoose.model('servicios_domicilio', homeservice);
