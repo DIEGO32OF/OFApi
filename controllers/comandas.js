@@ -639,6 +639,7 @@ function ServicioDomGuarda(req,res){
 	servicio.lat=parametros.lat;
 	servicio.lng=parametros.lng;
 	servicio.Fecha=fecha;
+	servicio.IsActive=1;
 	
 	servicio.save((err,ServicioGuardado) =>{
 if(err)
