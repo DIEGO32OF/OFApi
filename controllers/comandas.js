@@ -144,6 +144,8 @@ function GetComandByCode(req,res){
   }
 }
 
+
+
 function SetCaracter(req, res){
 	
 	var parametros =req.body;
@@ -604,6 +606,26 @@ function formatoDate(date) {
 }
 
 
+function DameServicio(req,res){
+	  var parames = req.body;
+  var id=parames.Servicio;
+  var Local=parames.Local;
+	ServiceHome.findOne({ _id:id,idLocal:Local  },(err,ServiceFounder)=>{
+          if (err)
+              res.status(500).send({ message: 'Error en Peticion' });
+          else {
+              if (!ServiceFounder)
+                 // res.status(404).send({ message: 'No existen locales' });
+              res.status(200).send({ServiceFounder});
+              else {
+                  console.log(ServiceFounder);
+                  res.status(200).send({ServiceFounder});
+              }
+          }
+      });
+}
+
+
 function ServicioDomGuarda(req,res){
  var parametros =req.body;	
 	var date=new Date();
@@ -861,6 +883,7 @@ module.exports = {GetComand,
         payComand,
 		  guardaCodigoCocina,
 		  SetCaracter,
-		  ServicioDomGuarda
+		  ServicioDomGuarda,
+		  DameServicio
       };
 //};
