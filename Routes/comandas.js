@@ -17,6 +17,8 @@ api.post('/GetComandByTable',ComandasControllers.GetComandByTable);
 api.post('/PayComand',ComandasControllers.payComand);
 api.post('/guardaCodigoCocina',ComandasControllers.guardaCodigoCocina);
 api.post('/SetCaracter/:Local/:Mesa/:Origen',ComandasControllers.SetCaracter);
+api.post('/SaveDirectTogo/:Nombre/:Local/:correo/:telefono/:direccion/:lat/:lng',ComandasControllers.ServicioDomGuarda);
+
 
 
 
