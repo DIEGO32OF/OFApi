@@ -611,7 +611,7 @@ function DameServicio(req,res){
   var id=parames.Servicio;
   var Local=parames.Local;
 	console.log(parames);
-	ServiceHome.findOne({ idLocal:Local  },(err,ServiceFounder)=>{
+	ServiceHome.findOne({id:id, idLocal:Local  },(err,ServiceFounder)=>{
           if (err)
               res.status(500).send({ message: 'Error en Peticion' });
           else {
