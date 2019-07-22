@@ -2,7 +2,8 @@
 var mongoose = require('mongoose');
 
 var Servciodomicilio = mongoose.Schema;
-var homeservice= Servciodomicilio ({    
+var homeservice= Servciodomicilio ({   
+    _id:String,
     idLocal: String,
     Nombre: String,
     Correo: String,
