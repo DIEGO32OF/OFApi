@@ -612,8 +612,11 @@ function DameServicio(req,res){
   var id=parames.Servicio;
   var Local=parames.Local;
 	var idOk=new ObjectId(id);
-	
-	ServiceHome.findOne({_id:idOk },(err,ServiceFounder)=>{
+	var date=new Date();
+         var fecha=formatoDate(date);
+	var prefix=fecha.split(' ');
+	//ServiceHome.findOne({_id:idOk },(err,ServiceFounder)=>{
+		ServiceHome.find({IsActive:1,idLocal:Local,Fecha:new RegExp(prefix[0], 'i') },(err,ServiceFounder)=>{
           if (err)
               res.status(500).send({ message: 'Error en Peticion' });
           else {            
