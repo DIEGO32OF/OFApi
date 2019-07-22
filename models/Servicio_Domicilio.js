@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 
 var Servciodomicilio = mongoose.Schema;
 var homeservice= Servciodomicilio ({    
-    idLocal: Number,
+    idLocal: String,
     Nombre: String,
     Correo: String,
     Telefono:Number,
