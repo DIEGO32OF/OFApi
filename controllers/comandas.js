@@ -718,6 +718,10 @@ function SetComandas(req,res)
     Comandas.fecha_Entrega=params.fecha_Entrega;
     Comandas.Estatus=params.Estatus;
 	Comandas.mesa=params.mesa;
+	if(params.Allevar)
+	Comandas.isToGo=1;
+	else
+	Comandas.isToGo=0;
 	
 
   var newdate=Comandas.Fecha_Creada.split(' ');
