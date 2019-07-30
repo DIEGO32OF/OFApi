@@ -572,7 +572,7 @@ function GetInfo(req, res)
 
                   }
                     else {
-                       // console.log(local);
+                        console.log(local);
                        Myvisit.IsActive='1';
             Myvisit.save((err,VisitaGuardada) =>{
             });
