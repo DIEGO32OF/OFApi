@@ -86,12 +86,14 @@ function payComand(req, res){
     res.status(500).send({message:'error al actualizar la comanda'+err});
     else{
 	    if(parametros.Codigo!=''){
+		   
       Codigos.findByIdAndUpdate(parametros.Codigo,{status:'Cerrado'},(err,Code)=>{
         if(err)
         res.status(500).send({message:'error al actualizar el Codigo'+err});
 	      else
 		      res.status(200).send({message:'Se actualizo correctamente el codigo y comanda'});
       });
+		    
 	    }
 	    else
 		    res.status(200).send({message:'Se actualizo correctamente la comanda'});
