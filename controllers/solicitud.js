@@ -543,7 +543,7 @@ function GetInfo(req, res)
                     if (local){
 			res.status(200).send({bussinesSquare});    
 		    } else {	
-			 res.status(404).send({'resourseNotFound'});     
+			 res.status(404).send('resourseNotFound');     
 		}
 	    });
 		    
