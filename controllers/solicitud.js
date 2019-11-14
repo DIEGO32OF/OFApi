@@ -533,8 +533,20 @@ function GetInfo(req, res)
     console.log(idLocal);
     switch (tipo)
     {
-        case ('hEJ03PTQrcU='):
+        case ('hEJ03PTQrcU_'):
               //plazas
+            var myLocal = solicitudfood.findOne({ id_Hashed: idLocal});
+            myLocal.populate({ path: 'id_Imgs', model: 'image' }).exec((err, local) => {
+                if (err)
+                    res.status(500).send({ message: 'Error en Peticion --'+err });
+                else {
+                    if (local){
+			res.status(200).send({bussinesSquare});    
+		    } else {	
+			 res.status(404).send({'resourseNotFound'});     
+		}
+	    });
+		    
             break;
         case ('dnE6XnhrjrU_'):
             //Establecimientos Food
@@ -546,7 +558,7 @@ function GetInfo(req, res)
     Myvisit.Origen='0';
 
 
-            var myLocal = solicitudfood.findOne({ id_Hashed: idLocal, isActive:1  });
+            var myLocal = solicitudfood.findOne({ id_Hashed: idLocal});
             myLocal.populate({ path: 'id_Menu', model: 'menu' }).populate({ path: 'id_EvenPromo', model: 'eventorpromo'}).populate({ path: 'id_PaqEspe', model: 'paqespe' }).populate({ path: 'id_Imgs', model: 'image' }).exec((err, local) => {
                 if (err)
                     res.status(500).send({ message: 'Error en Peticion --'+err });
