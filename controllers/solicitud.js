@@ -93,7 +93,7 @@ function GetBusca(req, res) {
         //nombre lugar
         console.log(prefix);
 
-        var getSearch = solicitudfood.find({ isActive: 1, Nombre: new RegExp(prefix, 'i') }).sort({ 'Nombre': 1 }).limit(10);
+        var getSearch = solicitudfood.find({ Nombre: new RegExp(prefix, 'i') }).sort({ 'Nombre': 1 }).limit(10);
         getSearch.populate({ path: 'id_Imgs', model: 'image' }).exec((err, buscados) => {
             if (err)
                 res.status(500).send({ message: 'Error en Peticion de los seis' + err });
@@ -503,9 +503,7 @@ function getdashbord(req, res) {
 
 
 function getActives(req, res) {
-    solicitudfood.find({
-        isActive: 1
-    }).exec((err, Searching) => {
+    solicitudfood.find({}).exec((err, Searching) => {
             if (err)
                 res.status(500).send({ message: 'Error en Peticion de la busqueda por lat_ ' + err });
             else {
@@ -568,7 +566,7 @@ function GetInfo(req, res)
                        // res.status(404).send({ message: 'No existen locales' });
                        Myvisit.IsActive='0';
           Myvisit.save((err,VisitaGuardada) =>{});
-                  var soloseis=solicitudfood.find({isActive:1}).sort({'Nombre':1}).limit(6);
+                  var soloseis=solicitudfood.find({}).sort({'Nombre':1}).limit(6);
                     soloseis.populate({ path: 'id_Imgs', model: 'image' }).exec((err, firtsSix) => {
                     if(err)
                     res.status(500).send({ message: 'Error en Peticion de los seis' });
@@ -707,7 +705,7 @@ function validateToken(req, res) {
     var tok = jwt.valida(parames.Token);
     console.log('token'+tok);
     if (tok != '') {
-        solicitudfood.findOne({ id_Hashed: tok.sub, isActive: 1, id_SQL: tok.Numericparam }, (err, LocalFound) => {
+        solicitudfood.findOne({ id_Hashed: tok.sub, id_SQL: tok.Numericparam }, (err, LocalFound) => {
 
             if (err) {
                   console.log('payload');
@@ -740,7 +738,7 @@ function makeToken(req,res){
     var id=parames.hash;//.replace('_','=').replace('-','/').replace('!','+');
     //  var nombre=parames.name;
     var intId=Number(parames.numericSet);
-    solicitudfood.findOne({ id_Hashed: id, isActive:1, id_SQL:intId  },(err,LocalFound)=>{
+    solicitudfood.findOne({ id_Hashed: id,  id_SQL:intId  },(err,LocalFound)=>{
         if(err){
         console.log(err);
     res.status(500).send({ message: 'Error'+ err });
