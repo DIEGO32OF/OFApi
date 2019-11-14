@@ -545,6 +545,7 @@ function GetInfo(req, res)
 		    } else {	
 			 res.status(404).send('resourseNotFound');     
 		}
+		}
 	    });
 		    
             break;
