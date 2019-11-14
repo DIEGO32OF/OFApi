@@ -535,7 +535,7 @@ function GetInfo(req, res)
     {
         case ('hEJ03PTQrcU_'):
               //plazas
-            var myLocal = solicitudfood.findOne({ id_Hashed: idLocal});
+            var myLocal = solicitudfood.find({ idSquare: idLocal});
             myLocal.populate({ path: 'id_Imgs', model: 'image' }).exec((err, local) => {
                 if (err)
                     res.status(500).send({ message: 'Error en Peticion --'+err });
