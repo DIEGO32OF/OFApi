@@ -618,7 +618,7 @@ function DameServicio(req,res){
          var fecha=formatoDate(date);
 	var prefix=fecha.split(' ');
 	//ServiceHome.findOne({_id:idOk },(err,ServiceFounder)=>{
-		ServiceHome.find({IsActive:1,idLocal:Local,Fecha:new RegExp(prefix[0], 'i') },(err,ServiceFounder)=>{
+		ServiceHome.find({idLocal:Local,Fecha:new RegExp(prefix[0], 'i') },(err,ServiceFounder)=>{
           if (err)
               res.status(500).send({ message: 'Error en Peticion' });
           else {            
@@ -798,7 +798,7 @@ function verifycode(req, res)
 //busca menu
 function setloc(req, res)
 {
-    MenuCode.findOne({proces_Loc:req.query.LocProces, is_Active:1}, function(err, MenuCom)
+    MenuCode.findOne({proces_Loc:req.query.LocProces}, function(err, MenuCom)
     {
         if (err) throw err;
         //  res.status('200').sendFile(__dirname+'/Command_View.html');
