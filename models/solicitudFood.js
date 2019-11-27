@@ -21,6 +21,8 @@ var localFood = local({
     setComand: Number,
     servDom: Number,
     idSquare: String,
+     lat: String,
+    lng: String,
     id_Menu: { type: local.ObjectId, ref: 'menu' },
     id_EvenPromo: [{ type: local.ObjectId, ref: 'eventorpromo' }],
     id_PaqEspe: [{ type: local.ObjectId, ref: 'paqespe' }]     ,
