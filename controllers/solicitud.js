@@ -16,6 +16,7 @@ var comentario = require('../models/Comentarios');
 var comanda = require('../models/comandas');
 var rank = require('../models/rank');
 var visita=require('../models/Visitas');
+const haversine = require('haversine')
 
 require('dotenv').config();
 const actions = require('../services/actions');
@@ -508,11 +509,26 @@ function getActives(req, res) {
                 res.status(500).send({ message: 'Error en Peticion de la busqueda por lat_ ' + err });
             else {
                 if (Searching) {
-                    console.log(Searching);
-                    res.status(200).send({ Searching });
+                    const start = {
+                        latitude: parseFloat(req.body.lat),
+                        longitude: parseFloat(req.body.lng)
+                      }
+                      console.log(start)
+                      let Locals =[]
+                      Searching.forEach(coors => {                        
+                        const end = {
+                          latitude: parseFloat(coors.lat),
+                          longitude: parseFloat(coors.lng)
+                        }  
+                          
+                        if(haversine(start, end, {unit: 'meter'}) <= 8000){                            
+                            Locals.push(coors)
+                        }
+                    }) 
+                    res.status(200).send({ Locals });
                 }
                 else {
-                    console.log('no hay');
+                    res.status(200).send({});
                 }
             }
     });
