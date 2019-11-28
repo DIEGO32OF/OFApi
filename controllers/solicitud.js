@@ -540,22 +540,20 @@ function getActives(req, res) {
 function GetInfo(req, res)
 {
     var parames = req.params;
-    var tipo=parames.typer;//.replace('_','=').replace('-','/').replace('!','+');
-    var idLocal=parames.Esta;//.replace('_','=').replace('-','/').replace('!','+');
-    //idLocal=idLocal.replace('_','=').replace('-','/').replace('!','+');
-  //  tipo=tipo.replace('_','=').replace('-','/').replace('!','+');
-    console.log(idLocal);
+    var tipo=parames.typer;
+    var idLocal=parames.Esta;
+    
     switch (tipo)
     {
         case ('hEJ03PTQrcU_'):
               //plazas
             var myLocal = solicitudfood.find({ idSquare: idLocal});
             myLocal.populate({ path: 'id_Imgs', model: 'image' }).exec((err, bussinesSquare) => {
-                if (err)
-                    res.status(500).send({ message: 'Error en Peticion --'+err });
-                else {
-                    if (bussinesSquare){
-			res.status(200).send({bussinesSquare});    
+            if (err)
+              res.status(500).send({ message: 'Error en Peticion --'+err });
+            else {
+              if (bussinesSquare){
+			    res.status(200).send({bussinesSquare});    
 		    } else {	
 			 res.status(404).send('resourseNotFound');     
 		}
@@ -564,46 +562,66 @@ function GetInfo(req, res)
 		    
             break;
         case ('dnE6XnhrjrU_'):
-            //Establecimientos Food
-            //console.log('entra');
+            //Establecimientos Food            
               var dato = cambiaTipo(parames.Time);
     var Myvisit=new visita();
     Myvisit.local=idLocal;
-     Myvisit.Fecha_Creada=dato;//formatoDate(dato);
+    Myvisit.Fecha_Creada=dato;
     Myvisit.Origen='0';
 
+    advertising.find({type: 1, IsActive: true}).exec((err, type1)=>{
+        if(!err){            
+            var x = Math.floor((Math.random() * type1.length));
+            Myvisit.imageType1 = type1[x].id
+            Myvisit.fullpicture1 = type1[x].fullPicture
+        }
+    }).then( res =>{  
+        advertising.find({type: 2, IsActive: true}).exec((err2, type2)=>{
+            if(!err2){                
+                var x = Math.floor((Math.random() * type2.length));
+                Myvisit.imageType2 = type2[x].id
+                Myvisit.fullpicture2 = type2[x].fullPicture
+            }
+        })
+     })
+     .then( res =>{  
+        advertising.find({type: 3, IsActive: true}).exec((err3, type3)=>{
+            if(!err3){                
+                var x = Math.floor((Math.random() * type3.length));
+                Myvisit.imageType3 = type3[x].id
+                Myvisit.fullpicture3 = type3[x].fullPicture
+            }
+        })
+     })
 
             var myLocal = solicitudfood.findOne({ id_Hashed: idLocal});
             myLocal.populate({ path: 'id_Menu', model: 'menu' }).populate({ path: 'id_EvenPromo', model: 'eventorpromo'}).populate({ path: 'id_PaqEspe', model: 'paqespe' }).populate({ path: 'id_Imgs', model: 'image' }).exec((err, local) => {
                 if (err)
                     res.status(500).send({ message: 'Error en Peticion --'+err });
                 else {
-                    if (!local){
-                       // res.status(404).send({ message: 'No existen locales' });
-                       Myvisit.IsActive='0';
-          Myvisit.save((err,VisitaGuardada) =>{});
-                  var soloseis=solicitudfood.find({}).sort({'Nombre':1}).limit(6);
+                    if (!local){                       
+                 Myvisit.IsActive='0';                                 
+                    var soloseis=solicitudfood.find({}).sort({'Nombre':1}).limit(6);
                     soloseis.populate({ path: 'id_Imgs', model: 'image' }).exec((err, firtsSix) => {
+                    Myvisit.save((err,VisitaGuardada) =>{});
                     if(err)
                     res.status(500).send({ message: 'Error en Peticion de los seis' });
                     else{
-                      if(firtsSix){
-                        console.log(firtsSix);
+                      if(firtsSix){                        
                         res.status(200).send({firtsSix});
                       }
                       else {
-                        console.log('no hay');
+                        res.status(200).send({});
                       }
                     }
                     });
 
                   }
-                    else {
-                        console.log(local);
+                    else {                        
                        Myvisit.IsActive='1';
-            Myvisit.save((err,VisitaGuardada) =>{
-            });
-                        res.status(200).send({local});
+                       Myvisit.save((err,VisitaGuardada) =>{});
+                       let imagesArr = [Myvisit.fullpicture1, Myvisit.fullpicture2, Myvisit.fullpicture3]
+                       res.status(200).send({local, imagesArr});
                     }
                 }
             });
@@ -617,8 +635,7 @@ function GetInfo(req, res)
             break;
         default:
         res.status(404).send({ message: 'no hay Establecimientos de este tipo' });
-    }
-    //res.status('500').send({ message: 'no se encontro el tipo' });
+    }    
 }
 
 function VerifyCode(req,res){
