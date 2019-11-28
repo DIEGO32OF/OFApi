@@ -16,6 +16,7 @@ var comentario = require('../models/Comentarios');
 var comanda = require('../models/comandas');
 var rank = require('../models/rank');
 var visita=require('../models/Visitas');
+var advertising = require('../models/advertising');
 const haversine = require('haversine')
 
 require('dotenv').config();
