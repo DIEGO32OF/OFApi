@@ -34,5 +34,6 @@ exports.createToken = function (id_hashed,intId) {
         //iat:moment().unix(),
         exp:moment().add(1,'days').unix(),
     }
+    console.log( jwt.encode(pailoat,secret));
     return jwt.encode(pailoat,secret);
 };
