@@ -671,16 +671,18 @@ function creauser(req,res)
 //  comensal
   var myComensal=new comensal();
   var params=req.params;
-   console.log(params);
+   var localIndex = params.LocalContact.toString().split('_');
    comensal.findOne({mail:params.mail},(err,UsuarioEncontrado)=>{
      if(!err){
        if(!UsuarioEncontrado){
-var date=new Date();
-         var fecha=formatoDate(date);
+         var fecha = cambiaTipo(params.myfech)
+	 
+	       
 
   myComensal.mail=params.mail;
   myComensal.passCode=params.pass;
-  myComensal.LocalContact=params.LocalContact;
+  myComensal.LocalContact[0].id = localIndex[0];
+  myComensal.LocalContact[0].type = localIndex[1];
   myComensal.fechaCreate=fecha;//params.fecha;
   myComensal.sendMail=false;
 
@@ -704,11 +706,15 @@ console.log('si guarda a segun');
 else {
 
     console.log('Comensal encontrado');
-    if(UsuarioEncontrado.passCode==params.pass)
-    res.status('200').send({user:UsuarioEncontrado});
-    else {
-      res.status('200').send({user:null});
-    }
+   comensal.findByIdAndUpdate(UsuarioEncontrado.id, 
+				{$push:{LocalContact:{id: localIndex[0], type:localIndex[1]} } },
+			      (err, comensalUpdate) => {
+	   if(err)
+		   res.status('500').send({message: 'error update comensal'+err});
+	   else 
+		   res.status('200').send({user:comensalUpdate});
+   });
+				
 
 }
 }
