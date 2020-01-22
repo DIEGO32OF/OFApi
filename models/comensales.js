@@ -7,7 +7,7 @@ var localFood = comensal({
     mail:String,
     passCode:String,
     fechaCreate:String,
-    LocalContact:String,
+    LocalContact:[{id:String, type:Number}],
     sendMail:Boolean,
 
 
