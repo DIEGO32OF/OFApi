@@ -836,6 +836,24 @@ function recibeMesage(req,res){
 	}
 }
 
+function userActivities(req,res){
+     var parames = req.params;
+     comensal.findOne({mail:parames.mail}, (err, userFound)=>{
+         if(!err){
+            if(userFound){
+                res.Estatus(200).send({user:userFound})
+            }
+            else{
+                res.Estatus(404).send({user:''})
+            }
+         }
+         else{
+             res.Estatus(500).send({err})
+         }
+     })
+
+}
 
 
-module.exports = { GetInfo, VerifyCode, makeToken, GetBusca, validateToken,getActives,creauser, getdashbord,GuardaRank,guardaComentarios,validaHook,recibeMesage};
+
+module.exports = { userActivities, GetInfo, VerifyCode, makeToken, GetBusca, validateToken,getActives,creauser, getdashbord,GuardaRank,guardaComentarios,validaHook,recibeMesage};
