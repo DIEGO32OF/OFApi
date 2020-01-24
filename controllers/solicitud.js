@@ -841,14 +841,14 @@ function userActivities(req,res){
      comensal.findOne({mail:parames.mail}, (err, userFound)=>{
          if(!err){
             if(userFound){
-                res.Estatus(200).send({user:userFound})
+                res.status(200).send({user:userFound})
             }
             else{
-                res.Estatus(404).send({user:''})
+                res.status(404).send({user:''})
             }
          }
          else{
-             res.Estatus(500).send({err})
+             res.status(500).send({err})
          }
      })
 
