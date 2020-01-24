@@ -11,7 +11,8 @@ var reservationSchema = esquema({
     mail: String,
     telefono: Number,
     fechaReserv: Date,
-    numPersonas: Number 
+    numPersonas: Number ,
+    activity: Number
 
 
 });
