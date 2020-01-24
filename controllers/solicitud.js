@@ -871,7 +871,7 @@ function userActivities(req,res){
                 res.status(200).send({user:userFound})
             }
             else{
-                res.status(404).send({user:''})
+                res.status(200).send({user:''})
             }
          }
          else{
