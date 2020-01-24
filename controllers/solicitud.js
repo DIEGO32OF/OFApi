@@ -32,8 +32,7 @@ function cambiaTipo(fechaResolve) {
 }
 
 function setReservasion(req, res){
-  var parames = req.params;
-	console.log(cambiaTipo(parames.solicitado));
+  var parames = req.params;	
   var reservasion = new reservation();
   reservasion.mail = parames.mail;
   reservasion.Nombre = parames.nombre;
@@ -42,25 +41,21 @@ function setReservasion(req, res){
   reservasion.local = parames.local
   reservasion.telefono = parames.telefono;
   reservasion.fecha = cambiaTipo(parames.solicitado);
-  reservasion.estatus = 1	
-	
+  reservasion.estatus = 1		
 	reservasion.save((err, reservacionSave) => {
 		if(!err){
 			res.status(200).send({reservasion: reservacionSave})
 		}
 		else{
 			res.status(500).send({message: 'error al guardar la reservasion'+ err})
-		}
-			
-		
-	})
-	
+		}					
+	})	
 }
+
 
 function guardaComentarios(req,res)
 {
-    var parametros =req.body;
-    console.log(parametros);
+    var parametros =req.body;    
     var myComent=new comentario();
 
     //var date=new Date();
@@ -85,8 +80,7 @@ function guardaComentarios(req,res)
   }
 
 function GuardaRank(req, res){
-  var parames =req.body// req.params; esta es por get
-  console.log(parames);
+  var parames =req.body// req.params; esta es por get  
 var myrank=new rank();
  var fecha=cambiaTipo(parames.fecha);//formatoDate(date);
 
@@ -95,8 +89,6 @@ var myrank=new rank();
  myrank.Local=parames.Local;
  myrank.fecha=fecha;//params.fecha;
  //myrank.sendMail=false;
-
-
  myrank.save((err,rankGuarda) =>{
    if(!err){
      if(rankGuarda){
@@ -109,8 +101,7 @@ else {
 else {
   res.status(200).send({ rank:null });
 }
- });
-
+});
 }
 
 
