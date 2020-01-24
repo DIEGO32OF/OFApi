@@ -17,8 +17,8 @@ var comanda = require('../models/comandas');
 var rank = require('../models/rank');
 var visita=require('../models/Visitas');
 var advertising = require('../models/advertising');
+var reservation = require('../models/reservation');
 const haversine = require('haversine')
-
 require('dotenv').config();
 const actions = require('../services/actions');
 const handle = require('../services/handleMessages');
@@ -30,6 +30,33 @@ function cambiaTipo(fechaResolve) {
     var fecha = fechaResolve.replace('|', '/').replace('|', '/').replace('-', ':').replace('_', ' ')
     return fecha;
 }
+
+function setReservasion(req, res){
+  var parames = req.params;
+	console.log(cambiaTipo(parames.solicitado));
+  var reservasion = new reservation();
+  reservasion.mail = parames.mail;
+  reservasion.Nombre = parames.nombre;
+  reservasion.fechaReserv = cambiaTipo(parames.fechaReserv);
+  reservasion.personas = parames.personas;
+  reservasion.local = parames.local
+  reservasion.telefono = parames.telefono;
+  reservasion.fecha = cambiaTipo(parames.solicitado);
+  reservasion.estatus = 1	
+	
+	reservasion.save((err, reservacionSave) => {
+		if(!err){
+			res.status(200).send({reservasion: reservacionSave})
+		}
+		else{
+			res.status(500).send({message: 'error al guardar la reservasion'+ err})
+		}
+			
+		
+	})
+	
+}
+
 function guardaComentarios(req,res)
 {
     var parametros =req.body;
@@ -856,4 +883,4 @@ function userActivities(req,res){
 
 
 
-module.exports = { userActivities, GetInfo, VerifyCode, makeToken, GetBusca, validateToken,getActives,creauser, getdashbord,GuardaRank,guardaComentarios,validaHook,recibeMesage};
+module.exports = { setReservasion, userActivities, GetInfo, VerifyCode, makeToken, GetBusca, validateToken,getActives,creauser, getdashbord,GuardaRank,guardaComentarios,validaHook,recibeMesage};
