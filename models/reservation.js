@@ -6,11 +6,11 @@ var reservationSchema = esquema({
 
     estatus: Number,
     local: String,
-    fecha: Date,
+    fecha: String,
     Nombre: String,
     mail: String,
     telefono: Number,
-    fechaReserv: Date,
+    fechaReserv: String,
     numPersonas: Number ,
     activity: Number
 
