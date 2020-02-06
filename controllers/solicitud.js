@@ -312,7 +312,7 @@ function getdashbord(req, res) {
 
                                                 var yatarde = Comanda[t].platillos[g].fechaCreado.split(' ');
                                                 var hora = yatarde[1].replace(':', '');
-
+							console.log(fechaEntregada)
                                                 var horacomand = fechaEntregada.split(' ');
                                                 var horahoy = horacomand[1].replace(':', '');
 
