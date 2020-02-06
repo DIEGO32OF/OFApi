@@ -309,10 +309,10 @@ function getdashbord(req, res) {
                                                
                                                  var platilloCheca = Comanda[t].platillos[g].Platillo;
                                                 
-
+console.log(Comanda[t].platillos[g].fechaCreado,'//////////////////////')
                                                 var yatarde = Comanda[t].platillos[g].fechaCreado.split(' ');
                                                 var hora = yatarde[1].replace(':', '');
-							console.log(fechaEntregada)
+							console.log(fechaEntregada,'----------------')
                                                 var horacomand = fechaEntregada.split(' ');
                                                 var horahoy = horacomand[1].replace(':', '');
 
