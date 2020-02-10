@@ -147,10 +147,10 @@ function GetBusca(req, res) {
                         myarreglo.push(encontrados.id_Local);
                         //res.status(200).send({ Searching });
                     });
-                    console.log(myarreglo[0]);
+                    
                     var locales = solicitudfood.find({ id_SQL: { $in: myarreglo } });//, (err, buscados) => {
                     locales.populate({ path: 'id_Imgs', model: 'image' }).exec((err, buscados) => {
-                        console.log(buscados);
+                        
                         if (err) {
                             console.log(err);
                             res.status(200).send({ message: 'Error en Peticion de los ' + err });
@@ -164,7 +164,7 @@ function GetBusca(req, res) {
                 }
                 else {
                     res.status(200).send({});
-                    console.log('no hay');
+                    
                 }
             }
         });
@@ -180,7 +180,7 @@ function getdashbord(req, res) {
     var hoy = cambiaTipo(parames.Time);//formatoDate(dato).split(' ');
 
     var eldiadHoy = hoy;
-   // console.log(eldiadHoy);
+   
     var horasLocal = 0;
     var separados = eldiadHoy.split('/');
 
@@ -213,8 +213,7 @@ function getdashbord(req, res) {
                                 $or: [{ local: locales, Fecha_Creada: new RegExp(eldiadHoy, 'i') },
                                 { local: locales, Fecha_Creada: new RegExp(separados[2] + '/' + separados[1] + '/' + separados[0], 'i') }]
                             })
-                                .sort({ 'Fecha_Creada': 1 }).exec((errComent, visitasionEncontradas) => {
-                                  // console.log(visitasionEncontradas);
+                                .sort({ 'Fecha_Creada': 1 }).exec((errComent, visitasionEncontradas) => {                                  
                                     var counter = Comanda.length;
                                     var platillos = new Array();
                                     var Time_tarde_cancel = new Array();
@@ -254,8 +253,7 @@ function getdashbord(req, res) {
 
 
                                             lapsus = (parseInt(hours) + parseInt(HORAVa[0])) + ":" + minutes.toString();
-                                            lapso = (parseFloat(parseInt(hours) + parseInt(HORAVa[0]) + "." + minutes.toString()));
-                                            console.log(lapsus+'  '+lapso);
+                                            lapso = (parseFloat(parseInt(hours) + parseInt(HORAVa[0]) + "." + minutes.toString()));                                            
                                             Time_tarde_cancel.push({
                                                 Canceladas: 0,
                                                 Atiempo: 0,
@@ -267,8 +265,7 @@ function getdashbord(req, res) {
                                         }
 
                                     }
-                                    //los Ingresos o visitas
-                                    console.log(visitasionEncontradas);
+                                    //los Ingresos o visitas                                    
                                     for (var v = 0; v < visitasionEncontradas.length; v++) {
                                         var horaVisita = visitasionEncontradas[v].Fecha_Creada.split(' ');
                                         var horaVisit = horaVisita[1].replace(':', '');
@@ -309,11 +306,9 @@ function getdashbord(req, res) {
                                                
                                                  var platilloCheca = Comanda[t].platillos[g].Platillo;
                                                 
-console.log(Comanda[t].platillos[g].fechaCreado,'//////////////////////')
 						    if(Comanda[t].platillos[g].fechaCreado != undefined){
                                                 var yatarde = Comanda[t].platillos[g].fechaCreado.split(' ');
-                                                var hora = yatarde[1].replace(':', '');
-							console.log(fechaEntregada,'----------------')
+                                                var hora = yatarde[1].replace(':', '');							
                                                 var horacomand = fechaEntregada.split(' ');
                                                 var horahoy = horacomand[1].replace(':', '');
 
@@ -533,8 +528,7 @@ function getActives(req, res) {
                     const start = {
                         latitude: parseFloat(req.body.lat),
                         longitude: parseFloat(req.body.lng)
-                      }
-                      console.log(start)
+                      }                      
                       let Locals =[]
                       Searching.forEach(coors => {                        
                         const end = {
@@ -661,8 +655,6 @@ function GetInfo(req, res)
 
 function VerifyCode(req,res){
   var parames = req.params;
-
-  console.log(parames);
   var codigo=parames.code;
   var Local=parames.Local;
   if(codigo!=''){
@@ -672,7 +664,7 @@ function VerifyCode(req,res){
           else {
               if (!coderFound){
                  // res.status(404).send({ message: 'No existen locales' });
-                 console.log(coderFound);
+                 
               res.status(200).send({coderFound});
             }
               else {
@@ -715,17 +707,13 @@ if(!Comensalguardado)
 res.status('500').send({message:'no se registro el usuario'});
 else
 {
-console.log('si guarda a segun');
-  console.log(Comensalguardado);
    res.status('200').send({user:Comensalguardado});
 }
 }
 
 });
 }
-else {
-
-    console.log('Comensal encontrado');
+else {   
    comensal.findByIdAndUpdate(UsuarioEncontrado.id, 
 				{$push:{LocalContact:{id: localIndex[0], type:localIndex[1]} } },
 			      (err, comensalUpdate) => {
@@ -759,22 +747,17 @@ function formatoDate(date) {
 }
 
 function validateToken(req, res) {
-    var parames = req.params;
-    console.log(parames.Token);
+    var parames = req.params;    
 
-    var tok = jwt.valida(parames.Token);
-    console.log('token'+tok);
+    var tok = jwt.valida(parames.Token);    
     if (tok != '') {
         solicitudfood.findOne({ id_Hashed: tok.sub, id_SQL: tok.Numericparam }, (err, LocalFound) => {
 
             if (err) {
-                  console.log('payload');
                 console.log(err);
         res.status(500).send({ message: 'Error' + err });
     }
     else {
-          console.log('payload2');
-        console.log(LocalFound);
         if (LocalFound) {
             res.status(200).send({ token: true })
         }
@@ -788,13 +771,11 @@ else {
   //expiro el token
     res.status(200).send({ token: null });
 }
-console.log(tok);
 }
 
 
 function makeToken(req,res){
-    var parames = req.params;
-    console.log(parames);
+    var parames = req.params;    
     var id=parames.hash;//.replace('_','=').replace('-','/').replace('!','+');
     //  var nombre=parames.name;
     var intId=Number(parames.numericSet);
@@ -803,8 +784,7 @@ function makeToken(req,res){
         console.log(err);
     res.status(500).send({ message: 'Error'+ err });
 }
-else {
-       console.log(LocalFound);
+else {       
 if(LocalFound){
     res.status(200).send({token:jwt.createToken(id,intId)})
 }
@@ -825,8 +805,7 @@ function validaHook(req, res) {
     const token = req.query['hub.verify_token'];
     if (mode && token) {
 	    //console.log(process.env.VERIFYTOKEN+' '+mode);
-        if (mode === 'subscribe' && token === process.env.VERIFYTOKEN) {
-            console.log('si llega');
+        if (mode === 'subscribe' && token === process.env.VERIFYTOKEN) {            
             res.status(200).send(challenge);
         }
         else {
@@ -834,8 +813,7 @@ function validaHook(req, res) {
             res.status(403);
         }
     }
-	else{
-		console.log('segunod else');
+	else{		
 		res.status(403);
 	}
 }
@@ -845,8 +823,7 @@ function recibeMesage(req,res){
 	if(body.object==='page'){
 		res.status(200).send('EVENT_RECEIVED');
 		body.entry.forEach(function(entry){
-			let webhookEvent=entry.messaging[0];
-			console.log(JSON.stringify(webhookEvent.message));
+			let webhookEvent=entry.messaging[0];			
 			handle.handleMessage(webhookEvent);
 			//actions.sendTextMessage('Hola como estas?',webhookEvent);
 		});
