@@ -22,9 +22,42 @@ const haversine = require('haversine')
 require('dotenv').config();
 const actions = require('../services/actions');
 const handle = require('../services/handleMessages');
+var tokens = require('../models/tokens');
 
 //var express = require('express')();
 //var app = express;
+
+
+function saveToken(req, res){
+  var parametros =req.body;
+
+  tokens.find({ is_Active: 1, token: parametros.token }).exec((err, tokExist) => {
+      
+    if(tokExist){
+        tokens.findByIdAndUpdate(tokExist.id, 
+            {$push:{locales:{id: parametros.id, dateVisit:'02032020'} } },
+              (err, tokenUpdate) => {
+                res.status(200).send({token: tokenUpdate})
+              })
+    }
+    else {
+        var myToken = new tokens();
+        myToken.token = parametros.token;
+        myToken.IsActive = true;
+        myToken.locales[0].id = parametros.id;
+        myToken.locales[0].dateVisit = '02032020';
+        myToken.save((err, tokeSaved) => {
+            if(!err){
+                res.status(200).send({token: tokeSaved})
+            }
+        });
+    }
+  });
+ 
+
+
+}
+
 
 function cambiaTipo(fechaResolve) {
     var fecha = fechaResolve.replace('|', '/').replace('|', '/').replace('-', ':').replace('_', ' ')
