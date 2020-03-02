@@ -19,6 +19,7 @@ api.get('/webhook', SolicitudPrimera.validaHook);
 api.post('/webhook', SolicitudPrimera.recibeMesage);
 api.post('/activitiesUser/:mail', SolicitudPrimera.userActivities);
 api.post('/setReservation/:nombre/:fechaReserv/:personas/:mail/:local/:telefono/:solicitado', SolicitudPrimera.setReservasion);
+api.post('/saveToken/', SolicitudPrimera.saveToken);
 
 
 module.exports = api;
