@@ -45,7 +45,8 @@ console.log(parametros,'------')
         var myToken = new tokens();
         myToken.token = parametros.token;
         myToken.IsActive = true;
-        myToken.locales = [];  
+       // myToken.locales = [];  
+	      //myComensal.LocalContact[0].id = localIndex[0];
         myToken.locales[0].id = parametros.id;
         myToken.locales[0].dateVisit = '02032020';
 	    myToken.idUser = parametros.idUser;
