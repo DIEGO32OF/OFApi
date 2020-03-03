@@ -35,7 +35,7 @@ console.log(parametros,'------')
       console.log(tokExist)
     if(tokExist.length > 0){
         tokens.findByIdAndUpdate(tokExist.id, 
-            {$push:{locales:{id: parametros.id, dateVisit:'02032020'} } },
+            {$push:{localesContact:{id: parametros.id, dateVisit:'02032020'} } },
               (err, tokenUpdate) => {
                 res.status(200).send({token: tokenUpdate})
               })
