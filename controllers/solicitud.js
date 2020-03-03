@@ -33,7 +33,7 @@ function saveToken(req, res){
 console.log(parametros,'------')
   tokens.find({ is_Active: true, token: parametros.token }).exec((err, tokExist) => {
       console.log(tokExist)
-    if(tokExist){
+    if(tokExist.length > 0){
         tokens.findByIdAndUpdate(tokExist.id, 
             {$push:{locales:{id: parametros.id, dateVisit:'02032020'} } },
               (err, tokenUpdate) => {
