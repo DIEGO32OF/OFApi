@@ -8,7 +8,8 @@ var token= tokensave ({
     locales: [{
         id: String,
         dateVisit: String
-    }]
+    }],
+    idUser: String
 });
 
 module.exports = mongoose.model('token', token);
