@@ -5,8 +5,7 @@ var tokensave = mongoose.Schema;
 var token= tokensave ({       
     token: String,        
     IsActive:Boolean,
-    localesContact : String,
-        dateVisit: String,
+    localesContact : [{ id: String, dateVisit: String }],
     idUser: String
 });
 
