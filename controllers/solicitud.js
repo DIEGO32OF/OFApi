@@ -30,9 +30,9 @@ var tokens = require('../models/tokens');
 
 function saveToken(req, res){
   var parametros =req.body;
-
+console.log(parametros,'------')
   tokens.find({ is_Active: true, token: parametros.token }).exec((err, tokExist) => {
-      
+      console.log(tokExist)
     if(tokExist){
         tokens.findByIdAndUpdate(tokExist.id, 
             {$push:{locales:{id: parametros.id, dateVisit:'02032020'} } },
@@ -41,6 +41,7 @@ function saveToken(req, res){
               })
     }
     else {
+	    console.log('pasa a crearlo');
         var myToken = new tokens();
         myToken.token = parametros.token;
         myToken.IsActive = true;
