@@ -31,7 +31,7 @@ var tokens = require('../models/tokens');
 function saveToken(req, res){
   var parametros =req.body;
 console.log(parametros,'------')
-  tokens.find({ is_Active: true, token: parametros.token }).exec((err, tokExist) => {
+  tokens.find({ IsActive: true, token: parametros.token }).exec((err, tokExist) => {
       console.log(tokExist)
     if(tokExist.length > 0){
         tokens.findByIdAndUpdate(tokExist.id, 
