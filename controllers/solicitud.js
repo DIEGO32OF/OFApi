@@ -45,8 +45,10 @@ console.log(parametros,'------')
         var myToken = new tokens();
         myToken.token = parametros.token;
         myToken.IsActive = true;
+        myToken.locales = [];  
         myToken.locales[0].id = parametros.id;
         myToken.locales[0].dateVisit = '02032020';
+	    myToken.idUser = parametros.idUser;
         myToken.save((err, tokeSaved) => {
             if(!err){
                 res.status(200).send({token: tokeSaved})
