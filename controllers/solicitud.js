@@ -47,8 +47,7 @@ console.log(parametros,'------')
         myToken.IsActive = true;
        // myToken.locales = [];  
 	      //myComensal.LocalContact[0].id = localIndex[0];
-        myToken.localesContact[0].id = parametros.id;
-        myToken.localesContact[0].dateVisit = '02032020';
+        myToken.localesContact.push({id: parametros.id, dateVisit : '02032020'}) ;        
 	    myToken.idUser = parametros.idUser;
         myToken.save((err, tokeSaved) => {
             if(!err){
