@@ -34,7 +34,7 @@ console.log(parametros,'------')
   tokens.find({ IsActive: true, token: parametros.token }).exec((err, tokExist) => {
       console.log(tokExist)
     if(tokExist.length > 0){
-        tokens.findByIdAndUpdate(tokExist.id, 
+        tokens.findByIdAndUpdate(tokExist._id, 
             {$push:{localesContact:{id: parametros.id, dateVisit:'02032020'} } },
               (err, tokenUpdate) => {
                 res.status(200).send({token: tokenUpdate})
