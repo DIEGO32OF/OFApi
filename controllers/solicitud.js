@@ -30,25 +30,21 @@ var tokens = require('../models/tokens');
 
 function saveToken(req, res){
   var parametros =req.body;
-console.log(parametros,'------')
-  tokens.find({ IsActive: true, token: parametros.token }).exec((err, tokExist) => {
-      console.log(tokExist)
+  tokens.find({ IsActive: true, token: parametros.token }).exec((err, tokExist) => {      
     if(tokExist.length > 0){
         tokens.findByIdAndUpdate(tokExist[0]._id, 
-            {$push:{localesContact:{id: parametros.id, dateVisit:'02032020'} } },
+            {$push:{localesContact:{id: parametros.id, dateVisit: parametros.dateVisit } } },
               (err, tokenUpdate) => {
                 res.status(200).send({token: tokenUpdate})
               })
     }
     else {
-	    console.log('pasa a crearlo');
+	    
         var myToken = new tokens();
         myToken.token = parametros.token;
         myToken.IsActive = true;
-       // myToken.locales = [];  
-	      //myComensal.LocalContact[0].id = localIndex[0];
-        myToken.localesContact.push({id: parametros.id, dateVisit : '02032020'}) ;        
-	    myToken.idUser = parametros.idUser;
+        myToken.localesContact.push({id: parametros.id, dateVisit : parametros.dateVisit}) ;        
+	myToken.idUser = parametros.idUser;
         myToken.save((err, tokeSaved) => {
             if(!err){
                 res.status(200).send({token: tokeSaved})
