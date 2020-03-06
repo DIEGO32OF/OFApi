@@ -3,12 +3,12 @@
 const admin = require('firebase-admin')
 const serviceAccount = require('./accesKey.json')
 
-if(admin.apps.length === 0) {
+//if(admin.apps.length === 0) {
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
     databaseURL: 'https://comandaof.firebaseapp.com'
   })
-  }
+  //}
 
 console.log(admin,'------------')
 
