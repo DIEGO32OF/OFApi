@@ -42,3 +42,4 @@ if(admin.apps.length === 0) {
 })
   
 }
+ module.exports = { sentToFirebase }
