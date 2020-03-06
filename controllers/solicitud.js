@@ -903,4 +903,4 @@ function userActivities(req,res){
 
 
 
-module.exports = { saveToken, setReservasion, userActivities, GetInfo, VerifyCode, makeToken, GetBusca, validateToken,getActives,creauser, getdashbord,GuardaRank,guardaComentarios,validaHook,recibeMesage};
+module.exports = { sendNotification, saveToken, setReservasion, userActivities, GetInfo, VerifyCode, makeToken, GetBusca, validateToken,getActives,creauser, getdashbord,GuardaRank,guardaComentarios,validaHook,recibeMesage};
