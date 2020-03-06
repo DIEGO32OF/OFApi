@@ -23,10 +23,28 @@ require('dotenv').config();
 const actions = require('../services/actions');
 const handle = require('../services/handleMessages');
 var tokens = require('../models/tokens');
+var pushNot = require('../services/SendFb');
 
 //var express = require('express')();
 //var app = express;
 
+function sendNotification( req, res){
+  let params = req.body;
+  	tokens.find({ localesContact: { $elemMatch: { id: params.id } } }).exec((err, Searching) => {
+            if (err) {
+                console.log(err);
+                res.status(500).send({ message: 'Error en Peticion de los ' + err });
+            }
+            else {
+                if (Searching) {
+	          let arrayTokens = Searching.map(x => x.token);
+		  let result =  pushNot.sentToFirebase( arrayTokens, params.title, params.message);
+		    res.status(200).send({ resultSet: result });
+		}
+	    }
+	});
+  	
+}
 
 function saveToken(req, res){
   var parametros =req.body;
