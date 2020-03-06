@@ -12,11 +12,11 @@ if(admin.apps.length === 0) {
 
 
 
- let sentToFirebase = (Tokens,   title, body, ) => {
+ let sentToFirebase = (Tokens,   mytitle, mybody ) => {
 
   
 console.log(admin,'------------')
-  const payload =  {notification: {title: title, body: body}}
+  const payload =  {notification: {title: mytitle, body: mybody}}
 
   var options = {
     priority: 'high',
