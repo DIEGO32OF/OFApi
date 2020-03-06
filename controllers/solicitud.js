@@ -30,7 +30,7 @@ var pushNot = require('../services/SendFb');
 
 function sendNotification( req, res){
   let params = req.body;
-  	tokens.find({ localesContact: { $elemMatch: { id: params.id } } }).exec((err, Searching) => {
+  	tokens.find({ localesContact: { $elemMatch: { id: params.Esta } } }).exec((err, Searching) => {
             if (err) {
                 console.log(err);
                 res.status(500).send({ message: 'Error en Peticion de los ' + err });
