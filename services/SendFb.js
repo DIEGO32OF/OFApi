@@ -10,6 +10,8 @@ if(admin.apps.length === 0) {
   })
   }
 
+console.log(admin,'------------')
+
  let sentToFirebase = (Tokens,  admin, title, body, ) => {
 
   
