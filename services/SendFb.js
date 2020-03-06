@@ -6,7 +6,7 @@ const serviceAccount = require('./accesKey.json')
 if(admin.apps.length === 0) {
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
-    databaseURL: 'https://habits-ai.firebaseio.com'
+    databaseURL: 'https://comandaof.firebaseapp.com'
   })
   }
 
