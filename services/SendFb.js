@@ -15,7 +15,7 @@ if(admin.apps.length === 0) {
  let sentToFirebase = (Tokens,   mytitle, mybody ) => {
 
   
-console.log(admin,'------------')
+console.log(admin,'------------', mytitle)
   const payload =  {notification: {title: mytitle, body: mybody}}
 
   var options = {
