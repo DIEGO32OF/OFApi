@@ -30,6 +30,7 @@ var pushNot = require('../services/SendFb');
 
 function sendNotification( req, res){
   let params = req.body;
+	console.log(params,'-----------')
   	tokens.find({ localesContact: { $elemMatch: { id: params.Esta } } }).exec((err, Searching) => {
             if (err) {
                 console.log(err);
