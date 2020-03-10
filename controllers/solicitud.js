@@ -38,6 +38,8 @@ function sendNotification( req, res){
             else {
                 if (Searching) {
 	          let arrayTokens = Searching.map(x => x.token);
+			
+			console.log( arrayTokens, params.title, params.message);
 		  let result =  pushNot.sentToFirebase( arrayTokens, params.title, params.message);
 		    res.status(200).send({ resultSet: result });
 		}
