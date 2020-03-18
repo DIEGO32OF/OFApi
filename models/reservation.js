@@ -12,7 +12,7 @@ var reservationSchema = esquema({
     telefono: Number,
     fechaReserv: String,
     numPersonas: Number ,
-    activity: Number
+    activity: Boolean
 
 
 });
