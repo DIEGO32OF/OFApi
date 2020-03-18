@@ -93,7 +93,7 @@ function setReservasion(req, res){
   reservasion.numPersonas = parames.personas;
   reservasion.local = parames.local
   reservasion.telefono = parames.telefono;
-	reservasion.actividad = parames.actividad;
+	reservasion.activity = parames.actividad;
 	
   reservasion.fecha = cambiaTipo(parames.solicitado);
   reservasion.estatus = 1		
