@@ -90,9 +90,11 @@ function setReservasion(req, res){
   reservasion.mail = parames.mail;
   reservasion.Nombre = parames.nombre;
   reservasion.fechaReserv = cambiaTipo(parames.fechaReserv);
-  reservasion.personas = parames.personas;
+  reservasion.numPersonas = parames.personas;
   reservasion.local = parames.local
   reservasion.telefono = parames.telefono;
+	reservasion.actividad = parames.actividad;
+	
   reservasion.fecha = cambiaTipo(parames.solicitado);
   reservasion.estatus = 1		
 	reservasion.save((err, reservacionSave) => {
