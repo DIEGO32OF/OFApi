@@ -719,6 +719,7 @@ function SetComandas(req,res)
     Comandas.platillos=params.platillos;
     Comandas.fecha_Entrega=params.fecha_Entrega;
     Comandas.Estatus=params.Estatus;
+	Comandas.idService = params.idService;
 	Comandas.mesa=params.mesa;
 	if(params.Allevar)
 	Comandas.isToGo=1;
