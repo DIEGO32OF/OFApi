@@ -15,7 +15,8 @@ var ComandasSchema = esquema({
     mesa:Number,
     hashed:String,
     Estatus:Number,
-   isToGo:Number
+   isToGo:Number,
+   idService: { type: local.ObjectId, ref: 'servicios_domicilios' },
     
 
 
