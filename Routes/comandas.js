@@ -19,6 +19,8 @@ api.post('/guardaCodigoCocina',ComandasControllers.guardaCodigoCocina);
 api.post('/SetCaracter/:Local/:Mesa/:Origen',ComandasControllers.SetCaracter);
 api.post('/SaveDirectTogo',ComandasControllers.ServicioDomGuarda);
 api.post('/GetServicio',ComandasControllers.DameServicio);
+api.post('/GetComandToGo',ComandasControllers.getComandsTogo);
+
 
 
 
