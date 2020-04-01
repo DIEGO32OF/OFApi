@@ -21,7 +21,7 @@ function cambiaTipo(fechaResolve) {
 function getComandsTogo(req, res){
 	let params = req.body
 	  var getSearch = comanda.find({ idService: {$ne : undefined}});
-        getSearch.populate({ path: 'idService', model: 'servicios_domicilios' }).exec((err, buscados) => {
+        getSearch.populate({ path: 'idService', model: 'servicios_domicilio' }).exec((err, buscados) => {
 		console.log(buscados)
 	})
 }
