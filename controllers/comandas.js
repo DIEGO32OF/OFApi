@@ -20,10 +20,16 @@ function cambiaTipo(fechaResolve) {
 
 function getComandsTogo(req, res){
 	let params = req.body
-	let myFech = cambiaTipo(params.myFech)
-	  var getSearch = comanda.find({ idService: {$ne : undefined}, Fecha_Creada: myFech });
+	let myFech = cambiaTipo(params.myFech).split('_')
+	console.log(myFech)
+	  var getSearch = comanda.find({ idService: {$ne : undefined}, Fecha_Creada: new RegExp(myFech[0], 'i')  });
         getSearch.populate({ path: 'idService', model: 'servicios_domicilio' }).exec((err, buscados) => {
-		console.log(buscados)
+		if(err)
+			res.status(500).send({message:err})
+		else if(buscados){
+			res.status(200).send({Comandas: buscados})
+		}
+			
 	})
 }
 
