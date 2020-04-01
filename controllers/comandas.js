@@ -18,7 +18,13 @@ function cambiaTipo(fechaResolve) {
     return fecha;
 }
 
-
+function getComandsTogo(req, res){
+	let params = req.body
+	  var getSearch = comanda.find({ idService: {$ne : undefined}});
+        getSearch.populate({ path: 'idService', model: 'servicios_domicilios' }).exec((err, buscados) => {
+		console.log(buscados)
+	})
+}
 
 function getComandsCuenta(req,res){
   var parametros =req.body;
@@ -895,6 +901,7 @@ module.exports = {GetComand,
 		  guardaCodigoCocina,
 		  SetCaracter,
 		  ServicioDomGuarda,
-		  DameServicio
+		  DameServicio,
+		  getComandsTogo
       };
 //};
