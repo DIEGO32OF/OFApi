@@ -56,6 +56,7 @@ function saveToken(req, res){
         tokens.findByIdAndUpdate(tokExist[0]._id, 
             {$push:{localesContact:{id: parametros.id, dateVisit: parametros.dateVisit } } },
               (err, tokenUpdate) => {
+		console.log(tokenUpdate)
                 res.status(200).send({token: tokenUpdate})
               })
     }
