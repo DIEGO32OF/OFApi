@@ -16,7 +16,7 @@ if(admin.apps.length === 0) {
 
   if(Tokens.lenght > 0){
     if(Tokens[0] != ''){
-console.log(admin,'------------', mytitle, mybody)
+
   const payload =  {notification: {title: mytitle, body: mybody}}
 
   var options = {
