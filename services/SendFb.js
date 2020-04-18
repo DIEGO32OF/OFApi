@@ -14,7 +14,8 @@ if(admin.apps.length === 0) {
 
  let sentToFirebase = (Tokens,   mytitle, mybody ) => {
 
-  
+  if(Tokens.lenght > 0){
+    if(Tokens[0] != ''){
 console.log(admin,'------------', mytitle, mybody)
   const payload =  {notification: {title: mytitle, body: mybody}}
 
@@ -42,6 +43,7 @@ console.log(admin,'------------', mytitle, mybody)
   console.log('Error sending message:', error);
   result=JSON.stringify(error)
 })
-  
+ }
+  }
 }
  module.exports = { sentToFirebase }
