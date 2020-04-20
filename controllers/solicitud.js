@@ -53,12 +53,23 @@ function saveToken(req, res){
   var parametros =req.body;
   tokens.find({ IsActive: true, token: parametros.token }).exec((err, tokExist) => {      
     if(tokExist.length > 0){
+	    let yaVinoLocal = tokExist[0].localesContact.filter( X=> X.id == parametros.id)
+	    console.log(yaVinoLocal)
+	    if(yaVinoLocal.length > 0){
+		tokens.findOneAndUpdate( {token: parametros.token, "localesContact._id": yaVinoLocal._id},{$set:{"localesContact.$.dateVisit": parametros.dateVisit}},
+					{new : true}, 
+					function(err, UpdateArr){
+			console.log(UpdateArr)
+		}
+	    }
+	    else{
         tokens.findByIdAndUpdate(tokExist[0]._id, 
             {$push:{localesContact:{id: parametros.id, dateVisit: parametros.dateVisit } } },
               (err, tokenUpdate) => {
 		console.log(tokenUpdate)
                 res.status(200).send({token: tokenUpdate})
               })
+	    }
     }
     else {
 	    
