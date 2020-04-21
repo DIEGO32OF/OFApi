@@ -60,7 +60,7 @@ function saveToken(req, res){
 					{new : true}, 
 					function(err, UpdateArr){
 			console.log(UpdateArr)
-		}
+		})
 	    }
 	    else{
         tokens.findByIdAndUpdate(tokExist[0]._id, 
