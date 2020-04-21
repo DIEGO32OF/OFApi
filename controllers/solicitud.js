@@ -56,7 +56,7 @@ function saveToken(req, res){
 	    let yaVinoLocal = tokExist[0].localesContact.filter( X=> X.id == parametros.id)
 	    console.log(yaVinoLocal)
 	    if(yaVinoLocal.length > 0){
-		tokens.findOneAndUpdate( {token: parametros.token, "localesContact._id": yaVinoLocal._id},{$set:{"localesContact.$.dateVisit": parametros.dateVisit}},
+		tokens.findOneAndUpdate( {token: parametros.token, "localesContact._id": yaVinoLocal[0]._id},{$set:{"localesContact.$.dateVisit": parametros.dateVisit}},
 					{new : true}, 
 					function(err, UpdateArr){
 			console.log(UpdateArr)
