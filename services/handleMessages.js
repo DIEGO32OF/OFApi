@@ -1,6 +1,7 @@
 const actions = require('./actions');
 
 exports.handleMessage = (webhookEvent) => {
+    console.log(webhookEvent,'///////////////////////////')
     if (webhookEvent.message) {
         let mensaje = webhookEvent.message;
         if (mensaje.quick_reply) {
