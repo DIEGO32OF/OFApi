@@ -1,9 +1,10 @@
 require('dotenv').config();
 const request = require('request');
 
-let tokenAcces = 'EAAJqBwwGCjQBABt4xFJNEZAJooZCEPNN1jtBQKsu3mY5QgKb9ps7HlbsySYFPrdP6vsBz4eOhKABvOLrgZBsjzUTG2LaCTGEW2D2wd5EkMENzZAYDF7rlmljETQF3EuSZB7hwhsiDS9zwOOkmZBZBLo9OEsfWgY8uGa1zl4e8xpu9xDC8wo1QDE'
+
 exports.callSendAPI = (requestBody) => {
     const url = 'https://graph.facebook.com/v3.3/me/messages';
+    let tokenAcces = 'EAAJqBwwGCjQBABt4xFJNEZAJooZCEPNN1jtBQKsu3mY5QgKb9ps7HlbsySYFPrdP6vsBz4eOhKABvOLrgZBsjzUTG2LaCTGEW2D2wd5EkMENzZAYDF7rlmljETQF3EuSZB7hwhsiDS9zwOOkmZBZBLo9OEsfWgY8uGa1zl4e8xpu9xDC8wo1QDE'
     console.log(tokenAcces)
     request({
         uri:url,
@@ -23,10 +24,11 @@ exports.callSendAPI = (requestBody) => {
 
 exports.getProfile=(senderID)=>{
     const url=`https://graph.facebook.com/v3.3/${senderID}`;
+    let tokenAcces = 'EAAJqBwwGCjQBABt4xFJNEZAJooZCEPNN1jtBQKsu3mY5QgKb9ps7HlbsySYFPrdP6vsBz4eOhKABvOLrgZBsjzUTG2LaCTGEW2D2wd5EkMENzZAYDF7rlmljETQF3EuSZB7hwhsiDS9zwOOkmZBZBLo9OEsfWgY8uGa1zl4e8xpu9xDC8wo1QDE'
     console.log(tokenAcces)
     request({
         uri:url,
-             qs: { access_token: : tokenAcces, //process.env.ACCES_TOKEN,
+             qs: { access_token:  tokenAcces, //process.env.ACCES_TOKEN,
                  fields:'first_name,last_name,gender,locale,timezone'
                  },
                      method:'GET'
