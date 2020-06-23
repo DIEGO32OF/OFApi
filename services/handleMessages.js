@@ -73,7 +73,7 @@ handlequickReplies = (webhookEvent) => {
 
 handleLocation = (webhookEvent) => {
     const replyLocation = {
-        texto: 'por favor compartenos tu codigo postal',
+        title: 'por favor compartenos tu codigo postal',
         replies: [{
             content_type:'text'
         }]
