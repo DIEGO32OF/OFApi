@@ -74,7 +74,8 @@ handlequickReplies = (webhookEvent) => {
 handleLocation = (webhookEvent) => {
     const replyLocation = {
         title: 'por favor compartenos tu codigo postal',
-        content_type:'text'
+        content_type:'text',
+        payload: 'CodigoPostal'
 
     }
     actions.quickReplies(webhookEvent, replyLocation);
