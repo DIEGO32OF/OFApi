@@ -1,7 +1,7 @@
 const actions = require('./actions');
 const sendAPI = require('./graphAPI');
 
-exports.handleMessage = (webhookEvent) => {
+exports.handleMessage = async (webhookEvent) => {
     let Profile = await sendAPI.getProfile(webhookEvent.sender.id);
     console.log(webhookEvent,'///////////////////////////')
     if (webhookEvent.message) {
