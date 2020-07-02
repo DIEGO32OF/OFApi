@@ -22,11 +22,11 @@ exports.handleMessage = async (webhookEvent) => {
     }
     else if (webhookEvent.postback) {
              console.log('pasa x aqui');
-            handlePostback(webhookEvent);
+            handlePostback(webhookEvent, Profile);
         }
 }
 
-handlePostback = async (webhookEvent) => {
+handlePostback = async (webhookEvent, Profile) => {
     let evento = webhookEvent.postback.payload;
     switch (evento) {
         case 'encuestas':
