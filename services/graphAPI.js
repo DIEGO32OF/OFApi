@@ -37,8 +37,7 @@ exports.getProfile=(senderID)=>{
     },(error,_res,body)=>{
         if(!error){
             let response=JSON.parse(body);
-            console.log(response);
-            console.log(`Nombre:${response.first_name} Apellido: ${response.last_name}`)
+            console.log(response);            
             return response
         }
     }

@@ -40,8 +40,7 @@ handlePostback = (webhookEvent) => {
             break;
 
         case 'inicio':
-         let Profile = sendAPI.getProfile(webhookEvent.sender.id);
-         console.log(Profile)
+         let Profile = sendAPI.getProfile(webhookEvent.sender.id);         
             actions.sendTextMessage('Hola '+Profile.first_name+' Binevenid@ a ordenofacil, estoy para servirte aqui te dejo unas opciones', webhookEvent);
             break;
 
