@@ -1,6 +1,6 @@
 require('dotenv').config();
 const request = require('request');
-
+const axios = require('axios')
 
 
 exports.callSendAPI = (requestBody) => {
@@ -24,10 +24,25 @@ exports.callSendAPI = (requestBody) => {
 }
 
 exports.getProfile= async (senderID)=>{
+
     const url=`https://graph.facebook.com/v3.3/${senderID}`;
     let tokenAcces = 'EAAJqBwwGCjQBABt4xFJNEZAJooZCEPNN1jtBQKsu3mY5QgKb9ps7HlbsySYFPrdP6vsBz4eOhKABvOLrgZBsjzUTG2LaCTGEW2D2wd5EkMENzZAYDF7rlmljETQF3EuSZB7hwhsiDS9zwOOkmZBZBLo9OEsfWgY8uGa1zl4e8xpu9xDC8wo1QDE'
-    let respuesta
-    console.log(tokenAcces)
+
+    const bodyParameters = {
+        qs:{
+            "access_token": tokenAcces,
+            "fields":'first_name,last_name,gender,locale,timezone'            
+        }
+    
+    };
+    axios.get(url, bodyParameters).then( res => {
+        console.log(res,'///////////]]]]]]]]]]]]')
+        return res
+    }).catch(console.log);
+
+   
+    
+ /*    let respuesta    
     request({
         uri:url,
              qs: { access_token:  tokenAcces, //process.env.ACCES_TOKEN,
@@ -42,5 +57,5 @@ exports.getProfile= async (senderID)=>{
             return response
         }
     }
-           );
+           ); */
 }
