@@ -25,7 +25,7 @@ exports.handleMessage = (webhookEvent) => {
         }
 }
 
-handlePostback = (webhookEvent) => {
+handlePostback = async (webhookEvent) => {
     let evento = webhookEvent.postback.payload;
     switch (evento) {
         case 'encuestas':
