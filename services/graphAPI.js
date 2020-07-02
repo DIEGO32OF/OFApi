@@ -39,11 +39,8 @@ exports.getProfile= async (senderID)=>{
         if(!error){
             let response=JSON.parse(body);
             console.log(response);            
-            respuesta =  response
+            return response
         }
     }
            );
-           console.log(respuesta,'...............')
-           return respuesta
-
 }

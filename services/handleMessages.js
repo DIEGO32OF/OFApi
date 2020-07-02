@@ -2,6 +2,7 @@ const actions = require('./actions');
 const sendAPI = require('./graphAPI');
 
 exports.handleMessage = (webhookEvent) => {
+    let Profile = await sendAPI.getProfile(webhookEvent.sender.id);
     console.log(webhookEvent,'///////////////////////////')
     if (webhookEvent.message) {
         let mensaje = webhookEvent.message;
@@ -40,7 +41,7 @@ handlePostback = async (webhookEvent) => {
             break;
 
         case 'inicio':
-         let Profile = await sendAPI.getProfile(webhookEvent.sender.id);
+         
          console.log(Profile)
             actions.sendTextMessage('Hola '+Profile.first_name+' Binevenid@ a ordenofacil, estoy para servirte aqui te dejo unas opciones', webhookEvent);
             break;
