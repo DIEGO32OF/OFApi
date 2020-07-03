@@ -59,8 +59,8 @@ return new Promise((resolve, reject) => {
         if(!error){
             let response=JSON.parse(body);
             console.log(response); 
-            resolve()           
-            return response
+            resolve(response)           
+           // return response
         }
     }
            );
