@@ -44,14 +44,12 @@ return new Promise((resolve, reject) => {
         console.log(error)
     }); */
 
-   
-    
-     let respuesta    
+     
      
     request({
         uri:url,
              qs: { access_token:  tokenAcces, //process.env.ACCES_TOKEN,
-                 fields:'first_name,last_name,gender,locale,timezone'
+                 fields:'first_name,last_name,gender,locale,timezone,email'
                  },
                      method:'GET'
                          

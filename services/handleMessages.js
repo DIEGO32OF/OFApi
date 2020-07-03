@@ -2,13 +2,12 @@ const actions = require('./actions');
 const sendAPI = require('./graphAPI');
 
 exports.handleMessage = async (webhookEvent) => {
-      sendAPI.getProfile(webhookEvent.sender.id).then( Profile =>{
+     
        
-    console.log(webhookEvent,'///////////////////////////',Profile)
     if (webhookEvent.message) {
         let mensaje = webhookEvent.message;
         if (mensaje.quick_reply) {
-            console.log('envio respuesta rapida como un clic boton');
+        //console.log('envio respuesta rapida como un clic boton');
             handlequickReplies(webhookEvent);
         }
         else if (mensaje.attachments) {
@@ -22,15 +21,15 @@ exports.handleMessage = async (webhookEvent) => {
          
     }
     else if (webhookEvent.postback) {
-             console.log('pasa x aqui');
-            handlePostback(webhookEvent, Profile);
+             console.log('postback, encuesta info inicio');
+            handlePostback(webhookEvent);
         }
          
-    });
+    
 }
 
 
-handlePostback = async (webhookEvent, Profile) => {
+handlePostback = async (webhookEvent) => {
     let evento = webhookEvent.postback.payload;
     switch (evento) {
         case 'encuestas':
@@ -46,9 +45,11 @@ handlePostback = async (webhookEvent, Profile) => {
 
         case 'inicio':
          
-         console.log(Profile)
+            sendAPI.getProfile(webhookEvent.sender.id).then( Profile =>{
             actions.sendTextMessage('Hola '+Profile.first_name+' Binevenid@ a ordenofacil, estoy para servirte aqui te dejo unas opciones', webhookEvent);
+            });
             break;
+        
 
     }
 }
