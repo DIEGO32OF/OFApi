@@ -47,7 +47,7 @@ handlePostback = async (webhookEvent) => {
          
             sendAPI.getProfile(webhookEvent.sender.id).then( Profile =>{
                 //guardar perfil en mongo
-                actions.sendTextMessage('Hola '+Profile.first_name+' Binevenid@ a ordenofacil, estoy para servirte aqui te dejo unas opciones ', webhookEvent);
+                //actions.sendTextMessage('Hola '+Profile.first_name+' Binevenid@ a ordenofacil, estoy para servirte aqui te dejo unas opciones ', webhookEvent);
                 actions.optionInicio(webhookEvent, Profile)
            
             });
