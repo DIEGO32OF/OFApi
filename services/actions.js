@@ -1,6 +1,39 @@
 const sendAPI = require('./graphAPI');
 
+const optionsInit = {
+    texto: 'Hola _| Binevenid@ a ordenofacil, estoy para servirte aqui te dejo unas opciones ',
+    replies: [
+        {
+            content_type: 'text',
+            title: 'Buscar Lugares',
+            payload:'BuscPlaces'
+        },{
+            content_type: 'text',
+            title: 'Quiero mi bot',
+            payload:'iWantBot'
+        },{
+            content_type: 'text',
+            title: 'mas info de OF',
+            payload:'infoOf'
+        },
+    ]
+}
 
+exports.optionInicio = (webhookEvent,  profile, replies) => {
+    if (!replies) {
+        replies = optionsInit;
+    }
+    let response = {
+        recipient :{
+            id: webhookEvent.sender.id
+        },
+        message: {
+            text: replies.texto.replace('_|', profile.first_name),
+            quick_replies: replies.replies
+        }
+    }
+    sendAPI.callSendAPI(response);
+}
 
 const repliesSurvey = {
     texto: 'por favor contesta la siguiente encuesta y dime que es lo que mas te gusto de nuestro servicio',
