@@ -49,7 +49,7 @@ return new Promise((resolve, reject) => {
     request({
         uri:url,
              qs: { access_token:  tokenAcces, //process.env.ACCES_TOKEN,
-                 fields:'first_name,last_name,gender,locale,timezone,email'
+                 fields:'first_name,last_name,gender,locale,timezone,email,address'
                  },
                      method:'GET'
                          
