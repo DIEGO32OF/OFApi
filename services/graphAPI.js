@@ -23,7 +23,7 @@ exports.callSendAPI = (requestBody) => {
     );
 }
 
-exports.getProfile= async (senderID)=>{
+exports.getProfile = async (senderID) =>{
 return new Promise((resolve, reject) => {
 
 

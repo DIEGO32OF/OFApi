@@ -2,8 +2,9 @@ const actions = require('./actions');
 const sendAPI = require('./graphAPI');
 
 exports.handleMessage = async (webhookEvent) => {
-    let Profile = await sendAPI.getProfile(webhookEvent.sender.id);
-    console.log(webhookEvent,'///////////////////////////')
+    let Profile =  sendAPI.getProfile(webhookEvent.sender.id).then(()=>{
+       
+    console.log(webhookEvent,'///////////////////////////',Profile)
     if (webhookEvent.message) {
         let mensaje = webhookEvent.message;
         if (mensaje.quick_reply) {
@@ -24,7 +25,10 @@ exports.handleMessage = async (webhookEvent) => {
              console.log('pasa x aqui');
             handlePostback(webhookEvent, Profile);
         }
+         
+    });
 }
+
 
 handlePostback = async (webhookEvent, Profile) => {
     let evento = webhookEvent.postback.payload;
