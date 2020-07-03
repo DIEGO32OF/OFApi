@@ -2,7 +2,7 @@ const sendAPI = require('./graphAPI');
 
 
 const optionsBusqueda = {
-    texto: 'como quieres realizar la busqueda, o si lo prefieres mas rapido y facil en https://comandaoff.web.app podras encontrar mas opciones',
+    texto: 'como quieres realizar la busqueda, o si lo prefieres mas rapido y facil en https://comandaof.web.app podras encontrar mas opciones',
     replies: [
         {
             content_type: 'text',
