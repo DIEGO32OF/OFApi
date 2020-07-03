@@ -19,10 +19,10 @@ const optionsInit = {
     ]
 }
 
-exports.optionInicio = (webhookEvent,  profile, replies) => {
-    if (!replies) {
-        replies = optionsInit;
-    }
+exports.optionInicio = (webhookEvent,  profile) => {
+   // if (!replies) {
+      let  replies = optionsInit;
+    //}
     let response = {
         recipient :{
             id: webhookEvent.sender.id
