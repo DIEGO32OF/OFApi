@@ -1,5 +1,41 @@
 const sendAPI = require('./graphAPI');
 
+
+const optionsBusqueda = {
+    texto: 'como quieres realizar la busqueda, o si lo prefieres mas rapido y facil en https://comandaoff.web.app podras encontrar mas opciones',
+    replies: [
+        {
+            content_type: 'text',
+            title: 'por nombre del lugar',
+            payload:'namePlaces'
+        },{
+            content_type: 'text',
+            title: 'cerca de mi',
+            payload:'nearMe'
+        },{
+            content_type: 'text',
+            title: 'por platillo',
+            payload:'namePlato'
+        }
+    ]
+}
+
+exports.OptionSearch = (webhookEvent) => {
+    // if (!replies) {
+       let  replies = optionsBusqueda;
+     //}
+     let response = {
+         recipient :{
+             id: webhookEvent.sender.id
+         },
+         message: {
+             text: replies.texto,
+             quick_replies: replies.replies
+         }
+     }
+     sendAPI.callSendAPI(response);
+ }
+
 const optionsInit = {
     texto: 'Hola _| Binevenid@ a ordenofacil, estoy para servirte aqui te dejo unas opciones ',
     replies: [
@@ -15,9 +51,16 @@ const optionsInit = {
             content_type: 'text',
             title: 'mas info de OF',
             payload:'infoOf'
-        },
+        },{
+            content_type: 'text',
+            title: 'Contactar Asesor',
+            payload:'contactAsesor'
+        }
     ]
 }
+
+
+
 
 exports.optionInicio = (webhookEvent,  profile) => {
    // if (!replies) {
