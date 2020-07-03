@@ -59,6 +59,7 @@ handlePostback = async (webhookEvent) => {
 
 handlequickReplies = (webhookEvent) => {
     let reply = webhookEvent.message.quick_reply.payload;
+    if (reply == 'servicio' || reply == 'rapidez'  || reply == 'ubicacion') {
     const response = {
         texto: 'Nos recomendarias?',
         replies: [{
@@ -72,12 +73,17 @@ handlequickReplies = (webhookEvent) => {
             payload: 'Norecomiendo'
         }]
     }
-    if (reply == 'servicio' || reply == 'rapidez' || reply == 'rapidez' || reply == 'ubicacion') {
+    
         actions.quickReplies(webhookEvent, response);
     }
-    else {
+    if (reply == 'sirecomiendo' || reply == 'Norecomiendo') {
         actions.sendTextMessage('Gracias por ayudarnos a mejorar', webhookEvent);
     }
+    if (reply == 'BuscPlaces' ){
+        actions.OptionSearch(webhookEvent)
+
+    }
+    
 
 }
 
