@@ -83,6 +83,9 @@ handlequickReplies = (webhookEvent) => {
         actions.OptionSearch(webhookEvent)
 
     }
+    if(reply == 'nearMe' ){
+        actions.sendTextMessage('por favor comparteme tu codigo postal')
+}
     
 
 }
@@ -90,13 +93,15 @@ handlequickReplies = (webhookEvent) => {
 
 
 handleLocation = (webhookEvent) => {
-    const replyLocation = {
+  /*   const replyLocation = {
         title: 'por favor compartenos tu codigo postal',
         content_type:'text',
         payload: 'CodigoPostal'
 
     }
-    actions.quickReplies(webhookEvent, replyLocation);
+    actions.quickReplies(webhookEvent, replyLocation); */
+    //actions.sendTextMessage('por favor comparteme tu codigo postal')
+    // hayq ue agarrar un local y mostrarlo en las cards
 }
 
 handleNlp=(webhookEvent)=>{
