@@ -24,11 +24,13 @@ exports.callSendAPI = (requestBody) => {
 }
 
 exports.getProfile= async (senderID)=>{
+return new Promise((resolve, reject) => {
+
 
     const url=`https://graph.facebook.com/v3.3/${senderID}`;
     let tokenAcces = 'EAAJqBwwGCjQBABt4xFJNEZAJooZCEPNN1jtBQKsu3mY5QgKb9ps7HlbsySYFPrdP6vsBz4eOhKABvOLrgZBsjzUTG2LaCTGEW2D2wd5EkMENzZAYDF7rlmljETQF3EuSZB7hwhsiDS9zwOOkmZBZBLo9OEsfWgY8uGa1zl4e8xpu9xDC8wo1QDE'
 
-    const qs = {
+   /*  const qs = {
         
             "access_token": tokenAcces,
             "fields":'first_name,last_name,gender,locale,timezone'            
@@ -36,13 +38,16 @@ exports.getProfile= async (senderID)=>{
     
     };
     axios.get(url, qs).then( res => {
-        console.log(res,'///////////]]]]]]]]]]]]')
-        return res
-    }).catch(console.log(err));
+        console.log(res.data,'///////////]]]]]]]]]]]]')
+        return res.data
+    }).catch(error=>{
+        console.log(error)
+    }); */
 
    
     
- /*    let respuesta    
+     let respuesta    
+     
     request({
         uri:url,
              qs: { access_token:  tokenAcces, //process.env.ACCES_TOKEN,
@@ -53,9 +58,11 @@ exports.getProfile= async (senderID)=>{
     },(error,_res,body)=>{
         if(!error){
             let response=JSON.parse(body);
-            console.log(response);            
+            console.log(response); 
+            resolve()           
             return response
         }
     }
-           ); */
+           );
+        })
 }
