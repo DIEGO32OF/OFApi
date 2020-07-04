@@ -32,9 +32,10 @@ exports.handleMessage = async (webhookEvent) => {
 handlePostback = async (webhookEvent) => {
     let evento = webhookEvent.postback.payload;
     switch (evento) {
-        case 'encuestas':
+        case 'BuscPlaces':
             //console.log('se eligio las encuestas ');
-            actions.quickReplies(webhookEvent)
+           // actions.quickReplies(webhookEvent)
+           actions.OptionSearch(webhookEvent)
             break;
 
 
@@ -84,7 +85,7 @@ handlequickReplies = (webhookEvent) => {
 
     }
     if(reply == 'nearMe' ){
-        actions.sendTextMessage('por favor comparteme tu codigo postal')
+        actions.sendTextMessage('por favor comparteme tu codigo postal', webhookEvent)
 }
     
 

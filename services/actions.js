@@ -124,7 +124,7 @@ exports.sendTextMessage = (texto, webhookEvent) => {
             text:texto
         }
     }
-    sendAPI.getProfile(webhookEvent.sender.id);
+    //sendAPI.getProfile(webhookEvent.sender.id);
     sendAPI.callSendAPI(response);
 }
 
