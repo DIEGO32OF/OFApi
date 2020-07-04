@@ -2,7 +2,7 @@ const sendAPI = require('./graphAPI');
 
 
 const optionsBusqueda = {
-    texto: 'como quieres realizar la busqueda, o si lo prefieres mas rapido y facil en https://comandaof.web.app podras encontrar mas opciones',
+    texto: 'como quieres realizar la busqueda? o si lo prefieres mas rapido y facil en https://comandaof.web.app podras encontrar mas opciones',
     replies: [
         {
             content_type: 'text',
@@ -128,6 +128,16 @@ exports.sendTextMessage = (texto, webhookEvent) => {
     //sendAPI.getProfile(webhookEvent.sender.id);
     sendAPI.callSendAPI(response);
 }
+
+exports.getCoordinates =(address) =>{
+    fetch("https://maps.googleapis.com/maps/api/geocode/json?address="+address+'&key=AIzaSyAkSWwG52ys2U7DtutEdywPTEbv_Igsdco')
+      .then(response => response.json())
+      .then(data => {
+        const latitude = data.results.geometry.location.lat;
+        const longitude = data.results.geometry.location.lng;
+        console.log({latitude, longitude})
+      })
+  }
 
 exports.ubicacion = (webhookEvent) => {
     let response = {

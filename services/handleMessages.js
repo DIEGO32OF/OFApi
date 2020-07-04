@@ -114,6 +114,16 @@ handleNlp=(webhookEvent)=>{
             }
     }
     else{
+        let texto = webhookEvent.message.text
+        if(isNaN(texto) && !isFinite(texto)){
+            if(texto.length === 5){
+               actions.getCoordinates(texto)     
+            }
+            else
+            actions.sendTextMessage('NO te entiendo pero te puedo mandar mas info', webhookEvent);
+
+        }
+        else
         actions.sendTextMessage('NO te entiendo pero te puedo mandar mas info', webhookEvent);
     }
 }
