@@ -33,7 +33,7 @@ handlePostback = async (webhookEvent) => {
     let evento = webhookEvent.postback.payload;
     switch (evento) {
         case 'BuscPlaces':
-            //console.log('se eligio las encuestas ');
+            console.log('se eligio las encuestas ');
            // actions.quickReplies(webhookEvent)
            actions.OptionSearch(webhookEvent)
             break;

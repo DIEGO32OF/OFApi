@@ -116,6 +116,7 @@ exports.quickReplies = (webhookEvent, replies) => {
 }
 
 exports.sendTextMessage = (texto, webhookEvent) => {
+    console.log(texto)
     let response = {
         recipient:{
             id: webhookEvent.sender.id
