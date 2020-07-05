@@ -120,11 +120,11 @@ handleNlp=(webhookEvent)=>{
                actions.getCoordinates(texto)     
             }
             else
-            actions.sendTextMessage('NO te entiendo pero te puedo mandar mas info', webhookEvent);
+            actions.sendTextMessage('NO te entiendo pero te puedo mandar mas info1', webhookEvent);
 
         }
         else
-        actions.sendTextMessage('NO te entiendo pero te puedo mandar mas info', webhookEvent);
+        actions.sendTextMessage('NO te entiendo pero te puedo mandar mas info2', webhookEvent);
     }
 }
 
