@@ -130,13 +130,20 @@ exports.sendTextMessage = (texto, webhookEvent) => {
 }
 
 exports.getCoordinates =(address) =>{
-    fetch("https://maps.googleapis.com/maps/api/geocode/json?address="+address+'&key=AIzaSyAkSWwG52ys2U7DtutEdywPTEbv_Igsdco')
-      .then(response => response.json())
-      .then(data => {
-        const latitude = data.results.geometry.location.lat;
-        const longitude = data.results.geometry.location.lng;
-        console.log({latitude, longitude})
-      })
+    return new Promise((resolve, reject) => {
+        request({
+            uri:"https://maps.googleapis.com/maps/api/geocode/json?address="+address+'&key=AIzaSyAkSWwG52ys2U7DtutEdywPTEbv_Igsdco',
+            method:'GET'
+        },(error,_res,body)=>{
+            if(!error){
+                let response=JSON.parse(body);
+                console.log(response); 
+                resolve(response)           
+               // return response
+            }
+        }
+               );
+            })
   }
 
 exports.ubicacion = (webhookEvent) => {
