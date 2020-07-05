@@ -116,7 +116,7 @@ handleNlp=(webhookEvent)=>{
     else{
         let texto = webhookEvent.message.text
         var pasacel = parseInt(texto);
-        if(isNaN(pasacel) && !isFinite(pasacel)){
+        if(!isNaN(pasacel) && isFinite(pasacel)){
             if(texto.length === 5){
                actions.getCoordinates(texto)     
             }
