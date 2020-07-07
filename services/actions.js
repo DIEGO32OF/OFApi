@@ -147,7 +147,7 @@ exports.getCoordinates =(address) =>{
             })
   }
 
-exports.ubicacion = (webhookEvent) => {
+exports.ubicacion = (webhookEvent, locales) => {
     let response = {
         recipient:{
             id: webhookEvent.sender.id
@@ -157,8 +157,8 @@ exports.ubicacion = (webhookEvent) => {
                 type: 'template',
                 payload: {
                     template_type: 'generic',
-                    elements: [{
-                        title: 'tacos jarochos',
+                    elements: locales//[{
+                      /*   title: 'tacos jarochos',
                         image_url: 'http://ordenofacil.com/logos/coca.jpg',
                         subtitle: 'direccion corta de los tacos',
                         default_action: {
@@ -178,9 +178,8 @@ exports.ubicacion = (webhookEvent) => {
                                 payload:'+525531077600'
                             }
 
-                        ]
-                    }
-                    ]
+                        ] */
+                    //}]
                 }
             }
         }

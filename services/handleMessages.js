@@ -1,5 +1,6 @@
 const actions = require('./actions');
 const sendAPI = require('./graphAPI');
+var solicitud = require('../controllers/solicitud');
 
 exports.handleMessage = async (webhookEvent) => {
      
@@ -120,7 +121,59 @@ handleNlp=(webhookEvent)=>{
             if(texto.length === 5){
                actions.getCoordinates(texto).then(response =>{
                    let location = response.results[0].geometry.location
-                   console.log(location, '//////////////////')
+                  let Locals = solicitud.getActivesOut(location.lat, location.lng)
+                  console.log(Locals)
+                  let locales = []
+                  for(const local of locals){
+                      locales.push({title: local.Nombre, 
+                        image_url: 'http://ordenofacil.com/Logos/slide1.jpg',
+                        subtitle: local.Domicilio,
+                        default_action: {
+                            type: 'web_url',
+                            url:'https://www.google.com.mx/maps/@'+local.lat+','+local.lng,
+                            messenger_extensions: 'FALSE',
+                            webview_height_ratio:'COMPACT'
+                        },
+                        buttons: [{
+                            type: 'web_url',
+                            url: 'https://www.google.com.mx/maps/@'+local.lat+','+local.lng,
+                            title:'mostrar el mapa'
+                        },
+                            {
+                                type: 'web_url',
+                                title: 'ver menu',
+                                payload:'https://comandaof.web.app/menu/dnE6XnhrjrU_/'+local.id_Hashed
+                            },
+                            {
+                                type: 'text',
+                                title: 'Domicilio',
+                                payload:local.nom_img
+                            }
+
+                        ]
+                    })
+                  }
+                  /*  title: 'tacos jarochos',
+                        image_url: 'http://ordenofacil.com/logos/coca.jpg',
+                        subtitle: 'direccion corta de los tacos',
+                        default_action: {
+                            type: 'web_url',
+                            url:'https://www.google.com.mx/maps/@19.6337609,-99.1345474,15z',
+                            messenger_extensions: 'FALSE',
+                            webview_height_ratio:'COMPACT'
+                        },
+                        buttons: [{
+                            type: 'web_url',
+                            url: 'https://www.google.com.mx/maps/@19.6337609,-99.1345474,15z',
+                            title:'mostrar el mapa'
+                        },
+                            {
+                                type: 'phone_number',
+                                title: 'llamar a la tienda',
+                                payload:'+525531077600'
+                            }
+
+                        ]*/ 
                })     
             }
             else
