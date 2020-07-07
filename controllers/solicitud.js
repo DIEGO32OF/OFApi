@@ -587,6 +587,7 @@ function getdashbord(req, res) {
 
 
 function getActivesOut(lat, lng) {
+    console.log('entraaaaa')
     solicitudfood.find({}).exec((err, Searching) => {
              
                 if (Searching) {
