@@ -118,14 +118,17 @@ handleNlp=(webhookEvent)=>{
         var pasacel = parseInt(texto);
         if(!isNaN(pasacel) && isFinite(pasacel)){
             if(texto.length === 5){
-               actions.getCoordinates(texto)     
+               actions.getCoordinates(texto).then(response =>{
+                   let location = response.results[0].geometry.location
+                   console.log(location, '//////////////////')
+               })     
             }
             else
-            actions.sendTextMessage('Disculpa no entiendo 1', webhookEvent);
+            actions.sendTextMessage('Disculpa no entiendo', webhookEvent);
 
         }
         else
-        actions.sendTextMessage('Disculpa no  entiendo ', webhookEvent);
+        actions.sendTextMessage('Disculpa no entiendo ', webhookEvent);
     }
 }
 
