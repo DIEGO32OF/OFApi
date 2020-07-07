@@ -1,6 +1,6 @@
 const actions = require('./actions');
 const sendAPI = require('./graphAPI');
-var solicitud = require('../controllers/solicitud');
+var SolicitudPrimera = require('../controllers/solicitud');
 
 exports.handleMessage = async (webhookEvent) => {
      
@@ -121,7 +121,7 @@ handleNlp=(webhookEvent)=>{
             if(texto.length === 5){
                actions.getCoordinates(texto).then(response =>{
                    let location = response.results[0].geometry.location
-                  let Locals = solicitud.getActivesOut(location.lat, location.lng)
+                  let Locals = SolicitudPrimera.getActivesOut(location.lat, location.lng)
                   console.log(Locals)
                   let locales = []
                   for(const local of locals){
