@@ -586,6 +586,35 @@ function getdashbord(req, res) {
 }
 
 
+function getActivesOut(lat, lng) {
+    solicitudfood.find({}).exec((err, Searching) => {
+             
+                if (Searching) {
+                    const start = {
+                        latitude: parseFloat(lat),
+                        longitude: parseFloat(lng)
+                      }                      
+                      let Locals =[]
+                      Searching.forEach(coors => {                        
+                        const end = {
+                          latitude: parseFloat(coors.lat),
+                          longitude: parseFloat(coors.lng)
+                        }  
+                          
+                        if(haversine(start, end, {unit: 'meter'}) <= 8000){                            
+                            Locals.push(coors)
+                        }
+                    }) 
+                    return Locals 
+                }
+                else {
+                   return null
+                }
+            
+    });
+}
+
+
 function getActives(req, res) {
     solicitudfood.find({}).exec((err, Searching) => {
             if (err)
