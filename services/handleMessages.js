@@ -124,7 +124,7 @@ handleNlp=(webhookEvent)=>{
                   sendAPI.getActivesOut(location.lat, location.lng).then(Locals =>{
                   console.log(Locals, '////////////////////////////////')
                   let locales = []
-                  for(const local of locals){
+                  for(const local of Locals){
                       locales.push({title: local.Nombre, 
                         image_url: 'http://ordenofacil.com/Logos/slide1.jpg',
                         subtitle: local.Domicilio,
