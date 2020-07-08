@@ -116,8 +116,7 @@ exports.quickReplies = (webhookEvent, replies) => {
     sendAPI.callSendAPI(response);
 }
 
-exports.sendTextMessage = (texto, webhookEvent) => {
-    console.log(texto)
+exports.sendTextMessage = (texto, webhookEvent) => {    
     let response = {
         recipient:{
             id: webhookEvent.sender.id
@@ -137,8 +136,7 @@ exports.getCoordinates =(address) =>{
             method:'GET'
         },(error,_res,body)=>{
             if(!error){
-                let response=JSON.parse(body);
-                console.log(response); 
+                let response=JSON.parse(body);                
                 resolve(response)           
                // return response
             }
