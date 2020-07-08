@@ -122,7 +122,7 @@ handleNlp=(webhookEvent)=>{
                actions.getCoordinates(texto).then(response =>{
                    let location = response.results[0].geometry.location
                   sendAPI.getActivesOut(location.lat, location.lng).then(Locals =>{
-                  console.log(Locals, '////////////////////////////////')
+                  
                   let locales = []
                   for(const local of Locals){
                       locales.push({title: local.Nombre, 
@@ -153,6 +153,8 @@ handleNlp=(webhookEvent)=>{
                         ]
                     })
                   }
+                  console.log(locales, '////////////////////////////////')
+                  actions.ubicacion(webhookEvent ,locales)
                 })
                   /*  title: 'tacos jarochos',
                         image_url: 'http://ordenofacil.com/logos/coca.jpg',
