@@ -132,7 +132,7 @@ handleNlp=(webhookEvent)=>{
                         subtitle: local.Domicilio,
                         default_action: {
                             type: 'web_url',
-                            url:'https://www.google.com.mx/maps/@'+local.lat+','+local.lng,
+                            url:'https://comandaof.web.app/menu/dnE6XnhrjrU_/'+local.id_Hashed,
                             messenger_extensions: 'FALSE',
                             webview_height_ratio:'COMPACT'
                         },
@@ -144,15 +144,17 @@ handleNlp=(webhookEvent)=>{
                             {
                                 type: 'web_url',
                                 title: 'ver menu',
-                                payload:'https://comandaof.web.app/menu/dnE6XnhrjrU_/'+local.id_Hashed
+                                url:'https://comandaof.web.app/menu/dnE6XnhrjrU_/'+local.id_Hashed
                             },
                             {
-                                type: 'text',
-                                title: 'Domicilio',
-                                payload:local.nom_img
+                                type: 'phone_number',
+                                title: 'telefono',
+                                payload: local.telefono
                             }
 
-                        ]
+                        ],
+                        
+
                     })
                 }
                     counter ++
