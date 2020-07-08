@@ -145,11 +145,6 @@ handleNlp=(webhookEvent)=>{
                                 type: 'web_url',
                                 title: 'ver menu',
                                 url:'https://comandaof.web.app/menu/dnE6XnhrjrU_/'+local.id_Hashed
-                            },
-                            {
-                                type: 'phone_number',
-                                title: 'telefono',
-                                payload: local.telefono
                             }
 
                         ],
@@ -157,7 +152,7 @@ handleNlp=(webhookEvent)=>{
 
                     })
                 }
-                    counter ++
+                    counter++
                   }
                   console.log(locales, '////////////////////////////////')
                   actions.ubicacion(webhookEvent ,locales)
