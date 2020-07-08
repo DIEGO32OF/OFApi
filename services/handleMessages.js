@@ -120,9 +120,10 @@ handleNlp=(webhookEvent)=>{
         if(!isNaN(pasacel) && isFinite(pasacel)){
             if(texto.length === 5){
                actions.getCoordinates(texto).then(response =>{
+                   console.log(response,'[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[')
                    let location = response.results[0].geometry.location
                   sendAPI.getActivesOut(location.lat, location.lng).then(Locals =>{
-                  
+                  console.log(Locals,'""""""""""""""""""""""""""""""""""')
                   let locales = []
                   let counter = 0
                   for(const local of Locals){
