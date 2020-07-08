@@ -121,7 +121,7 @@ handleNlp=(webhookEvent)=>{
             if(texto.length === 5){
                actions.getCoordinates(texto).then(response =>{
                    let location = response.results[0].geometry.location
-                  let Locals = sendAPI.getActivesOut(location.lat, location.lng)
+                  sendAPI.getActivesOut(location.lat, location.lng).then(Locals =>{
                   console.log(Locals, '////////////////////////////////')
                   let locales = []
                   for(const local of locals){
@@ -153,6 +153,7 @@ handleNlp=(webhookEvent)=>{
                         ]
                     })
                   }
+                })
                   /*  title: 'tacos jarochos',
                         image_url: 'http://ordenofacil.com/logos/coca.jpg',
                         subtitle: 'direccion corta de los tacos',
