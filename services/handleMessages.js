@@ -120,10 +120,11 @@ handleNlp=(webhookEvent)=>{
         if(!isNaN(pasacel) && isFinite(pasacel)){
             if(texto.length === 5){
                actions.getCoordinates(texto).then(response =>{
-                   console.log(response,'[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[')
+                   
+                   if(response.results.length > 0){
                    let location = response.results[0].geometry.location
                   sendAPI.getActivesOut(location.lat, location.lng).then(Locals =>{
-                  console.log(Locals,'""""""""""""""""""""""""""""""""""')
+                  if(Locals.length > 0){
                   let locales = []
                   let counter = 0
                   for(const local of Locals){
@@ -155,9 +156,20 @@ handleNlp=(webhookEvent)=>{
                 }
                     counter++
                   }
-                  console.log(locales, '////////////////////////////////')
+                  
+
                   actions.ubicacion(webhookEvent ,locales)
+
+                  if(Locals.length > 4)
+                  actions.cargarMas(webhookEvent, 1)
+                  }
+                  else
+                  actions.sendTextMessage('No tenemos lugares de comida en este CP, si lo deseas puedes buscar, por nombre del establecimiento o por platillo', webhookEvent);
                 })
+                   }
+                   else{
+                    actions.sendTextMessage('No tenemos lugares de comida en este CP, si lo deseas puedes buscar, por nombre del establecimiento o por platillo', webhookEvent);
+                   }
                   /*  title: 'tacos jarochos',
                         image_url: 'http://ordenofacil.com/logos/coca.jpg',
                         subtitle: 'direccion corta de los tacos',

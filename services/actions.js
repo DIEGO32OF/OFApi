@@ -2,6 +2,35 @@ const sendAPI = require('./graphAPI');
 const request = require('request');
 
 
+const chargeMore = {
+    texto: 'Cargar mas resultados',
+    replies: [
+        {
+            content_type: 'text',
+            title: 'cargar mas resultados',
+            payload:'chargeMore_|'
+        }
+    ]    
+}
+
+exports.cargarMas = (webhookEvent, numeric) => {
+    // if (!replies) {
+        let replican = chargeMore.replies.payload.replace('|',numeric)
+        chargeMore.replies.payload = replican
+       let  replies = chargeMore;
+     //}
+     let response = {
+         recipient :{
+             id: webhookEvent.sender.id
+         },
+         message: {
+             text: replies.texto,
+             quick_replies: replies.replies
+         }
+     }
+     sendAPI.callSendAPI(response);
+ }
+
 const optionsBusqueda = {
     texto: 'como quieres realizar la busqueda? o si lo prefieres mas rapido y facil en https://comandaof.web.app podras encontrar mas opciones',
     replies: [
