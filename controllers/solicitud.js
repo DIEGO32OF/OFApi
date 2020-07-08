@@ -586,34 +586,7 @@ function getdashbord(req, res) {
 }
 
 
-function getActivesOut(lat, lng) {
-    console.log('entraaaaa')
-    solicitudfood.find({}).exec((err, Searching) => {
-             
-                if (Searching) {
-                    const start = {
-                        latitude: parseFloat(lat),
-                        longitude: parseFloat(lng)
-                      }                      
-                      let Locals =[]
-                      Searching.forEach(coors => {                        
-                        const end = {
-                          latitude: parseFloat(coors.lat),
-                          longitude: parseFloat(coors.lng)
-                        }  
-                          
-                        if(haversine(start, end, {unit: 'meter'}) <= 8000){                            
-                            Locals.push(coors)
-                        }
-                    }) 
-                    return Locals 
-                }
-                else {
-                   return null
-                }
-            
-    });
-}
+
 
 
 function getActives(req, res) {
@@ -950,4 +923,4 @@ function userActivities(req,res){
 
 
 
-module.exports = { getActivesOut, sendNotification, saveToken, setReservasion, userActivities, GetInfo, VerifyCode, makeToken, GetBusca, validateToken,getActives,creauser, getdashbord,GuardaRank,guardaComentarios,validaHook,recibeMesage};
+module.exports = {  sendNotification, saveToken, setReservasion, userActivities, GetInfo, VerifyCode, makeToken, GetBusca, validateToken,getActives,creauser, getdashbord,GuardaRank,guardaComentarios,validaHook,recibeMesage};

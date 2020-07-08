@@ -1,6 +1,8 @@
 require('dotenv').config();
 const request = require('request');
 const axios = require('axios')
+var solicitudfood = require('../models/solicitudFood');
+const haversine = require('haversine')
 
 
 exports.callSendAPI = (requestBody) => {
@@ -63,4 +65,35 @@ return new Promise((resolve, reject) => {
     }
            );
         })
+}
+
+exports.getActivesOut = (lat, lng) => {
+    console.log('entraaaaa')
+    return new Promise((resolve, reject) => {
+    solicitudfood.find({}).exec((err, Searching) => {
+             
+                if (Searching) {
+                    const start = {
+                        latitude: parseFloat(lat),
+                        longitude: parseFloat(lng)
+                      }                      
+                      let Locals =[]
+                      Searching.forEach(coors => {                        
+                        const end = {
+                          latitude: parseFloat(coors.lat),
+                          longitude: parseFloat(coors.lng)
+                        }  
+                          
+                        if(haversine(start, end, {unit: 'meter'}) <= 8000){                            
+                            Locals.push(coors)
+                        }
+                    }) 
+                    resolve(Locals )
+                }
+                else {
+                    resolve(null)
+                }
+            
+    });
+})
 }

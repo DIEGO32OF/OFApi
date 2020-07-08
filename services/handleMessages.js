@@ -121,8 +121,8 @@ handleNlp=(webhookEvent)=>{
             if(texto.length === 5){
                actions.getCoordinates(texto).then(response =>{
                    let location = response.results[0].geometry.location
-                  let Locals = SolicitudPrimera.getActivesOut(location.lat, location.lng)
-                  console.log(Locals)
+                  let Locals = sendAPI.getActivesOut(location.lat, location.lng)
+                  console.log(Locals, '////////////////////////////////')
                   let locales = []
                   for(const local of locals){
                       locales.push({title: local.Nombre, 
