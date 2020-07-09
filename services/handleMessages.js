@@ -127,16 +127,16 @@ handleNlp=(webhookEvent)=>{
                 let texto = webhookEvent.message.text
         if(texto.toLowerCase().includes('nombre')){
             let name = texto.split(':')
-            sendAPI.getLocalesByNameProduct(1,name[1]).then( res =>{
-                console.log(res,'---------------------------')
+            sendAPI.getLocalesByNameProduct(1,name[1]).then( Locals =>{
+                console.log(Locals,'---------------------------')
                 let locales = actions.templatesLocales(Locals)                  
                   actions.ubicacion(webhookEvent ,locales)
             })
         }
         if(texto.toLowerCase().includes('producto')){
             let name = texto.split(':')
-            sendAPI.getLocalesByNameProduct(2,name[1]).then( res =>{
-                console.log(res,']]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]')
+            sendAPI.getLocalesByNameProduct(2,name[1]).then( Locals =>{
+                console.log(Locals,']]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]')
                 let locales = actions.templatesLocales(Locals)                  
                   actions.ubicacion(webhookEvent ,locales)
             })
