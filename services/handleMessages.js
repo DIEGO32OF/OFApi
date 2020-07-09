@@ -90,7 +90,7 @@ handlequickReplies = (webhookEvent) => {
 }
 
 if(reply == 'namePlaces' ){
-    actions.sendTextMessage('Que lugar estas buscando? contestame como en el siguiente ejemplo: "nombre:El Asado@ ', webhookEvent)
+    actions.sendTextMessage('Que lugar estas buscando? contestame como en el siguiente ejemplo: "nombre:El Asado ', webhookEvent)
 }
 if(reply == 'namePlato' ){
     actions.sendTextMessage('Que se te antoja comer? contestame como en el siguiente ejemplo: "producto:Hamburguesas" ', webhookEvent)
@@ -122,9 +122,9 @@ handleNlp=(webhookEvent)=>{
             if(nlp.entities.mensaje[0].value=='servicioDomicilio'){
                 actions.sendTextMessage('si tenemos restaurantes asi', webhookEvent);
             }
-    }
-    else{
-        let texto = webhookEvent.message.text
+
+            else{
+                let texto = webhookEvent.message.text
         if(texto.toLowerCase().includes('nombre')){
             let name = texto.split(':')
             sendAPI.getLocalesByNameProduct(1,name[1]).then( res =>{
@@ -141,6 +141,10 @@ handleNlp=(webhookEvent)=>{
                   actions.ubicacion(webhookEvent ,locales)
             })
         }
+            }
+    }
+    else{
+        
         var pasacel = parseInt(texto);
         if(!isNaN(pasacel) && isFinite(pasacel)){
             if(texto.length === 5){
