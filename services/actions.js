@@ -223,6 +223,8 @@ exports.templatesLocales = (Locals) =>{
           let imagen = ''
           if(local.id_Imgs.length > 0){
             let obj = local.id_Imgs.filter(x=> x.tipo == 1)
+            console.log(obj)
+            if(obj.Nombre != undefined)
             imagen = obj.Nombre
           }
           if(imagen == '')
