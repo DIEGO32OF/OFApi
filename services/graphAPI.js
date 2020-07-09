@@ -106,16 +106,14 @@ exports.getLocalesByNameProduct = ( tipo, prefix) =>{
     if (tipo == 1) {
       
         var getSearch = solicitudfood.find({ Nombre: new RegExp(prefix, 'i') }).sort({ 'Nombre': 1 }).limit(10);
-        getSearch.populate({ path: 'id_Imgs', model: 'image' }).exec((err, buscados) => {
-            console.log(buscados,',,,,,,,,,,,,,,,,,,,,,,,,,,,,')
+        getSearch.populate({ path: 'id_Imgs', model: 'image' }).exec((err, buscados) => {            
             if (err){
                 console.log(err)
             reject(null)
             }
                 //res.status(500).send({ message: 'Error en Peticion de los seis' + err });
             else {
-                if (buscados) {
-                    console.log(buscados);
+                if (buscados) {                    
                     resolve(buscados)
                 }
                 else {

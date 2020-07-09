@@ -246,4 +246,5 @@ exports.templatesLocales = (Locals) =>{
   }
       counter++
     }
+    return locales
 }
