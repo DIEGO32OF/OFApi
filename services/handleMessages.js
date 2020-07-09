@@ -128,8 +128,9 @@ handleNlp=(webhookEvent)=>{
         if(texto.toLowerCase().includes('nombre')){
             let name = texto.split(':')
             sendAPI.getLocalesByNameProduct(1,name[1]).then( Locals =>{
-                console.log(Locals,'---------------------------')
+                
                 let locales = actions.templatesLocales(Locals)                  
+                console.log(locales,'---------------------------')
                   actions.ubicacion(webhookEvent ,locales)
             })
         }
