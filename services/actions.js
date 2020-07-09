@@ -225,7 +225,7 @@ exports.templatesLocales = (Locals) =>{
             let obj = local.id_Imgs.filter(x=> x.tipo == 1)
             console.log(obj)
             if(obj.length > 0)
-            imagen = obj.Nombre
+            imagen = obj[0].Nombre
 
             if(imagen == '')
           imagen ='http://ordenofacil.com/Logos/slide1.jpg'
