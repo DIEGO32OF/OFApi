@@ -106,6 +106,7 @@ exports.getLocalesByNameProduct = (prefix, tipo) =>{
       
         var getSearch = solicitudfood.find({ Nombre: new RegExp(prefix, 'i') }).sort({ 'Nombre': 1 }).limit(10);
         getSearch.populate({ path: 'id_Imgs', model: 'image' }).exec((err, buscados) => {
+            console.log(buscados,',,,,,,,,,,,,,,,,,,,,,,,,,,,,')
             if (err){
                 console.log(err)
             reject(null)
@@ -145,7 +146,7 @@ exports.getLocalesByNameProduct = (prefix, tipo) =>{
                     
                     var locales = solicitudfood.find({ id_SQL: { $in: myarreglo } });//, (err, buscados) => {
                     locales.populate({ path: 'id_Imgs', model: 'image' }).exec((err, buscados) => {
-                        
+                        console.log(buscados,',,,,,,,,,,,,,,,,,,,,,,,,,,,,2')
                         if (err) {
                             console.log(err);
                             resolve(null)
