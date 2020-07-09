@@ -100,7 +100,8 @@ exports.getActivesOut = (lat, lng) => {
 })
 }
 
-exports.getLocalesByNameProduct = (prefix, tipo) =>{
+exports.getLocalesByNameProduct = ( tipo, prefix) =>{
+    console.log(tipo, prefix)
     return new Promise((resolve, reject) => {
     if (tipo == 1) {
       
