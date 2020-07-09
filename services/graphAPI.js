@@ -2,6 +2,7 @@ require('dotenv').config();
 const request = require('request');
 const axios = require('axios')
 var solicitudfood = require('../models/solicitudFood');
+var Menudo = require('../models/Menu');
 const haversine = require('haversine')
 
 
@@ -95,5 +96,72 @@ exports.getActivesOut = (lat, lng) => {
                 }
             
     });
+})
+}
+
+exports.getLocalesByNameProduct = (prefix, tipo) =>{
+    return new Promise((resolve, reject) => {
+    if (tipo == 1) {
+      
+        var getSearch = solicitudfood.find({ Nombre: new RegExp(prefix, 'i') }).sort({ 'Nombre': 1 }).limit(10);
+        getSearch.populate({ path: 'id_Imgs', model: 'image' }).exec((err, buscados) => {
+            if (err)
+            resolve(null)
+                //res.status(500).send({ message: 'Error en Peticion de los seis' + err });
+            else {
+                if (buscados) {
+                    console.log(buscados);
+                    resolve(buscados)
+                }
+                else {
+                    resolve(null)
+                }
+            }
+        });
+
+    }
+    else {
+        //nombre comida
+        var myLocal = Menudo.find({ is_Active: 1, menu: { $elemMatch: { Nombre: new RegExp(prefix, 'i') } } }).exec((err, Searching) => {
+            //myLocal.populate({ path: 'id_Menu' }).populate({ path: 'id_Imgs', model: 'image' }).exec((err, Searching) => {
+             //myLocal.populate({ path: 'id_Menu', model: 'menu', $match: { 'menu.Nombre': new RegExp(prefix, 'i') } }).populate({ path: 'id_Imgs', model: 'image' }).exec((err, Searching) => {
+
+            if (err) {
+                console.log(err);
+                resolve(null)
+                //res.status(500).send({ message: 'Error en Peticion de los ' + err });
+            }
+            else {
+                if (Searching) {
+                    var myarreglo = new Array();
+                    Searching.forEach(function (encontrados) {
+
+                        myarreglo.push(encontrados.id_Local);
+                        //res.status(200).send({ Searching });
+                    });
+                    
+                    var locales = solicitudfood.find({ id_SQL: { $in: myarreglo } });//, (err, buscados) => {
+                    locales.populate({ path: 'id_Imgs', model: 'image' }).exec((err, buscados) => {
+                        
+                        if (err) {
+                            console.log(err);
+                            resolve(null)
+                            //res.status(200).send({ message: 'Error en Peticion de los ' + err });
+                        }
+                        else {
+                            if (buscados) {
+                                resolve(buscados)
+                               // res.status(200).send({ buscados });
+                            }
+                        }
+                    });
+                }
+                else {
+                    //res.status(200).send({});
+                    resolve(null)
+                }
+            }
+        });
+    }
 })
 }
