@@ -3,6 +3,7 @@ const request = require('request');
 const axios = require('axios')
 var solicitudfood = require('../models/solicitudFood');
 var Menudo = require('../models/Menu');
+var images = require('../models/img');
 const haversine = require('haversine')
 
 
@@ -105,8 +106,10 @@ exports.getLocalesByNameProduct = (prefix, tipo) =>{
       
         var getSearch = solicitudfood.find({ Nombre: new RegExp(prefix, 'i') }).sort({ 'Nombre': 1 }).limit(10);
         getSearch.populate({ path: 'id_Imgs', model: 'image' }).exec((err, buscados) => {
-            if (err)
-            resolve(null)
+            if (err){
+                console.log(err)
+            reject(null)
+            }
                 //res.status(500).send({ message: 'Error en Peticion de los seis' + err });
             else {
                 if (buscados) {
