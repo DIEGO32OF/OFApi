@@ -219,6 +219,7 @@ exports.templatesLocales = (Locals) =>{
     let counter = 0
     for(const local of Locals){
       if(counter < 4){
+          console.log(local,'----------------------')
         locales.push({title: local.Nombre, 
           image_url: 'http://ordenofacil.com/Logos/slide1.jpg',
           subtitle: local.Domicilio,
@@ -228,16 +229,17 @@ exports.templatesLocales = (Locals) =>{
               messenger_extensions: 'FALSE',
               webview_height_ratio:'COMPACT'
           },
-          buttons: [{
-              type: 'web_url',
-              url: 'https://www.google.com.mx/maps/@'+local.lat+','+local.lng,
-              title:'mostrar el mapa'
-          },
+          buttons: [
               {
                   type: 'web_url',
                   title: 'ver menu',
                   url:'https://comandaof.web.app/menu/dnE6XnhrjrU_/'+local.id_Hashed
-              }
+              },
+              {
+                type: 'web_url',
+                url: 'https://www.google.com.mx/maps/@'+local.lat+','+local.lng,
+                title:'mostrar en el mapa'
+            }
 
           ],
           
