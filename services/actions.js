@@ -226,9 +226,13 @@ exports.templatesLocales = (Locals) =>{
             console.log(obj)
             if(obj.Nombre != undefined)
             imagen = obj.Nombre
-          }
-          if(imagen == '')
+
+            if(imagen == '')
           imagen ='http://ordenofacil.com/Logos/slide1.jpg'
+          }
+          else{          
+          imagen ='http://ordenofacil.com/Logos/slide1.jpg'
+          }
 
           let botones = []
 
