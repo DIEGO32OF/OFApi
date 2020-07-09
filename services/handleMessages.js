@@ -3,8 +3,7 @@ const sendAPI = require('./graphAPI');
 var SolicitudPrimera = require('../controllers/solicitud');
 
 exports.handleMessage = async (webhookEvent) => {
-     
-       console.log(webhookEvent)
+            
     if (webhookEvent.message) {
         let mensaje = webhookEvent.message;
         if (mensaje.quick_reply) {
@@ -22,7 +21,7 @@ exports.handleMessage = async (webhookEvent) => {
          
     }
     else if (webhookEvent.postback) {
-             console.log('postback, encuesta info inicio');
+            // console.log('postback, encuesta info inicio');
             handlePostback(webhookEvent);
         }
          
@@ -34,7 +33,7 @@ handlePostback = async (webhookEvent) => {
     let evento = webhookEvent.postback.payload;
     switch (evento) {
         case 'BuscPlaces':
-            console.log('se eligio las encuestas ');
+           // console.log('se eligio las encuestas ');
            // actions.quickReplies(webhookEvent)
            actions.OptionSearch(webhookEvent)
             break;
@@ -129,15 +128,13 @@ handleNlp=(webhookEvent)=>{
             let name = texto.split(':')
             sendAPI.getLocalesByNameProduct(1,name[1]).then( Locals =>{
                 
-                let locales = actions.templatesLocales(Locals)                  
-                console.log(locales,'---------------------------')
+                let locales = actions.templatesLocales(Locals)                                  
                   actions.ubicacion(webhookEvent ,locales)
             })
         }
         if(texto.toLowerCase().includes('producto')){
             let name = texto.split(':')
-            sendAPI.getLocalesByNameProduct(2,name[1]).then( Locals =>{
-                console.log(Locals,']]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]')
+            sendAPI.getLocalesByNameProduct(2,name[1]).then( Locals =>{                
                 let locales = actions.templatesLocales(Locals)                  
                   actions.ubicacion(webhookEvent ,locales)
             })
@@ -146,6 +143,21 @@ handleNlp=(webhookEvent)=>{
     }
     else{
         let texto = webhookEvent.message.text
+        if(texto.toLowerCase().includes('nombre')){
+            let name = texto.split(':')
+            sendAPI.getLocalesByNameProduct(1,name[1]).then( Locals =>{
+                
+                let locales = actions.templatesLocales(Locals)                                  
+                  actions.ubicacion(webhookEvent ,locales)
+            })
+        }
+        if(texto.toLowerCase().includes('producto')){
+            let name = texto.split(':')
+            sendAPI.getLocalesByNameProduct(2,name[1]).then( Locals =>{                
+                let locales = actions.templatesLocales(Locals)                  
+                  actions.ubicacion(webhookEvent ,locales)
+            })
+        }
         var pasacel = parseInt(texto);
         if(!isNaN(pasacel) && isFinite(pasacel)){
             if(texto.length === 5){

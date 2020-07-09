@@ -101,7 +101,7 @@ exports.getActivesOut = (lat, lng) => {
 }
 
 exports.getLocalesByNameProduct = ( tipo, prefix) =>{
-    console.log(tipo, prefix)
+  
     return new Promise((resolve, reject) => {
     if (tipo == 1) {
       
@@ -145,7 +145,7 @@ exports.getLocalesByNameProduct = ( tipo, prefix) =>{
                     
                     var locales = solicitudfood.find({ id_SQL: { $in: myarreglo } });//, (err, buscados) => {
                     locales.populate({ path: 'id_Imgs', model: 'image' }).exec((err, buscados) => {
-                        console.log(buscados,',,,,,,,,,,,,,,,,,,,,,,,,,,,,2')
+                        
                         if (err) {
                             console.log(err);
                             resolve(null)
