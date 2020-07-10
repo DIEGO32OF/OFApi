@@ -72,7 +72,7 @@ return new Promise((resolve, reject) => {
 exports.getActivesOut = (lat, lng) => {
     console.log('entraaaaa')
     return new Promise((resolve, reject) => {
-        var getSearch = solicitudfood.find({}).limit(20)
+        var getSearch = solicitudfood.find({})
             getSearch.populate({ path: 'id_Imgs', model: 'image' }).exec((err, Searching) => {
          
       

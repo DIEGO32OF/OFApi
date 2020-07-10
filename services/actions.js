@@ -219,11 +219,11 @@ exports.templatesLocales = (Locals) =>{
     let counter = 0
     for(const local of Locals){
       if(counter < 4){
-          console.log(local,'----------------------')
+          
           let imagen = ''
           if(local.id_Imgs.length > 0){
             let obj = local.id_Imgs.filter(x=> x.tipo == 1)
-            console.log(obj)
+            
             if(obj.length > 0)
             imagen = obj[0].Nombre
 
