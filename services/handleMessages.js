@@ -129,10 +129,11 @@ handleNlp=(webhookEvent)=>{
 
             else{
                 console.log(webhookEvent,'////////////////////////')
+              if(webhookEvent.postback != undefined)
                 let evento = webhookEvent.postback.payload;
                 let texto = webhookEvent.message.text
 
-        if(texto.toLowerCase().includes('nombre') || (evento.type == undefined && evento.type == 1)){
+        if(texto.toLowerCase().includes('nombre') || (evento == undefined && evento.type == 1)){
             let namer = ''            
             let count = 0
             if(evento.type == undefined)
