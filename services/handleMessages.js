@@ -137,10 +137,10 @@ handleNlp=(webhookEvent)=>{
               }
                 let texto = webhookEvent.message.text
 
-        if(texto.toLowerCase().includes('nombre') || (evento == null && type == 1)){
+        if(texto.toLowerCase().includes('nombre') || (evento != null && type == 1)){
             let namer = ''            
             let count = 0
-            if(evento.type == undefined)
+            if(evento.type != undefined)
             {
                 namer = evento.search     
                 count = evento.skip           
@@ -159,10 +159,10 @@ handleNlp=(webhookEvent)=>{
                     actions.sendTextMessage('No se encontraron resultados con este nombre:'+namer, webhookEvent);
             })
         }
-        if(texto.toLowerCase().includes('producto')|| (evento == undefined && type == 2)){
+        if(texto.toLowerCase().includes('producto')|| (evento != null && type == 2)){
             let namer = ''            
             let count = 0
-            if(evento.type == undefined)
+            if(evento.type != undefined)
             {
                 namer = evento.search     
                 count = evento.skip           
@@ -192,13 +192,12 @@ handleNlp=(webhookEvent)=>{
          type = evento.type
       }
         let texto = webhookEvent.message.text
-        let evento
-        if(webhookEvent.postback != undefined)
-           evento = webhookEvent.postback.payload;
-        if(texto.toLowerCase().includes('nombre')|| (evento == null && type == 1)){
+
+    
+        if(texto.toLowerCase().includes('nombre')|| (evento != null && type == 1)){
             let namer = ''            
             let count = 0
-            if(evento.type == undefined)
+            if(evento.type != undefined)
             {
                 namer = evento.search     
                 count = evento.skip           
@@ -216,10 +215,10 @@ handleNlp=(webhookEvent)=>{
                 actions.sendTextMessage('No se encontraron resultados con este nombre:' +namer, webhookEvent);
             })
         }
-        if(texto.toLowerCase().includes('producto')|| (evento == undefined && type == 2)){
+        if(texto.toLowerCase().includes('producto')|| (evento != null && type == 2)){
             let namer = ''            
             let count = 0
-            if(evento.type == undefined)
+            if(evento.type != undefined)
             {
                 namer = evento.search     
                 count = evento.skip           
