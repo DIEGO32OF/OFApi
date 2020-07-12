@@ -57,6 +57,10 @@ handlePostback = async (webhookEvent) => {
         
 
     }
+    if(evento.type == undefined){
+        console.log(evento)
+        handleNlp(webhookEvent)
+    }
 }
 
 handlequickReplies = (webhookEvent) => {
@@ -124,51 +128,118 @@ handleNlp=(webhookEvent)=>{
             }
 
             else{
+                let evento = webhookEvent.postback.payload;
                 let texto = webhookEvent.message.text
-        if(texto.toLowerCase().includes('nombre')){
+
+        if(texto.toLowerCase().includes('nombre') || (evento.type == undefined && evento.type == 1)){
+            let namer = ''            
+            let count = 0
+            if(evento.type == undefined)
+            {
+                namer = evento.search     
+                count = evento.skip           
+            }
+            else{
             let name = texto.split(':')
-            sendAPI.getLocalesByNameProduct(1,name[1]).then( Locals =>{
+            namer = name[1]
+            }
+            sendAPI.getLocalesByNameProduct(1,namer, count).then( Locals =>{
                 
-                let locales = actions.templatesLocales(Locals)                                  
-                  actions.ubicacion(webhookEvent ,locales)
+                if(Locals.length > 0){
+                    let locales = actions.templatesLocales(Locals, 1, namer, count)                                  
+                      actions.ubicacion(webhookEvent ,locales)
+                    }
+                    else
+                    actions.sendTextMessage('No se encontraron resultados con este nombre:'+namer, webhookEvent);
             })
         }
-        if(texto.toLowerCase().includes('producto')){
+        if(texto.toLowerCase().includes('producto')|| (evento.type == undefined && evento.type == 2)){
+            let namer = ''            
+            let count = 0
+            if(evento.type == undefined)
+            {
+                namer = evento.search     
+                count = evento.skip           
+            }
+            else{
             let name = texto.split(':')
-            sendAPI.getLocalesByNameProduct(2,name[1]).then( Locals =>{                
-                let locales = actions.templatesLocales(Locals)                  
+            namer = name[1]
+            }
+            
+            sendAPI.getLocalesByNameProduct(2,namer, count).then( Locals =>{        
+                if(Locals.length > 0){        
+                let locales = actions.templatesLocales(Locals, 2, namer, count)                  
                   actions.ubicacion(webhookEvent ,locales)
+                }
+                else
+                actions.sendTextMessage('No se encontraron resultados para este producto:'+namer, webhookEvent);
             })
         }
             }
     }
     else{
         let texto = webhookEvent.message.text
-        if(texto.toLowerCase().includes('nombre')){
+        let evento = webhookEvent.postback.payload;
+        if(texto.toLowerCase().includes('nombre')|| (evento.type == undefined && evento.type == 1)){
+            let namer = ''            
+            let count = 0
+            if(evento.type == undefined)
+            {
+                namer = evento.search     
+                count = evento.skip           
+            }
+            else{
             let name = texto.split(':')
-            sendAPI.getLocalesByNameProduct(1,name[1]).then( Locals =>{
-                
-                let locales = actions.templatesLocales(Locals)                                  
+            namer = name[1]
+            }
+            sendAPI.getLocalesByNameProduct(1,namer, count).then( Locals =>{
+                if(Locals.length > 0){
+                let locales = actions.templatesLocales(Locals, 1, namer, count)                                  
                   actions.ubicacion(webhookEvent ,locales)
+                }
+                else
+                actions.sendTextMessage('No se encontraron resultados con este nombre:' +namer, webhookEvent);
             })
         }
-        if(texto.toLowerCase().includes('producto')){
+        if(texto.toLowerCase().includes('producto')|| (evento.type == undefined && evento.type == 2)){
+            let namer = ''            
+            let count = 0
+            if(evento.type == undefined)
+            {
+                namer = evento.search     
+                count = evento.skip           
+            }
+            else{
             let name = texto.split(':')
-            sendAPI.getLocalesByNameProduct(2,name[1]).then( Locals =>{                
-                let locales = actions.templatesLocales(Locals)                  
+            namer = name[1]
+            }
+            
+            sendAPI.getLocalesByNameProduct(2,namer, count).then( Locals =>{   
+                if(Locals.length > 0){             
+                let locales = actions.templatesLocales(Locals, 2, namer, count)                  
                   actions.ubicacion(webhookEvent ,locales)
+                }
+                else
+                actions.sendTextMessage('No se encontraron resultados para este producto:'+namer, webhookEvent);
             })
         }
         var pasacel = parseInt(texto);
-        if(!isNaN(pasacel) && isFinite(pasacel)){
-            if(texto.length === 5){
+        if(!isNaN(pasacel) && isFinite(pasacel) || (evento.type == undefined && evento.type == 3)){
+            if(texto.length === 5 || evento.search){
+                let count =0
+                if(evento.search != undefined){
+                texto = evento.search
+                count = evento.skip
+                }
+
                actions.getCoordinates(texto).then(response =>{
                    
                    if(response.results.length > 0){
                    let location = response.results[0].geometry.location
-                  sendAPI.getActivesOut(location.lat, location.lng).then(Locals =>{
+                   
+                  sendAPI.getActivesOut(location.lat, location.lng, count).then(Locals =>{
                   if(Locals.length > 0){
-                  let locales = actions.templatesLocales(Locals)                  
+                  let locales = actions.templatesLocales(Locals, 3, texto, count)                  
                   actions.ubicacion(webhookEvent ,locales)
 
                   if(Locals.length > 4)

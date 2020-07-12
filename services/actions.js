@@ -214,9 +214,11 @@ exports.ubicacion = (webhookEvent, locales) => {
     sendAPI.callSendAPI(response);
 }
 
-exports.templatesLocales = (Locals) =>{
+exports.templatesLocales = (Locals, type, searchBy, skip) =>{
     let locales = []
     let counter = 0
+    let count = 0
+    
     for(const local of Locals){
       if(counter < 4){
           
@@ -239,6 +241,7 @@ exports.templatesLocales = (Locals) =>{
 
           if(counter === 3 && Locals.length > 4)
           {
+            count = skip++
             botones = [
                 {
                     type: 'web_url',
@@ -252,7 +255,7 @@ exports.templatesLocales = (Locals) =>{
               },
               {
                 type: 'postback',
-                payload: 'chargeMore_|',
+                payload: '{type: '+type+', search: '+searchBy+', skip:'+count+'}',
                 title:'cargar mas resultados'
             }
   

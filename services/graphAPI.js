@@ -69,10 +69,11 @@ return new Promise((resolve, reject) => {
         })
 }
 
-exports.getActivesOut = (lat, lng) => {
-    console.log('entraaaaa')
+exports.getActivesOut = (lat, lng, skip) => {
+    
     return new Promise((resolve, reject) => {
-        var getSearch = solicitudfood.find({})
+        let skiper = skip*4
+        var getSearch = solicitudfood.find({}).skip(skiper)
             getSearch.populate({ path: 'id_Imgs', model: 'image' }).exec((err, Searching) => {
          
       
@@ -103,12 +104,13 @@ exports.getActivesOut = (lat, lng) => {
 })
 }
 
-exports.getLocalesByNameProduct = ( tipo, prefix) =>{
+exports.getLocalesByNameProduct = ( tipo, prefix, skip) =>{
   
     return new Promise((resolve, reject) => {
+        let skiper = skip*4
     if (tipo == 1) {
       
-        var getSearch = solicitudfood.find({ Nombre: new RegExp(prefix, 'i') }).sort({ 'Nombre': 1 }).limit(10);
+        var getSearch = solicitudfood.find({ Nombre: new RegExp(prefix, 'i') }).sort({ 'Nombre': 1 }).limit(20).skip(skiper);
         getSearch.populate({ path: 'id_Imgs', model: 'image' }).exec((err, buscados) => {            
             if (err){
                 console.log(err)
@@ -128,7 +130,7 @@ exports.getLocalesByNameProduct = ( tipo, prefix) =>{
     }
     else {
         //nombre comida
-        var myLocal = Menudo.find({ is_Active: 1, menu: { $elemMatch: { Nombre: new RegExp(prefix, 'i') } } }).exec((err, Searching) => {
+        var myLocal = Menudo.find({ is_Active: 1, menu: { $elemMatch: { Nombre: new RegExp(prefix, 'i') } } }).limit(20).skip(skiper).exec((err, Searching) => {
             //myLocal.populate({ path: 'id_Menu' }).populate({ path: 'id_Imgs', model: 'image' }).exec((err, Searching) => {
              //myLocal.populate({ path: 'id_Menu', model: 'menu', $match: { 'menu.Nombre': new RegExp(prefix, 'i') } }).populate({ path: 'id_Imgs', model: 'image' }).exec((err, Searching) => {
 
