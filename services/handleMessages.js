@@ -197,7 +197,7 @@ handleNlp=(webhookEvent)=>{
         if(texto.toLowerCase().includes('nombre')|| (evento != null && type == 1)){
             let namer = ''            
             let count = 0
-            if(evento.type != undefined)
+            if(evento != null)
             {
                 namer = evento.search     
                 count = evento.skip           
@@ -218,7 +218,7 @@ handleNlp=(webhookEvent)=>{
         if(texto.toLowerCase().includes('producto')|| (evento != null && type == 2)){
             let namer = ''            
             let count = 0
-            if(evento.type != undefined)
+            if(evento != null)
             {
                 namer = evento.search     
                 count = evento.skip           
@@ -238,10 +238,10 @@ handleNlp=(webhookEvent)=>{
             })
         }
         var pasacel = parseInt(texto);
-        if(!isNaN(pasacel) && isFinite(pasacel) || (evento == undefined && type == 3)){
+        if(!isNaN(pasacel) && isFinite(pasacel) || (evento != null && type == 3)){
             if(texto.length === 5 || evento.search){
                 let count =0
-                if(evento.search != undefined){
+                if(evento != null){
                 texto = evento.search
                 count = evento.skip
                 }
