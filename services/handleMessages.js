@@ -120,6 +120,7 @@ handleLocation = (webhookEvent) => {
 }
 
 handleNlp=(webhookEvent)=>{
+    console.log(webhookEvent.message,']]]]]]]]]]]]]]]]]]]]]')
     if(webhookEvent.message != undefined){
     let nlp=webhookEvent.message.nlp;
     if(nlp.entities.mensaje)
