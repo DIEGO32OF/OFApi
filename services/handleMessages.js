@@ -130,11 +130,14 @@ handleNlp=(webhookEvent)=>{
             else{
                 console.log(webhookEvent,'////////////////////////')
                 let evento
-              if(webhookEvent.postback != undefined)
+                let type = 0
+              if(webhookEvent.postback != undefined){
                  evento = webhookEvent.postback.payload;
+                 type = evento.type
+              }
                 let texto = webhookEvent.message.text
 
-        if(texto.toLowerCase().includes('nombre') || (evento == undefined && evento.type == 1)){
+        if(texto.toLowerCase().includes('nombre') || (evento == undefined && type == 1)){
             let namer = ''            
             let count = 0
             if(evento.type == undefined)
@@ -156,7 +159,7 @@ handleNlp=(webhookEvent)=>{
                     actions.sendTextMessage('No se encontraron resultados con este nombre:'+namer, webhookEvent);
             })
         }
-        if(texto.toLowerCase().includes('producto')|| (evento.type == undefined && evento.type == 2)){
+        if(texto.toLowerCase().includes('producto')|| (evento == undefined && type == 2)){
             let namer = ''            
             let count = 0
             if(evento.type == undefined)
@@ -182,11 +185,17 @@ handleNlp=(webhookEvent)=>{
     }
     else{
         console.log(webhookEvent,'////////////////////////2')
+        let evento
+        let type = 0
+      if(webhookEvent.postback != undefined){
+         evento = webhookEvent.postback.payload;
+         type = evento.type
+      }
         let texto = webhookEvent.message.text
         let evento
         if(webhookEvent.postback != undefined)
            evento = webhookEvent.postback.payload;
-        if(texto.toLowerCase().includes('nombre')|| (evento == undefined && evento.type == 1)){
+        if(texto.toLowerCase().includes('nombre')|| (evento == undefined && type == 1)){
             let namer = ''            
             let count = 0
             if(evento.type == undefined)
@@ -207,7 +216,7 @@ handleNlp=(webhookEvent)=>{
                 actions.sendTextMessage('No se encontraron resultados con este nombre:' +namer, webhookEvent);
             })
         }
-        if(texto.toLowerCase().includes('producto')|| (evento.type == undefined && evento.type == 2)){
+        if(texto.toLowerCase().includes('producto')|| (evento == undefined && type == 2)){
             let namer = ''            
             let count = 0
             if(evento.type == undefined)
@@ -230,7 +239,7 @@ handleNlp=(webhookEvent)=>{
             })
         }
         var pasacel = parseInt(texto);
-        if(!isNaN(pasacel) && isFinite(pasacel) || (evento.type == undefined && evento.type == 3)){
+        if(!isNaN(pasacel) && isFinite(pasacel) || (evento == undefined && type == 3)){
             if(texto.length === 5 || evento.search){
                 let count =0
                 if(evento.search != undefined){
