@@ -128,6 +128,7 @@ handleNlp=(webhookEvent)=>{
             }
 
             else{
+                console.log(webhookEvent,'////////////////////////')
                 let evento = webhookEvent.postback.payload;
                 let texto = webhookEvent.message.text
 
@@ -178,6 +179,7 @@ handleNlp=(webhookEvent)=>{
             }
     }
     else{
+        console.log(webhookEvent,'////////////////////////2')
         let texto = webhookEvent.message.text
         let evento = webhookEvent.postback.payload;
         if(texto.toLowerCase().includes('nombre')|| (evento.type == undefined && evento.type == 1)){
