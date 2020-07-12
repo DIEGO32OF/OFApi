@@ -129,7 +129,7 @@ handleNlp=(webhookEvent)=>{
 
             else{
                 console.log(webhookEvent,'////////////////////////')
-                let evento
+                let evento = null
                 let type = 0
               if(webhookEvent.postback != undefined){
                  evento = webhookEvent.postback.payload;
@@ -137,7 +137,7 @@ handleNlp=(webhookEvent)=>{
               }
                 let texto = webhookEvent.message.text
 
-        if(texto.toLowerCase().includes('nombre') || (evento == undefined && type == 1)){
+        if(texto.toLowerCase().includes('nombre') || (evento == null && type == 1)){
             let namer = ''            
             let count = 0
             if(evento.type == undefined)
@@ -185,7 +185,7 @@ handleNlp=(webhookEvent)=>{
     }
     else{
         console.log(webhookEvent,'////////////////////////2')
-        let evento
+        let evento = null
         let type = 0
       if(webhookEvent.postback != undefined){
          evento = webhookEvent.postback.payload;
@@ -195,7 +195,7 @@ handleNlp=(webhookEvent)=>{
         let evento
         if(webhookEvent.postback != undefined)
            evento = webhookEvent.postback.payload;
-        if(texto.toLowerCase().includes('nombre')|| (evento == undefined && type == 1)){
+        if(texto.toLowerCase().includes('nombre')|| (evento == null && type == 1)){
             let namer = ''            
             let count = 0
             if(evento.type == undefined)
