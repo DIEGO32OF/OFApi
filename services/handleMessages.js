@@ -57,7 +57,7 @@ handlePostback = async (webhookEvent) => {
         
 
     }
-    if(evento.type == undefined){
+    if(evento.type != undefined){
         console.log(evento)
         handleNlp(webhookEvent)
     }
@@ -120,6 +120,7 @@ handleLocation = (webhookEvent) => {
 }
 
 handleNlp=(webhookEvent)=>{
+    if(webhookEvent.message != undefined){
     let nlp=webhookEvent.message.nlp;
     if(nlp.entities.mensaje)
     {
@@ -183,6 +184,100 @@ handleNlp=(webhookEvent)=>{
         }
             }
     }
+    else{
+        console.log(webhookEvent,'////////////////////////2')
+        let evento = null
+        let type = 0
+      if(webhookEvent.postback != undefined){
+         evento = webhookEvent.postback.payload;
+         type = evento.type
+      }
+        let texto = webhookEvent.message.text
+
+    
+        if(texto.toLowerCase().includes('nombre')|| (evento != null && type == 1)){
+            let namer = ''            
+            let count = 0
+            if(evento != null)
+            {
+                namer = evento.search     
+                count = evento.skip           
+            }
+            else{
+            let name = texto.split(':')
+            namer = name[1]
+            }
+            sendAPI.getLocalesByNameProduct(1,namer, count).then( Locals =>{
+                if(Locals.length > 0){
+                let locales = actions.templatesLocales(Locals, 1, namer, count)                                  
+                  actions.ubicacion(webhookEvent ,locales)
+                }
+                else
+                actions.sendTextMessage('No se encontraron resultados con este nombre:' +namer, webhookEvent);
+            })
+        }
+        if(texto.toLowerCase().includes('producto')|| (evento != null && type == 2)){
+            let namer = ''            
+            let count = 0
+            if(evento != null)
+            {
+                namer = evento.search     
+                count = evento.skip           
+            }
+            else{
+            let name = texto.split(':')
+            namer = name[1]
+            }
+            
+            sendAPI.getLocalesByNameProduct(2,namer, count).then( Locals =>{   
+                if(Locals.length > 0){             
+                let locales = actions.templatesLocales(Locals, 2, namer, count)                  
+                  actions.ubicacion(webhookEvent ,locales)
+                }
+                else
+                actions.sendTextMessage('No se encontraron resultados para este producto:'+namer, webhookEvent);
+            })
+        }
+        var pasacel = parseInt(texto);
+        if(!isNaN(pasacel) && isFinite(pasacel) || (evento != null && type == 3)){
+            if(texto.length === 5 || evento.search){
+                let count =0
+                if(evento != null){
+                texto = evento.search
+                count = evento.skip
+                }
+
+               actions.getCoordinates(texto).then(response =>{
+                   
+                   if(response.results.length > 0){
+                   let location = response.results[0].geometry.location
+                   
+                  sendAPI.getActivesOut(location.lat, location.lng, count).then(Locals =>{
+                  if(Locals.length > 0){
+                  let locales = actions.templatesLocales(Locals, 3, texto, count)                  
+                  actions.ubicacion(webhookEvent ,locales)
+
+                  if(Locals.length > 4)
+                  actions.cargarMas(webhookEvent, 1)
+                  }
+                  else
+                  actions.sendTextMessage('No tenemos lugares de comida en este CP, si lo deseas puedes buscar, por nombre del establecimiento o por platillo', webhookEvent);
+                })
+                   }
+                   else{
+                    actions.sendTextMessage('No tenemos lugares de comida en este CP, si lo deseas puedes buscar, por nombre del establecimiento o por platillo', webhookEvent);
+                   }
+               })     
+            }
+            else
+            actions.sendTextMessage('Disculpa no entiendo', webhookEvent);
+
+        }    
+        else
+        actions.sendTextMessage('Disculpa no entiendo ', webhookEvent);
+    }
+}
+    
     else{
         console.log(webhookEvent,'////////////////////////2')
         let evento = null
