@@ -277,8 +277,7 @@ handleNlp=(webhookEvent)=>{
         else
         actions.sendTextMessage('Disculpa no entiendo ', webhookEvent);
     }
-}
-    
+}    
     else{
         console.log(webhookEvent,'////////////////////////2')
         let evento = null
