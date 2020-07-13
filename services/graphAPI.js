@@ -72,13 +72,14 @@ return new Promise((resolve, reject) => {
 exports.getActivesOut = (lat, lng, skip) => {
     
     return new Promise((resolve, reject) => {
-        let skiper = skip*4
+        let skiper = skip*6
         var getSearch = solicitudfood.find({}).skip(skiper)
             getSearch.populate({ path: 'id_Imgs', model: 'image' }).exec((err, Searching) => {
          
       
              
                 if (Searching) {
+                    console.log(Searching, '____________________________________')
                     const start = {
                         latitude: parseFloat(lat),
                         longitude: parseFloat(lng)
