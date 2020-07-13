@@ -241,7 +241,7 @@ exports.templatesLocales = (Locals, type, searchBy, skip) =>{
 
           if(counter === 3 && Locals.length > 4)
           {
-            count = skip++
+            count = skip+1
             botones = [
                 {
                     type: 'web_url',
