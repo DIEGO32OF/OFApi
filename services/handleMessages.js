@@ -59,7 +59,7 @@ handlePostback = async (webhookEvent) => {
     }
     
     try{
-        let event = JSON.parse(evento)
+        let event = JSON.parse(evento.toString().replace("'",""))
         console.log(event, event.type != undefined,typeof(event))
         if(event.type != undefined){
         
@@ -67,7 +67,7 @@ handlePostback = async (webhookEvent) => {
         }
     }
     catch(ex){
-
+console.log(ex)
     }
    
 }
