@@ -58,10 +58,17 @@ handlePostback = async (webhookEvent) => {
 
     }
     console.log(evento, evento.type != undefined)
-    if(evento.type != undefined){
+    try{
+        let event = JSON.parse(evento)
+        if(event.type != undefined){
         
-        handleNlp(webhookEvent)
+            handleNlp(webhookEvent)
+        }
     }
+    catch(ex){
+
+    }
+   
 }
 
 handlequickReplies = (webhookEvent) => {
@@ -135,7 +142,7 @@ handleNlp=(webhookEvent)=>{
                 let evento = null
                 let type = 0
               if(webhookEvent.postback != undefined){
-                 evento = webhookEvent.postback.payload;
+                 evento = JSON.parse(webhookEvent.postback.payload);
                  type = evento.type
               }
                 let texto = webhookEvent.message.text
@@ -191,7 +198,7 @@ handleNlp=(webhookEvent)=>{
         let evento = null
         let type = 0
       if(webhookEvent.postback != undefined){
-         evento = webhookEvent.postback.payload;
+         evento = JSON.parse(webhookEvent.postback.payload);
          type = evento.type
       }
         let texto = webhookEvent.message.text
@@ -284,7 +291,7 @@ handleNlp=(webhookEvent)=>{
         let evento = null
         let type = 0
       if(webhookEvent.postback != undefined){
-         evento = webhookEvent.postback.payload;
+         evento = JSON.parse(webhookEvent.postback.payload);
          type = evento.type
       }
         let texto = webhookEvent.message.text
