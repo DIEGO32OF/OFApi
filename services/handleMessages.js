@@ -57,9 +57,10 @@ handlePostback = async (webhookEvent) => {
         
 
     }
-    console.log(evento, evento.type != undefined)
+    
     try{
         let event = JSON.parse(evento)
+        console.log(event, event.type != undefined,typeof(event))
         if(event.type != undefined){
         
             handleNlp(webhookEvent)
