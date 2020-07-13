@@ -255,7 +255,7 @@ exports.templatesLocales = (Locals, type, searchBy, skip) =>{
               },
               {
                 type: 'postback',
-                payload: JSON.stringify({'type':type,'search':searchBy,'skip':count}),
+                payload: JSON.stringify({"type":type,"search":searchBy,"skip":count}),
                 title:'cargar mas resultados'
             }
   
