@@ -255,7 +255,7 @@ exports.templatesLocales = (Locals, type, searchBy, skip) =>{
               },
               {
                 type: 'postback',
-                payload: '{type: '+type+', search: '+searchBy+', skip:'+count+'}',
+                payload: {'type': type, 'search': searchBy, 'skip':count},
                 title:'cargar mas resultados'
             }
   
