@@ -59,7 +59,7 @@ handlePostback = async (webhookEvent) => {
     }
     
     try{
-        console.log(evento, evento.type, evento.type != undefined,typeof(evento), evento.substring(1,(evento.length-1) ))
+        console.log(evento, evento.type, evento.type != undefined,typeof(evento))
         let event = JSON.parse(evento)
         if(event.type != undefined){
         
@@ -291,11 +291,13 @@ handleNlp=(webhookEvent)=>{
         console.log(webhookEvent,'////////////////////////2')
         let evento = null
         let type = 0
+        let texto = ''
       if(webhookEvent.postback != undefined){
          evento = JSON.parse(webhookEvent.postback.payload);
          type = evento.type
       }
-        let texto = webhookEvent.message.text
+    else
+         texto = webhookEvent.message.text
 
     
         if(texto.toLowerCase().includes('nombre')|| (evento != null && type == 1)){
