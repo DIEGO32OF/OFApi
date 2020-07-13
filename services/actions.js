@@ -220,7 +220,7 @@ exports.templatesLocales = (Locals, type, searchBy, skip) =>{
     let count = 0
     
     for(const local of Locals){
-      if(counter < 4){
+      if(counter < 5){
           
           let imagen = ''
           if(local.id_Imgs.length > 0){

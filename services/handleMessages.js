@@ -139,11 +139,13 @@ handleNlp=(webhookEvent)=>{
             }
 
             else{
-                console.log(webhookEvent,'////////////////////////')
+                
                 let evento = null
                 let type = 0
               if(webhookEvent.postback != undefined){
                  evento = JSON.parse(webhookEvent.postback.payload);
+                 console.log(evento,'////////////////////////')
+                 if(evento)
                  type = evento.type
               }
                 let texto = webhookEvent.message.text
