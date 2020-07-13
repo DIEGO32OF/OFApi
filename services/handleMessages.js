@@ -59,7 +59,7 @@ handlePostback = async (webhookEvent) => {
     }
     
     try{
-        let event = JSON.parse(evento.toString().replace("'",""))
+        let event = JSON.parse(evento)
         console.log(event, event.type != undefined,typeof(event))
         if(event.type != undefined){
         
