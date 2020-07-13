@@ -30,7 +30,7 @@ exports.handleMessage = async (webhookEvent) => {
 
 
 handlePostback = async (webhookEvent) => {
-    console.log(webhookEvent)
+    console.log(webhookEvent, '>>>>>>>>>>>>>>>>>>>')
     let evento = webhookEvent.postback.payload;
     switch (evento) {
         case 'BuscPlaces':
@@ -57,8 +57,9 @@ handlePostback = async (webhookEvent) => {
         
 
     }
+    console.log(evento, evento.type != undefined)
     if(evento.type != undefined){
-        console.log(evento)
+        
         handleNlp(webhookEvent)
     }
 }
