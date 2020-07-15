@@ -239,7 +239,7 @@ exports.templatesLocales = (Locals, type, searchBy, skip) =>{
 
           let botones = []
 
-          if(counter === 3 && Locals.length > 4)
+          if(counter === 4 && Locals.length > 5)
           {
             count = skip+1
             botones = [
