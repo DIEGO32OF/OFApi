@@ -153,7 +153,7 @@ handleNlp=(webhookEvent)=>{
         if(texto.toLowerCase().includes('nombre') || (evento != null && type == 1)){
             let namer = ''            
             let count = 0
-            if(evento.type != undefined)
+            if(evento != null)
             {
                 namer = evento.search     
                 count = evento.skip           
