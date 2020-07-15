@@ -72,7 +72,7 @@ return new Promise((resolve, reject) => {
 exports.getActivesOut = (lat, lng, skip) => {
     
     return new Promise((resolve, reject) => {
-        let skiper = skip*6
+        let skiper = skip*5
         var getSearch = solicitudfood.find({}).skip(skiper)
             getSearch.populate({ path: 'id_Imgs', model: 'image' }).exec((err, Searching) => {
          
@@ -108,7 +108,7 @@ exports.getActivesOut = (lat, lng, skip) => {
 exports.getLocalesByNameProduct = ( tipo, prefix, skip) =>{
   
     return new Promise((resolve, reject) => {
-        let skiper = skip*4
+        let skiper = skip*5
     if (tipo == 1) {
       
         var getSearch = solicitudfood.find({ Nombre: new RegExp(prefix, 'i') }).sort({ 'Nombre': 1 }).limit(20).skip(skiper);
