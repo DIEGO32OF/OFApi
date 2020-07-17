@@ -218,8 +218,9 @@ exports.templatesLocales = (Locals, type, searchBy, skip) =>{
     let locales = []
     let counter = 0
     let count = 0
-    
+    console.log(Locals)
     for(const local of Locals){
+
       if(counter < 5){
           
           let imagen = ''
@@ -279,7 +280,7 @@ exports.templatesLocales = (Locals, type, searchBy, skip) =>{
 
         locales.push({title: local.Nombre, 
           image_url: imagen,
-          subtitle: local.Domicilio+' - Horarios:'+local.nom_img+' - Telefono:'+local.telefono,
+          subtitle: 'Horarios:'+local.nom_img+' - Telefono:'+local.telefono,
           default_action: {
               type: 'web_url',
               url:'https://comandaof.web.app/menu/dnE6XnhrjrU_/'+local.id_Hashed,
