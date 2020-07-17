@@ -220,7 +220,34 @@ exports.templatesLocales = (Locals, type, searchBy, skip) =>{
     let count = 0
     console.log(Locals)
     for(const local of Locals){
-
+        let tipo = ''
+        let servDom = ''
+        if(local.servDom == 1)
+        servDom = '- Cuenta con Servicio a Domicilio'
+        switch(local.tipo)
+        {
+            case 1:
+                tipo = 'Antojitos / Tacos /Fonda'
+                break;
+                case 2:
+                tipo = 'Bar/Antro'
+                break;
+                case 3:
+                tipo = 'Comida Rapida'
+                break;
+                case 4:
+                tipo = 'Cafeteria/Postres'
+                break;
+                case 5:
+                tipo = 'Food Truck /Snack comercial'
+                break;
+                case 6:
+                    tipo = 'Pizzeria'
+                    break;
+                    case 7:
+                        tipo = 'Restaurante'
+                        break;
+        }
       if(counter < 5){
           
           let imagen = ''
@@ -280,7 +307,7 @@ exports.templatesLocales = (Locals, type, searchBy, skip) =>{
 
         locales.push({title: local.Nombre, 
           image_url: imagen,
-          subtitle: 'Horarios:'+local.nom_img+' - Telefono:'+local.telefono,
+          subtitle: tipo+' Horarios:'+local.nom_img+' - '+servDom,
           default_action: {
               type: 'web_url',
               url:'https://comandaof.web.app/menu/dnE6XnhrjrU_/'+local.id_Hashed,
