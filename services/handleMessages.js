@@ -110,6 +110,10 @@ if(reply == 'namePlato' ){
     actions.sendTextMessage('Que se te antoja comer? contestame como en el siguiente ejemplo: "producto:Hamburguesas" ', webhookEvent)
 }
 
+if(reply == 'infoOf'){
+    actions.InfoOF(webhookEvent)
+}
+
 
     
 
