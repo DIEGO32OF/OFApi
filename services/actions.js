@@ -31,6 +31,44 @@ exports.cargarMas = (webhookEvent, numeric) => {
      sendAPI.callSendAPI(response);
  }
 
+ const moreInfoOF = {
+     texto: 'OrdenoFacil es una serie de herramientas utiles para tu negocio, puedes crear tu menu digital, tus clientes pueden acceder a el desde un codigo QR o buscar tu negocio desde ordenofacil.com, tus clientes pueden levantar ordenes, hacer pedidos a domicilio, reservaciones, contestar encuestas. Imagina enviar notificaciones push a tus clientes promocionando algun evento o platillo. Puedes registrarte en ordenofacil.com/Registro.aspx',
+     replies: [
+        {
+            content_type: 'text',
+            title: 'productos de OrdenoFacil',
+            payload:'prodOF'
+        },{
+            content_type: 'text',
+            title: 'precios o planes de OrdenoFacil',
+            payload:'priceOF'
+        },{
+            content_type: 'text',
+            title: 'Contactar Asesor',
+            payload:'contactAsesor'
+        }
+    ]
+ }
+
+ exports.InfoOF = (webhookEvent) => {
+    // if (!replies) {
+       let  replies = moreInfoOF;
+     //}
+     let response = {
+         recipient :{
+             id: webhookEvent.sender.id
+         },
+         message: {
+             text: replies.texto,
+             quick_replies: replies.replies
+         }
+     }
+     sendAPI.callSendAPI(response);
+ }
+
+
+
+
 const optionsBusqueda = {
     texto: 'como quieres realizar la busqueda? o si lo prefieres mas rapido y facil en https://comandaof.web.app podras encontrar mas opciones',
     replies: [
@@ -79,7 +117,7 @@ const optionsInit = {
             payload:'iWantBot'
         },{
             content_type: 'text',
-            title: 'mas info de OF',
+            title: 'mas info de OrdenoFacil',
             payload:'infoOf'
         },{
             content_type: 'text',
@@ -307,7 +345,7 @@ exports.templatesLocales = (Locals, type, searchBy, skip) =>{
 
         locales.push({title: local.Nombre, 
           image_url: imagen,
-          subtitle: tipo+' Horarios:'+local.nom_img+' - '+servDom,
+          subtitle: tipo+', Horarios:'+local.nom_img+ servDom,
           default_action: {
               type: 'web_url',
               url:'https://comandaof.web.app/menu/dnE6XnhrjrU_/'+local.id_Hashed,
