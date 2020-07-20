@@ -116,7 +116,7 @@ const optionsInit = {
             title: 'Quiero mi bot',
             payload:'iWantBot'
         },{
-            content_type: 'postback',
+            content_type: 'text',
             title: 'Info de OrdenoFacil',
             payload:'infoOf'
         },{
