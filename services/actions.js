@@ -36,11 +36,11 @@ exports.cargarMas = (webhookEvent, numeric) => {
      replies: [
         {
             content_type: 'text',
-            title: 'productos de OrdenoFacil',
+            title: 'productos OrdenoFacil',
             payload:'prodOF'
         },{
             content_type: 'text',
-            title: 'precios o planes de OrdenoFacil',
+            title: 'precios OrdenoFacil',
             payload:'priceOF'
         },{
             content_type: 'text',
@@ -117,7 +117,7 @@ const optionsInit = {
             payload:'iWantBot'
         },{
             content_type: 'text',
-            title: 'mas info de OrdenoFacil',
+            title: 'Info de OrdenoFacil',
             payload:'infoOf'
         },{
             content_type: 'text',
