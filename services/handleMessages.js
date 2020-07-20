@@ -40,9 +40,10 @@ handlePostback = async (webhookEvent) => {
             break;
 
 
-        case 'Informacion':
-            handleLocation(webhookEvent);
+        case 'infoOf':
+           // handleLocation(webhookEvent);
            // actions.sendTextMessage('oprimiste mas info', webhookEvent);
+            actions.InfoOF(webhookEvent)
             break;
 
         case 'inicio':
@@ -103,7 +104,7 @@ handlequickReplies = (webhookEvent) => {
 }
 
 if(reply == 'namePlaces' ){
-    actions.sendTextMessage('Que lugar estas buscando? contestame como en el siguiente ejemplo: "nombre:El Asado ', webhookEvent)
+    actions.sendTextMessage('Que lugar estas buscando? contestame como en el siguiente ejemplo: "nombre:Asado ', webhookEvent)
 }
 if(reply == 'namePlato' ){
     actions.sendTextMessage('Que se te antoja comer? contestame como en el siguiente ejemplo: "producto:Hamburguesas" ', webhookEvent)
