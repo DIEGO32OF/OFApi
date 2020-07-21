@@ -33,7 +33,7 @@ exports.cargarMas = (webhookEvent, numeric) => {
 
 
  const moreInfoOF = {
-     texto: 'OrdenoFacil te brinda la posibilidad de poder crear tu menu digital, tus clientes pueden acceder a el desde un codigo QR o buscar tu negocio desde ordenofacil.com; Tus clientes pueden:\nLevantar ordenes \n -Hacer pedidos a domicilio\n - Hacer reservaciones\n -Contestar encuestas\n -Imagina enviar notificaciones push a tus clientes promocionando algun evento o platillo\n -O recibir ordenes o comandas desde facebook. <p></p> Se ajusta a cualquier tipo de negocio.  Puedes registrarte en ordenofacil.com/Registro.aspx',
+     texto: 'OrdenoFacil te brinda la posibilidad de poder crear tu menu digital, tus clientes pueden acceder a el desde un codigo QR o buscar tu negocio desde ordenofacil.com; Tus clientes pueden:\n- Levantar ordenes \n - Hacer pedidos a domicilio\n - Hacer reservaciones\n - Contestar encuestas\n - Imagina enviar notificaciones push a tus clientes promocionando algun evento o platillo\n - O recibir ordenes o comandas desde facebook. \n Se ajusta a cualquier tipo de negocio.  Puedes registrarte en> \n ordenofacil.com/Registro.aspx \n o visita \n ordenofacil.com \n para mayor informacion' ,
      replies: [
         {
             content_type: 'text',
