@@ -114,7 +114,9 @@ if(reply == 'infoOf'){
     actions.InfoOF(webhookEvent)
 }
 
-
+if(reply == 'prodOF'){
+    actions.sendTextMessage('Nuestros productos se dividen en 2, gratuitos y de paga; \n gratuitos:<br/> -pagina y app movil: En tu pagina puedes cargar hasta 30 platillos con imagen, descripcion y precios, subir eventos, promociones especiales y/o paquetes, subir info de tu negocio (ubicacion, horarios, telefonos, redes sociales...) . y acceso a tablero de control. Si lo deseas puedes recibir comandas desde la pagina y darles seguimiento desde tu tablero.  como ejemplo: https://comandaof.web.app/menu/dnE6XnhrjrU_/U--8XWEEwSQ_', webhookEvent)
+}
     
 
 }
