@@ -31,8 +31,9 @@ exports.cargarMas = (webhookEvent, numeric) => {
      sendAPI.callSendAPI(response);
  }
 
+
  const moreInfoOF = {
-     texto: 'OrdenoFacil es una serie de herramientas utiles para tu negocio, puedes crear tu menu digital, tus clientes pueden acceder a el desde un codigo QR o buscar tu negocio desde ordenofacil.com, tus clientes pueden levantar ordenes, hacer pedidos a domicilio, reservaciones, contestar encuestas. Imagina enviar notificaciones push a tus clientes promocionando algun evento o platillo. Puedes registrarte en ordenofacil.com/Registro.aspx',
+     texto: 'OrdenoFacil te brinda la posibilidad de poder crear tu menu digital, tus clientes pueden acceder a el desde un codigo QR o buscar tu negocio desde ordenofacil.com; Tus clientes pueden:\nLevantar ordenes \n -Hacer pedidos a domicilio\n - Hacer reservaciones\n -Contestar encuestas\n -Imagina enviar notificaciones push a tus clientes promocionando algun evento o platillo\n -O recibir ordenes o comandas desde facebook. <p></p> Se ajusta a cualquier tipo de negocio.  Puedes registrarte en ordenofacil.com/Registro.aspx',
      replies: [
         {
             content_type: 'text',
