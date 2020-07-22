@@ -139,11 +139,7 @@ const optionsInit = {
             content_type: 'text',
             title: 'Buscar Lugares',
             payload:'BuscPlaces'
-        },/* {
-            content_type: 'text',
-            title: 'Quiero mi bot',
-            payload:'iWantBot'
-        } */,{
+        },{
             content_type: 'text',
             title: 'Info de OrdenoFacil',
             payload:'infoOf'
