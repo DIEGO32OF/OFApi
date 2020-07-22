@@ -121,8 +121,13 @@ if(reply == 'prodOF'){
 }
 
 if(reply == 'showProdCosto'){
-    actions.sendTextMessage('De paga: \n - Recibir ordenes a domicilio: cuando un cliente no puede acudir a tu negocio pero tienes reparto a domicilio este plan es para ti, recibiras comandas con la ubicacion del cliente \n - Reservaciones: los clientes podran reservar una mesa \n - Encuestas: si lo deseas puedes incluir una ligera encuesta en tu pagina ideal para lealtad \n - Programa de lealtad: si un cliente es frecuente puedes premiarlo. \n - Difusion: envia notificaciones push o email a clientes que ya te visitaron. \n visita ordenofacil.com/cotizacion.aspx \n Nota* todos nuestros planes se contratan por separado y al contratar algun plan en tu pagina no aparece publicidad y la restriccion de platillos y comandas desaparece ', webhookEvent)
+    actions.sendTextMessage('De paga: \n - Recibir ordenes a domicilio: cuando un cliente no puede acudir a tu negocio pero tienes reparto a domicilio este plan es para ti, recibiras comandas con la ubicacion del cliente \n - Reservaciones: los clientes podran reservar una mesa \n - Encuestas: si lo deseas puedes incluir una ligera encuesta en tu pagina ideal para lealtad \n - Programa de lealtad: si un cliente es frecuente puedes premiarlo. \n - Difusion: envia notificaciones push o email a clientes que ya te visitaron. registrate gratis en \n ordenofacil.com/Registro.aspx \no visita: ordenofacil.com/cotizacion.aspx \n Nota* todos nuestros planes se contratan por separado y al contratar algun plan en tu pagina no aparece publicidad y la restriccion de platillos y comandas desaparece ', webhookEvent)
 }
+
+if(reply == 'priceOF'){
+    actions.sendTextMessage('OrdenoFacil tiene una version gratuita pero limitada, al contratar cualquier producto accedes a la version full de OrdenoFacil, para mayor informacion de precios visita: \nordenofacil.com/cotizacion.aspx  ')
+}
+
 
 }
 
