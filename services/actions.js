@@ -60,7 +60,7 @@ exports.prodInfoFree = (webhookEvent) => {
  }
 
  const moreInfoOF = {
-     texto: 'OrdenoFacil te brinda la posibilidad de crear tu menu digital, tus clientes pueden acceder a el desde un codigo QR o buscar tu negocio desde ordenofacil.com; Tus clientes pueden: \n- Levantar ordenes \n - Hacer pedidos a domicilio \n - Hacer reservaciones \n - Contestar encuestas \n - Imagina enviar notificaciones push a tus clientes promocionando algun evento o platillo \n - O recibir ordenes o comandas desde facebook. \n Se ajusta a cualquier tipo de negocio.  Puedes registrarte en \n ordenofacil.com/Registro.aspx \n o visita \n ordenofacil.com \n para mayor informacion' ,
+     texto: 'OrdenoFacil te brinda la posibilidad de crear tu menu digital, y acceder a el desde un codigo QR o buscar tu negocio desde ordenofacil.com; Tus clientes pueden: \n - Levantar ordenes desde tu pagina \n - Hacer pedidos a domicilio \n - Hacer reservaciones \n - Contestar encuestas \n - Imagina enviar notificaciones push o email a tus clientes promocionando algun evento o platillo \n - O recibir ordenes o comandas desde facebook. \nSe ajusta a cualquier tipo de negocio.  Puedes registrarte gratis en \n ordenofacil.com/Registro.aspx \n o visita: \n ordenofacil.com \n para mayor informacion' ,
      replies: [
         {
             content_type: 'text',
@@ -98,7 +98,7 @@ exports.prodInfoFree = (webhookEvent) => {
 
 
 const optionsBusqueda = {
-    texto: 'como quieres realizar la busqueda? o si lo prefieres mas rapido y facil en https://comandaof.web.app podras encontrar mas opciones',
+    texto: 'como quieres realizar la busqueda? o si lo prefieres mas facil y rapido en https://comandaof.web.app podras encontrar mas opciones',
     replies: [
         {
             content_type: 'text',
@@ -139,11 +139,11 @@ const optionsInit = {
             content_type: 'text',
             title: 'Buscar Lugares',
             payload:'BuscPlaces'
-        },{
+        },/* {
             content_type: 'text',
             title: 'Quiero mi bot',
             payload:'iWantBot'
-        },{
+        } */,{
             content_type: 'text',
             title: 'Info de OrdenoFacil',
             payload:'infoOf'
@@ -373,7 +373,7 @@ exports.templatesLocales = (Locals, type, searchBy, skip) =>{
 
         locales.push({title: local.Nombre, 
           image_url: imagen,
-          subtitle: tipo+', Horarios:'+local.nom_img+ servDom,
+          subtitle: tipo+'\nHorarios:'+local.nom_img+ servDom,
           default_action: {
               type: 'web_url',
               url:'https://comandaof.web.app/menu/dnE6XnhrjrU_/'+local.id_Hashed,
