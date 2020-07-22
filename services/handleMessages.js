@@ -115,10 +115,14 @@ if(reply == 'infoOf'){
 }
 
 if(reply == 'prodOF'){
-    actions.sendTextMessage('Nuestros productos se dividen en 2, gratuitos y de paga; \n - gratuitos: \n- pagina y app movil: En tu pagina puedes cargar hasta 30 platillos con imagen, descripcion y precios\n - subir eventos, promociones especiales y/o paquetes, subir info de tu negocio (ubicacion, horarios, telefonos, redes sociales...). \n  - Acceso a tablero de control. \n - Si lo deseas puedes recibir comandas desde la pagina y darles seguimiento desde tu tablero. \n este es un ejemplo:\n https://comandaof.web.app/menu/dnE6XnhrjrU_/U--8XWEEwSQ_  \n Nota* en la opcion de paga desaparecen las restricciones ', webhookEvent)
-    actions.sendTextMessage('De paga: \n - Recibir ordenes a domicilio: cuando un cliente no puede acudir a tui negocio pero tienes reparto a domicilio este plan es para ti, recibiras comandas con la ubicacion del cliente \n - Reservaciones: los clientes podran reservar una mesa \n - Encuestas: si lo deseas puedes incluir una ligera encuesta en tu pagina ideal para lealtad \n - Programa de lealtad: si un cliente es frecuente puedes premiarlo. \n - Difusion: envia notificaciones push o email a clientes que ya te visitaron. \n visita ordenofacil.com/cotizacion.aspx \n Nota* todos nuestros planes se contratan por separado y al contratar algun plan en tu pagina no aparece publicidad y la restriccion de platillos y comandas desaparece ', webhookEvent)
-}
+    //actions.sendTextMessage('Nuestros productos se dividen en 2, gratuitos y de paga; \n - gratuitos: \n- pagina y app movil: En tu pagina puedes cargar hasta 30 platillos con imagen, descripcion y precios\n - subir eventos, promociones especiales y/o paquetes, subir info de tu negocio (ubicacion, horarios, telefonos, redes sociales...). \n  - Acceso a tablero de control. \n - Si lo deseas puedes recibir comandas desde la pagina y darles seguimiento desde tu tablero. \n este es un ejemplo:\n https://comandaof.web.app/menu/dnE6XnhrjrU_/U--8XWEEwSQ_  \n Nota* en la opcion de paga desaparecen las restricciones ', webhookEvent)
+    actions.prodInfoFree(webhookEvent)
     
+}
+
+if(reply == 'showProdCosto'){
+    actions.sendTextMessage('De paga: \n - Recibir ordenes a domicilio: cuando un cliente no puede acudir a tu negocio pero tienes reparto a domicilio este plan es para ti, recibiras comandas con la ubicacion del cliente \n - Reservaciones: los clientes podran reservar una mesa \n - Encuestas: si lo deseas puedes incluir una ligera encuesta en tu pagina ideal para lealtad \n - Programa de lealtad: si un cliente es frecuente puedes premiarlo. \n - Difusion: envia notificaciones push o email a clientes que ya te visitaron. \n visita ordenofacil.com/cotizacion.aspx \n Nota* todos nuestros planes se contratan por separado y al contratar algun plan en tu pagina no aparece publicidad y la restriccion de platillos y comandas desaparece ', webhookEvent)
+}
 
 }
 

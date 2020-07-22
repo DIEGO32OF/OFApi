@@ -32,8 +32,35 @@ exports.cargarMas = (webhookEvent, numeric) => {
  }
 
 
+ const prodFreeInfo = {
+    texto: 'Nuestros productos se dividen en 2, gratuitos y de paga; \n - gratuitos: \n - pagina y app movil: En tu pagina puedes cargar hasta 30 platillos con imagen, descripcion y precios \n - subir eventos, promociones especiales y/o paquetes, subir info de tu negocio (ubicacion, horarios, telefonos, redes sociales...). \n - Acceso a tablero de control. \n - Si lo deseas puedes recibir comandas desde la pagina y darles seguimiento desde tu tablero. \n este es un ejemplo:\n https://comandaof.web.app/menu/dnE6XnhrjrU_/U--8XWEEwSQ_  \n Nota* en la opcion de paga desaparecen las restricciones ' ,
+    replies: [
+       {
+           content_type: 'text',
+           title: 'productos con costo',
+           payload:'showProdCosto'
+       }
+   ]
+}
+
+exports.prodInfoFree = (webhookEvent) => {
+    // if (!replies) {
+       let  replies = prodFreeInfo;
+     //}
+     let response = {
+         recipient :{
+             id: webhookEvent.sender.id
+         },
+         message: {
+             text: replies.texto,
+             quick_replies: replies.replies
+         }
+     }
+     sendAPI.callSendAPI(response);
+ }
+
  const moreInfoOF = {
-     texto: 'OrdenoFacil te brinda la posibilidad de poder crear tu menu digital, tus clientes pueden acceder a el desde un codigo QR o buscar tu negocio desde ordenofacil.com; Tus clientes pueden:\n- Levantar ordenes \n - Hacer pedidos a domicilio\n - Hacer reservaciones\n - Contestar encuestas\n - Imagina enviar notificaciones push a tus clientes promocionando algun evento o platillo\n - O recibir ordenes o comandas desde facebook. \n Se ajusta a cualquier tipo de negocio.  Puedes registrarte en> \n ordenofacil.com/Registro.aspx \n o visita \n ordenofacil.com \n para mayor informacion' ,
+     texto: 'OrdenoFacil te brinda la posibilidad de crear tu menu digital, tus clientes pueden acceder a el desde un codigo QR o buscar tu negocio desde ordenofacil.com; Tus clientes pueden: \n- Levantar ordenes \n - Hacer pedidos a domicilio \n - Hacer reservaciones \n - Contestar encuestas \n - Imagina enviar notificaciones push a tus clientes promocionando algun evento o platillo \n - O recibir ordenes o comandas desde facebook. \n Se ajusta a cualquier tipo de negocio.  Puedes registrarte en \n ordenofacil.com/Registro.aspx \n o visita \n ordenofacil.com \n para mayor informacion' ,
      replies: [
         {
             content_type: 'text',
