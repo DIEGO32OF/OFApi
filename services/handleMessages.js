@@ -125,7 +125,7 @@ if(reply == 'showProdCosto'){
 }
 
 if(reply == 'priceOF'){
-    actions.sendTextMessage('OrdenoFacil tiene una version gratuita pero limitada, al contratar cualquier producto accedes a la version full de OrdenoFacil, para mayor informacion de precios visita: \nordenofacil.com/cotizacion.aspx  ')
+    actions.sendTextMessage('OrdenoFacil tiene una version gratuita pero limitada, al contratar cualquier producto accedes a la version full de OrdenoFacil, para mayor informacion de precios visita: \nordenofacil.com/cotizacion.aspx  ', webhookEvent)
 }
 
 
