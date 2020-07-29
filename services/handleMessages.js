@@ -129,10 +129,10 @@ if(reply == 'priceOF'){
 }
 
 if(reply == 'iwantBot'){
-    sendAPI.getLocalesByNameProduct(1,'asado', count).then( Locals =>{
+    sendAPI.getLocalesByNameProduct(1,'asado', 0).then( Locals =>{
                 
         if(Locals.length > 0){
-            let locales = actions.templatesLocales(Locals, 1, 'asado', count)                                  
+            let locales = actions.templatesLocales(Locals, 1, 'asado', 0)                                  
               actions.ubicacion(webhookEvent ,locales)
               actions.sendTextMessage('No se encontraron resultado', webhookEvent);
             }
