@@ -145,6 +145,14 @@ const optionsInit = {
             payload:'infoOf'
         },{
             content_type: 'text',
+            title: 'Iniciar sesion',
+            payload:'initSesion'
+        },{
+            content_type: 'text',
+            title: 'Quiero mi Bot',
+            payload:'iwantBot'
+        },{
+            content_type: 'text',
             title: 'Contactar Asesor',
             payload:'contactAsesor'
         }

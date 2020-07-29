@@ -128,6 +128,19 @@ if(reply == 'priceOF'){
     actions.sendTextMessage('OrdenoFacil tiene una version gratuita pero limitada, al contratar cualquier producto accedes a la version full de OrdenoFacil, para mayor informacion de precios visita: \nordenofacil.com/cotizacion.aspx  ', webhookEvent)
 }
 
+if(reply == 'iwantBot'){
+    sendAPI.getLocalesByNameProduct(1,namer, count).then( Locals =>{
+                
+        if(Locals.length > 0){
+            let locales = actions.templatesLocales(Locals, 1, namer, count)                                  
+              actions.ubicacion(webhookEvent ,locales)
+              actions.sendTextMessage('No se encontraron resultados con este nombre:'+namer, webhookEvent);
+            }
+            else
+            actions.sendTextMessage('Este es un ejemplo de un bot: Hola _| bienvenid@ a El Asado \ncon los mejores carnes. \nNos encontramos en nueva york 26 colonia napoles ciudad de mexico\nNuestros Horarios: de 9 - 20 hrs.\nTelefono:5558909313 ', webhookEvent);    })
+}
+
+
 
 }
 
