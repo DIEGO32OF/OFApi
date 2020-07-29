@@ -129,12 +129,12 @@ if(reply == 'priceOF'){
 }
 
 if(reply == 'iwantBot'){
-    sendAPI.getLocalesByNameProduct(1,namer, count).then( Locals =>{
+    sendAPI.getLocalesByNameProduct(1,'asado', count).then( Locals =>{
                 
         if(Locals.length > 0){
-            let locales = actions.templatesLocales(Locals, 1, namer, count)                                  
+            let locales = actions.templatesLocales(Locals, 1, 'asado', count)                                  
               actions.ubicacion(webhookEvent ,locales)
-              actions.sendTextMessage('No se encontraron resultados con este nombre:'+namer, webhookEvent);
+              actions.sendTextMessage('No se encontraron resultado', webhookEvent);
             }
             else
             actions.sendTextMessage('Este es un ejemplo de un bot: Hola _| bienvenid@ a El Asado \ncon los mejores carnes. \nNos encontramos en nueva york 26 colonia napoles ciudad de mexico\nNuestros Horarios: de 9 - 20 hrs.\nTelefono:5558909313 ', webhookEvent);    })
