@@ -7,7 +7,12 @@ exports.demoBot = (msg, local, webhookEvent) => {
     // if (!replies) {
         let replies = []
         
-
+        replies.push({ 
+            content_type: 'text',
+            title: 'ver Menu',
+            payload:'verMenu1234'
+        })
+        
         if(local.servDom == 1){
         replies.push({ 
         content_type: 'text',
