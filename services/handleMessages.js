@@ -134,7 +134,7 @@ if(reply == 'iwantBot'){
         if(Locals.length > 0){
             let locales = actions.templatesLocales(Locals, 1, 'asado', 0)  
             sendAPI.getProfile(webhookEvent.sender.id).then( Profile =>{                                
-              actions.ubicacion(webhookEvent ,locales)
+             
              // actions.sendTextMessage('No se encontraron resultado', webhookEvent);
             
             let msg = 'Este es un ejemplo de un bot: \n Hola _| bienvenid@ a El Asado \ncon las mejores carnes. \nNos encontramos en: nueva york 26 colonia napoles ciudad de mexico\nNuestros Horarios: de 9 - 20 hrs.\nTelefono:5558909313 '
@@ -142,6 +142,8 @@ if(reply == 'iwantBot'){
             msg += '\nContamos con servicio a domicilio'
             msg = msg.replace('_|', Profile.first_name)
             actions.demoBot(msg, locales, webhookEvent)
+
+            actions.ubicacion(webhookEvent ,locales)
             //actions.sendTextMessage(msg.replace('_|', Profile.first_name), webhookEvent);    
             })
         }
