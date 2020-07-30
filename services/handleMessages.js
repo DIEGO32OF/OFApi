@@ -132,12 +132,18 @@ if(reply == 'iwantBot'){
     sendAPI.getLocalesByNameProduct(1,'asado', 0).then( Locals =>{
                 
         if(Locals.length > 0){
-            let locales = actions.templatesLocales(Locals, 1, 'asado', 0)                                  
+            let locales = actions.templatesLocales(Locals, 1, 'asado', 0)  
+            sendAPI.getProfile(webhookEvent.sender.id).then( Profile =>{                                
               actions.ubicacion(webhookEvent ,locales)
              // actions.sendTextMessage('No se encontraron resultado', webhookEvent);
             
-   
-            actions.sendTextMessage('Este es un ejemplo de un bot: Hola _| bienvenid@ a El Asado \ncon los mejores carnes. \nNos encontramos en nueva york 26 colonia napoles ciudad de mexico\nNuestros Horarios: de 9 - 20 hrs.\nTelefono:5558909313 ', webhookEvent);    
+            let msg = 'Este es un ejemplo de un bot: \n Hola _| bienvenid@ a El Asado \ncon las mejores carnes. \nNos encontramos en: nueva york 26 colonia napoles ciudad de mexico\nNuestros Horarios: de 9 - 20 hrs.\nTelefono:5558909313 '
+            if(locales.servDom == 1)
+            msg += '\nContamos con servicio a domicilio'
+            msg = msg.replace('_|', Profile.first_name)
+            actions.demoBot(msg, locales, webhookEvent)
+            //actions.sendTextMessage(msg.replace('_|', Profile.first_name), webhookEvent);    
+            })
         }
         })
 }
