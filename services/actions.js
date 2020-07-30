@@ -2,6 +2,59 @@ const sendAPI = require('./graphAPI');
 const request = require('request');
 
 
+
+exports.demoBot = (msg, local, webhookEvent) => {
+    // if (!replies) {
+        let replies = []
+        
+
+        if(local.servDom == 1){
+        replies.push({ 
+        content_type: 'text',
+        title: 'Servicio a Domicilio',
+        payload:'servDom1234'
+    })
+    
+}
+if(local.makeReserve == '1'){
+    replies.push({ 
+        content_type: 'text',
+        title: 'Hacer reservacion',
+        payload:'makeReserve1234'
+    })
+    
+}
+
+if(local.EncuestaServ == '1'){
+    replies.push({ 
+        content_type: 'text',
+        title: 'Resolver Encuesta',
+        payload:'makeReserve1234'
+    })
+    
+}
+
+if(local.lealServ == '1'){
+    replies.push({ 
+        content_type: 'text',
+        title: 'Programa Lealtad',
+        payload:'lealServ1234'
+    })
+    
+}
+
+     let response = {
+         recipient :{
+             id: webhookEvent.sender.id
+         },
+         message: {
+             text:msg,
+             quick_replies: replies
+         }
+     }
+     sendAPI.callSendAPI(response);
+ }
+
 const chargeMore = {
     texto: 'Cargar mas resultados',
     replies: [
@@ -133,7 +186,7 @@ exports.OptionSearch = (webhookEvent) => {
  }
 
 const optionsInit = {
-    texto: 'Hola _| Binevenid@ a ordenofacil, estoy para servirte aqui te dejo unas opciones ',
+    texto: 'Hola _| Bienvenid@ a ordenofacil, estoy para servirte aqui te dejo unas opciones ',
     replies: [
         {
             content_type: 'text',
