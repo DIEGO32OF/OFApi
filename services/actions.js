@@ -6,7 +6,7 @@ const request = require('request');
 exports.demoBot = (msg, local, webhookEvent) => {
     // if (!replies) {
         let replies = []
-        
+        console.log(local)
         replies.push({ 
             content_type: 'text',
             title: 'ver Menu',
@@ -201,10 +201,6 @@ const optionsInit = {
             content_type: 'text',
             title: 'Info de OrdenoFacil',
             payload:'infoOf'
-        },{
-            content_type: 'text',
-            title: 'Iniciar sesion',
-            payload:'initSesion'
         },{
             content_type: 'text',
             title: 'Quiero mi Bot',
