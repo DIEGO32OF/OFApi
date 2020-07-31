@@ -63,7 +63,7 @@ handlePostback = async (webhookEvent) => {
                     if(Locals.length > 0){                        
                                          
                         let msg = 'otros beneficios:'
-                        actions.demoBot(msg, Locals, webhookEvent)
+                        actions.demoBot(msg, Locals[0], webhookEvent)
                     }
                 })
 
