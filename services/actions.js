@@ -342,7 +342,7 @@ exports.ubicacion = (webhookEvent, locales) => {
     sendAPI.callSendAPI(response);
 }
 
-exports.templatesLocales = (Locals, type, searchBy, skip) =>{
+exports.templatesLocales = (Locals, type, searchBy, skip, isOptions) =>{
     let locales = []
     let counter = 0
     let count = 0
@@ -418,6 +418,27 @@ exports.templatesLocales = (Locals, type, searchBy, skip) =>{
             ]
           }
           else{
+              if(isOptions){
+                botones = [
+                    {
+                        type: 'web_url',
+                        title: 'ver menu',
+                        url:'https://comandaof.web.app/menu/dnE6XnhrjrU_/'+local.id_Hashed
+                    },
+                    {
+                      type: 'web_url',
+                      url: 'https://www.google.com.mx/maps/@'+local.lat+','+local.lng,
+                      title:'mostrar en el mapa'
+                  },
+                  {
+                    type: 'postback',
+                    payload: 'iwantOptions',
+                    title:'Mas opciones'
+                }
+      
+                ]
+              }
+              else{
             botones = [
                 {
                     type: 'web_url',
@@ -431,6 +452,7 @@ exports.templatesLocales = (Locals, type, searchBy, skip) =>{
               }
   
             ]
+        }
           }
 
         locales.push({title: local.Nombre, 
