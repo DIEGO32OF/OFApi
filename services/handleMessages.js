@@ -55,6 +55,19 @@ handlePostback = async (webhookEvent) => {
            
             });
             break;
+
+            case 'iwantOptions':
+
+                sendAPI.getLocalesByNameProduct(1,'asado', 0).then( Locals =>{
+                
+                    if(Locals.length > 0){                        
+                                         
+                        let msg = 'otros beneficios:'
+                        actions.demoBot(msg, Locals, webhookEvent)
+                    }
+                })
+
+                break;
         
 
     }
@@ -132,7 +145,7 @@ if(reply == 'iwantBot'){
     sendAPI.getLocalesByNameProduct(1,'asado', 0).then( Locals =>{
                 
         if(Locals.length > 0){
-            let locales = actions.templatesLocales(Locals, 1, 'asado', 0)  
+            let locales = actions.templatesLocales(Locals, 1, 'asado', 0, true)  
             sendAPI.getProfile(webhookEvent.sender.id).then( Profile =>{                                
              
              // actions.sendTextMessage('No se encontraron resultado', webhookEvent);
@@ -141,10 +154,10 @@ if(reply == 'iwantBot'){
             if(locales.servDom == 1)
             msg += '\nContamos con servicio a domicilio'
             msg = msg.replace('_|', Profile.first_name)
-            actions.demoBot(msg, locales, webhookEvent)
+            //actions.demoBot(msg, locales, webhookEvent)
 
             actions.ubicacion(webhookEvent ,locales)
-            //actions.sendTextMessage(msg.replace('_|', Profile.first_name), webhookEvent);    
+            actions.sendTextMessage(msg, webhookEvent);    
             })
         }
         })
@@ -205,7 +218,7 @@ handleNlp=(webhookEvent)=>{
             sendAPI.getLocalesByNameProduct(1,namer, count).then( Locals =>{
                 
                 if(Locals.length > 0){
-                    let locales = actions.templatesLocales(Locals, 1, namer, count)                                  
+                    let locales = actions.templatesLocales(Locals, 1, namer, count, false)                                  
                       actions.ubicacion(webhookEvent ,locales)
                     }
                     else
@@ -227,7 +240,7 @@ handleNlp=(webhookEvent)=>{
             
             sendAPI.getLocalesByNameProduct(2,namer, count).then( Locals =>{        
                 if(Locals.length > 0){        
-                let locales = actions.templatesLocales(Locals, 2, namer, count)                  
+                let locales = actions.templatesLocales(Locals, 2, namer, count, false)                  
                   actions.ubicacion(webhookEvent ,locales)
                 }
                 else
@@ -261,7 +274,7 @@ handleNlp=(webhookEvent)=>{
             }
             sendAPI.getLocalesByNameProduct(1,namer, count).then( Locals =>{
                 if(Locals.length > 0){
-                let locales = actions.templatesLocales(Locals, 1, namer, count)                                  
+                let locales = actions.templatesLocales(Locals, 1, namer, count, false)                                  
                   actions.ubicacion(webhookEvent ,locales)
                 }
                 else
@@ -283,7 +296,7 @@ handleNlp=(webhookEvent)=>{
             
             sendAPI.getLocalesByNameProduct(2,namer, count).then( Locals =>{   
                 if(Locals.length > 0){             
-                let locales = actions.templatesLocales(Locals, 2, namer, count)                  
+                let locales = actions.templatesLocales(Locals, 2, namer, count, false)                  
                   actions.ubicacion(webhookEvent ,locales)
                 }
                 else
@@ -306,7 +319,7 @@ handleNlp=(webhookEvent)=>{
                    
                   sendAPI.getActivesOut(location.lat, location.lng, count).then(Locals =>{
                   if(Locals.length > 0){
-                  let locales = actions.templatesLocales(Locals, 3, texto, count)                  
+                  let locales = actions.templatesLocales(Locals, 3, texto, count, false)                  
                   actions.ubicacion(webhookEvent ,locales)
 
                   if(Locals.length > 4)
@@ -356,7 +369,7 @@ handleNlp=(webhookEvent)=>{
             }
             sendAPI.getLocalesByNameProduct(1,namer, count).then( Locals =>{
                 if(Locals.length > 0){
-                let locales = actions.templatesLocales(Locals, 1, namer, count)                                  
+                let locales = actions.templatesLocales(Locals, 1, namer, count, false)                                  
                   actions.ubicacion(webhookEvent ,locales)
                 }
                 else
@@ -378,7 +391,7 @@ handleNlp=(webhookEvent)=>{
             
             sendAPI.getLocalesByNameProduct(2,namer, count).then( Locals =>{   
                 if(Locals.length > 0){             
-                let locales = actions.templatesLocales(Locals, 2, namer, count)                  
+                let locales = actions.templatesLocales(Locals, 2, namer, count, false)                  
                   actions.ubicacion(webhookEvent ,locales)
                 }
                 else
@@ -401,7 +414,7 @@ handleNlp=(webhookEvent)=>{
                    
                   sendAPI.getActivesOut(location.lat, location.lng, count).then(Locals =>{
                   if(Locals.length > 0){
-                  let locales = actions.templatesLocales(Locals, 3, texto, count)                  
+                  let locales = actions.templatesLocales(Locals, 3, texto, count, false)                  
                   actions.ubicacion(webhookEvent ,locales)
 
                   if(Locals.length > 4)
