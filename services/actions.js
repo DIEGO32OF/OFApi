@@ -3,29 +3,29 @@ const request = require('request');
 
 
 
-exports.demoBot = (msg, local, webhookEvent) => {
-    // if (!replies) {
+exports.demoBot = (local) => {
+    
         let replies = []
         console.log(local)
-        replies.push({ 
-            content_type: 'text',
-            title: 'ver Menu',
-            payload:'verMenu1234'
-        })
+        
+        let locales =[]
+
         
         if(local.servDom == 1){
         replies.push({ 
-        content_type: 'text',
+        type: 'web_url',
         title: 'Servicio a Domicilio',
-        payload:'servDom1234'
+        url:'https://comandaof.web.app/menu/dnE6XnhrjrU_/'+local.id_Hashed+'#servdom'
+        
     })
+    
     
 }
 if(local.makeReserve == '1'){
     replies.push({ 
-        content_type: 'text',
+        type: 'web_url',
         title: 'Hacer reservacion',
-        payload:'makeReserve1234'
+        url:'https://comandaof.web.app/menu/dnE6XnhrjrU_/'+local.id_Hashed+'#makereserve'
     })
     
 }
@@ -39,48 +39,125 @@ if(local.makeReserve == '1'){
      
 }*/
 
-if(local.lealServ == '1'){
+/* if(local.lealServ == '1'){
     replies.push({ 
-        content_type: 'text',
+        type: 'web_url',
         title: 'Programa Lealtad',
         payload:'lealServ1234'
     })
     
+} */
+
+replies.push({ 
+    type: 'web_url',
+    title: 'Buscar Productos',
+    url:'https://comandaof.web.app/menu/dnE6XnhrjrU_/'+local.id_Hashed+'#searchprod'
+})
+
+if(replies.length == 3){
+    locales.push({title: 'Mas Opciones',     
+    subtitle: 'Gracias por tu preferencia',
+    default_action: {
+        type: 'web_url',
+        url:'https://comandaof.web.app/menu/dnE6XnhrjrU_/'+local.id_Hashed,
+        messenger_extensions: 'FALSE',
+        webview_height_ratio:'COMPACT'
+    },
+    buttons: replies 
+    
+
+})
+replies = []
 }
 
-replies.push({ 
-    content_type: 'text',
-    title: 'Buscar Productos',
-    payload:'1234BuscProd'
-})
 
 replies.push({ 
-    content_type: 'text',
+    type: 'web_url',
     title: 'Calificanos',
-    payload:'1234califaca'
+    url:'https://comandaof.web.app/menu/dnE6XnhrjrU_/'+local.id_Hashed+'#aproveus'
 })
 
+if(replies.length == 3){
+    locales.push({title: 'Mas Opciones',     
+    subtitle: 'Gracias por tu preferencia',
+    default_action: {
+        type: 'web_url',
+        url:'https://comandaof.web.app/menu/dnE6XnhrjrU_/'+local.id_Hashed,
+        messenger_extensions: 'FALSE',
+        webview_height_ratio:'COMPACT'
+    },
+    buttons: replies 
+    
+
+})
+replies = []
+}
+
+if(local.id_EvenPromo.length > 0 || local.id_PaqEspe.length > 0){
 replies.push({ 
-    content_type: 'text',
+    type: 'web_url',
     title: 'Promociones',
-    payload:'1234Promos'
+    url:'https://comandaof.web.app/menu/dnE6XnhrjrU_/'+local.id_Hashed+'#portfolio'
 })
+}
+if(replies.length == 3){
+    locales.push({title: 'Mas Opciones',     
+    subtitle: 'Gracias por tu preferencia',
+    default_action: {
+        type: 'web_url',
+        url:'https://comandaof.web.app/menu/dnE6XnhrjrU_/'+local.id_Hashed,
+        messenger_extensions: 'FALSE',
+        webview_height_ratio:'COMPACT'
+    },
+    buttons: replies 
+    
+
+})
+replies = []
+}
 replies.push({ 
-    content_type: 'web_url',
+    content_type: 'postback',
     title: 'Escribenos',
-    url:'https://comandaof.web.app/menu/dnE6XnhrjrU_/'
+    payload: '123456Escribenos'
+})
+if(replies.length == 3){
+    locales.push({title: 'Mas Opciones',     
+    subtitle: 'Gracias por tu preferencia',
+    default_action: {
+        type: 'web_url',
+        url:'https://comandaof.web.app/menu/dnE6XnhrjrU_/'+local.id_Hashed,
+        messenger_extensions: 'FALSE',
+        webview_height_ratio:'COMPACT'
+    },
+    buttons: replies 
+    
+
+})
+replies = []
+}
+replies.push({ 
+    content_type: 'phone_number',
+    title: 'llamanos',
+    payload: '5531077600'
 })
 
-     let response = {
-         recipient :{
-             id: webhookEvent.sender.id
-         },
-         message: {
-             text:msg,
-             quick_replies: replies
-         }
-     }
-     sendAPI.callSendAPI(response);
+
+
+locales.push({title: 'Mas Opciones',     
+    subtitle: 'Gracias por tu preferencia',
+    default_action: {
+        type: 'web_url',
+        url:'https://comandaof.web.app/menu/dnE6XnhrjrU_/'+local.id_Hashed,
+        messenger_extensions: 'FALSE',
+        webview_height_ratio:'COMPACT'
+    },
+    buttons: replies 
+    
+
+})
+console.log(locales)
+return locales
+
  }
 
 const chargeMore = {
