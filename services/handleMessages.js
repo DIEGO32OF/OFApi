@@ -117,10 +117,10 @@ handlequickReplies = (webhookEvent) => {
 }
 
 if(reply == 'namePlaces' ){
-    actions.sendTextMessage('Que lugar estas buscando? contestame como en el siguiente ejemplo: "nombre:Asado ', webhookEvent)
+    actions.sendTextMessage('Que lugar estas buscando? respondeme como en el siguiente ejemplo: "nombre:Asado ', webhookEvent)
 }
 if(reply == 'namePlato' ){
-    actions.sendTextMessage('Que se te antoja comer? contestame como en el siguiente ejemplo: "producto:Hamburguesas" ', webhookEvent)
+    actions.sendTextMessage('Que se te antoja comer? respondeme como en el siguiente ejemplo: "producto:Hamburguesas" ', webhookEvent)
 }
 
 if(reply == 'infoOf'){
@@ -150,7 +150,7 @@ if(reply == 'iwantBot'){
              
              // actions.sendTextMessage('No se encontraron resultado', webhookEvent);
             
-            let msg = 'Este es un ejemplo de un bot: \n Hola _| bienvenid@ a El Asado \ncon las mejores carnes. \nNos encontramos en: nueva york 26 colonia napoles ciudad de mexico\nNuestros Horarios: de 9 - 20 hrs.\nTelefono:5558909313 '
+            let msg = 'Este es un ejemplo de un bot: \n Hola _| bienvenid@ a El Asado \ncon las mejores carnes. \nNos encontramos en: nueva york 26 colonia napoles ciudad de mexico\nTelefono:5558909313 '
             if(locales.servDom == 1)
             msg += '\nContamos con servicio a domicilio'
             msg = msg.replace('_|', Profile.first_name)

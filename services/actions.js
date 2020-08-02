@@ -30,14 +30,14 @@ if(local.makeReserve == '1'){
     
 }
 
-if(local.EncuestaServ == '1'){
+/* if(local.EncuestaServ == '1'){
     replies.push({ 
         content_type: 'text',
         title: 'Resolver Encuesta',
         payload:'makeReserve1234'
-    })
-    
-}
+    })         
+     
+}*/
 
 if(local.lealServ == '1'){
     replies.push({ 
@@ -47,6 +47,29 @@ if(local.lealServ == '1'){
     })
     
 }
+
+replies.push({ 
+    content_type: 'text',
+    title: 'Buscar Productos',
+    payload:'1234BuscProd'
+})
+
+replies.push({ 
+    content_type: 'text',
+    title: 'Calificanos',
+    payload:'1234califaca'
+})
+
+replies.push({ 
+    content_type: 'text',
+    title: 'Promociones',
+    payload:'1234Promos'
+})
+replies.push({ 
+    content_type: 'web_url',
+    title: 'Escribenos',
+    url:'https://comandaof.web.app/menu/dnE6XnhrjrU_/'
+})
 
      let response = {
          recipient :{
@@ -91,7 +114,7 @@ exports.cargarMas = (webhookEvent, numeric) => {
 
 
  const prodFreeInfo = {
-    texto: 'Nuestros productos se dividen en 2, gratuitos y de paga; \n - gratuitos: \n - pagina y app movil: En tu pagina puedes cargar hasta 30 platillos con imagen, descripcion y precios \n - subir eventos, promociones especiales y/o paquetes, subir info de tu negocio (ubicacion, horarios, telefonos, redes sociales...). \n - Acceso a tablero de control. \n - Si lo deseas puedes recibir comandas desde la pagina y darles seguimiento desde tu tablero. \n este es un ejemplo:\n https://comandaof.web.app/menu/dnE6XnhrjrU_/U--8XWEEwSQ_  \n Nota* en la opcion de paga desaparecen las restricciones ' ,
+    texto: 'Nuestros productos se dividen en 2, gratuitos y de paga; \n - gratuitos: \n - pagina y app movil: En tu pagina puedes cargar hasta 15 platillos con imagen, descripcion y precios \n - subir eventos, promociones especiales y/o paquetes\n - subir info de tu negocio (ubicacion, horarios, telefonos, redes sociales...). \n - Acceso a tablero de control. \n - Si lo deseas puedes recibir comandas desde la pagina y darles seguimiento desde tu tablero. \n este es un ejemplo:\n https://comandaof.web.app/menu/dnE6XnhrjrU_/U--8XWEEwSQ_  \n Nota* al contratar cualquier producto accedes a la version full de OrdenoFacil y desaparecen las restricciones ' ,
     replies: [
        {
            content_type: 'text',
@@ -118,7 +141,7 @@ exports.prodInfoFree = (webhookEvent) => {
  }
 
  const moreInfoOF = {
-     texto: 'OrdenoFacil te brinda la posibilidad de crear tu menu digital, y acceder a el desde un codigo QR o buscar tu negocio desde ordenofacil.com; Tus clientes pueden: \n - Levantar ordenes desde tu pagina \n - Hacer pedidos a domicilio \n - Hacer reservaciones \n - Contestar encuestas \n - Imagina enviar notificaciones push o email a tus clientes promocionando algun evento o platillo \n - O recibir ordenes o comandas desde facebook. \nSe ajusta a cualquier tipo de negocio.  Puedes registrarte gratis en \n ordenofacil.com/Registro.aspx \n o visita: \n ordenofacil.com \n para mayor informacion' ,
+     texto: 'OrdenoFacil te brinda la posibilidad de crear tu menu digital, y acceder a el desde un codigo QR; Tus clientes pueden: \n - Levantar ordenes desde tu pagina \n - Hacer pedidos a domicilio \n - Hacer reservaciones \n - responder encuestas \n - Imagina enviar notificaciones push o email a tus clientes promocionando algun evento o platillo \n - O recibir ordenes o comandas desde facebook. \nSe ajusta a cualquier tipo de negocio.  Puedes registrarte gratis en \n ordenofacil.com/Registro.aspx \n o visita: \n ordenofacil.com \n para mayor informacion' ,
      replies: [
         {
             content_type: 'text',
@@ -233,7 +256,7 @@ exports.optionInicio = (webhookEvent,  profile) => {
 }
 
 const repliesSurvey = {
-    texto: 'por favor contesta la siguiente encuesta y dime que es lo que mas te gusto de nuestro servicio',
+    texto: 'por favor responde la siguiente encuesta y dime que es lo que mas te gusto de nuestro servicio',
     replies: [
         {
             content_type: 'text',
