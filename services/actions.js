@@ -10,6 +10,21 @@ exports.demoBot = (local) => {
         
         let locales =[]
 
+
+        let imagen = ''
+        if(local.id_Imgs.length > 0){
+          let obj = local.id_Imgs.filter(x=> x.tipo == 1)
+          
+          if(obj.length > 0)
+          imagen = obj[0].Nombre
+
+          if(imagen == '')
+        imagen ='http://ordenofacil.com/Logos/slide1.jpg'
+        }
+        else{          
+        imagen ='http://ordenofacil.com/Logos/slide1.jpg'
+        }
+
         
         if(local.servDom == 1){
         replies.push({ 
@@ -55,8 +70,10 @@ replies.push({
 })
 
 if(replies.length == 3){
-    locales.push({title: 'Mas Opciones',     
-    subtitle: 'Gracias por tu preferencia',
+    
+    locales.push({title: local.Nombre, 
+        image_url: imagen,  
+    subtitle: 'Mas opciones',
     default_action: {
         type: 'web_url',
         url:'https://comandaof.web.app/menu/dnE6XnhrjrU_/'+local.id_Hashed,
@@ -78,8 +95,9 @@ replies.push({
 })
 
 if(replies.length == 3){
-    locales.push({title: 'Mas Opciones',     
-    subtitle: 'Gracias por tu preferencia',
+    locales.push({title: local.Nombre, 
+        image_url: imagen,  
+    subtitle: 'Mas opciones',
     default_action: {
         type: 'web_url',
         url:'https://comandaof.web.app/menu/dnE6XnhrjrU_/'+local.id_Hashed,
@@ -101,8 +119,9 @@ replies.push({
 })
 }
 if(replies.length == 3){
-    locales.push({title: 'Mas Opciones',     
-    subtitle: 'Gracias por tu preferencia',
+    locales.push({title: local.Nombre, 
+        image_url: imagen,  
+    subtitle: 'Mas opciones',
     default_action: {
         type: 'web_url',
         url:'https://comandaof.web.app/menu/dnE6XnhrjrU_/'+local.id_Hashed,
@@ -121,8 +140,9 @@ replies.push({
     payload: '123456Escribenos'
 })
 if(replies.length == 3){
-    locales.push({title: 'Mas Opciones',     
-    subtitle: 'Gracias por tu preferencia',
+    locales.push({title: local.Nombre, 
+        image_url: imagen,  
+    subtitle: 'Mas opciones',
     default_action: {
         type: 'web_url',
         url:'https://comandaof.web.app/menu/dnE6XnhrjrU_/'+local.id_Hashed,
@@ -138,13 +158,14 @@ replies = []
 replies.push({ 
     type: 'phone_number',
     title: 'llamanos',
-    payload: '5531077600'
+    payload: '+525531077600'
 })
 
 
 
-locales.push({title: 'Mas Opciones',     
-    subtitle: 'Gracias por tu preferencia',
+locales.push({title: local.Nombre, 
+    image_url: imagen,  
+subtitle: 'Mas opciones',
     default_action: {
         type: 'web_url',
         url:'https://comandaof.web.app/menu/dnE6XnhrjrU_/'+local.id_Hashed,
