@@ -116,7 +116,7 @@ if(replies.length == 3){
 replies = []
 }
 replies.push({ 
-    content_type: 'postback',
+    type: 'postback',
     title: 'Escribenos',
     payload: '123456Escribenos'
 })
@@ -136,7 +136,7 @@ if(replies.length == 3){
 replies = []
 }
 replies.push({ 
-    content_type: 'phone_number',
+    type: 'phone_number',
     title: 'llamanos',
     payload: '5531077600'
 })
