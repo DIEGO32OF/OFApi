@@ -189,6 +189,7 @@ handleNlp=(webhookEvent)=>{
     let nlp=webhookEvent.message.nlp;
     if(nlp.entities.mensaje)
     {
+        console.log(nlp.entities.mensaje,'llllllllllllllllllllllllll')
             if(nlp.entities.mensaje[0].value=='servicioDomicilio'){
                 actions.sendTextMessage('si tenemos restaurantes asi', webhookEvent);
             }
