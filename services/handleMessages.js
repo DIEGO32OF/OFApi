@@ -196,7 +196,7 @@ handleNlp=(webhookEvent)=>{
             
                 actions.sendTextMessage('si tenemos lugares asi, pero comparteme tu codigo postal de la siguiente forma: "domicilio:55555"', webhookEvent);
                 break;
-            case('infoOFacil'):
+            case('infoOF'):
             actions.InfoOF(webhookEvent)
             break;
             case('busquedaLugares'):
