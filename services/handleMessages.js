@@ -190,11 +190,20 @@ handleNlp=(webhookEvent)=>{
     if(nlp.entities.mensaje)
     {
         console.log(nlp.entities.mensaje,'llllllllllllllllllllllllll')
-            if(nlp.entities.mensaje[0].value=='servicioDomicilio'){
-                actions.sendTextMessage('si tenemos restaurantes asi', webhookEvent);
-            }
 
-            else{
+        switch (nlp.entities.mensaje[0].value){
+            case ('servicioDomicilio'):
+            
+                actions.sendTextMessage('si tenemos lugares asi, pero comparteme tu codigo postal de la siguiente forma: "domicilio:55555"', webhookEvent);
+                break;
+            case('infoOFacil'):
+            actions.InfoOF(webhookEvent)
+            break;
+            case('busquedaLugares'):
+            actions.OptionSearch(webhookEvent)
+            break;
+
+            default:
                 
                 let evento = null
                 let type = 0
@@ -250,7 +259,8 @@ handleNlp=(webhookEvent)=>{
                 actions.sendTextMessage('No se encontraron resultados para este producto:'+namer, webhookEvent);
             })
         }
-            }
+            break;
+        }
     }
     else{
         console.log(webhookEvent,'////////////////////////2')
