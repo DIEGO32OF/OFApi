@@ -174,8 +174,12 @@ function SetCaracter(req, res){
 		local=parames.Local;
 		meson=parames.Mesa;
 		Origen=parames.Origen;
-	}
-
+    }
+     let idServicio = ''
+if(parametros.nombre != undefined){
+    idServicio = this.GuardaServDomFromkitchen(parametros.id_Hashed, parametros.Nombre, parametros.mail, parametros.cel, parametros.direction, parametros.lat, parametros.lng)
+}
+console.log(idServicio,'///////')
 		
 	 Codigos.findOne({Local: local, status:'creado',Mesa:meson}, (err, CodeFounit)=> {
       if (err) throw err;
@@ -394,7 +398,7 @@ var id=parseInt(minute);
 
           }
 		    console.log('Sno habia');
-	 res.status(200).send({Caracter:hour+""+idC, Open:0});
+	 res.status(200).send({Caracter:hour+""+idC, Open:0, idService: idServicio});
 	    }
 		    
 		    
@@ -596,7 +600,7 @@ var id=parseInt(minute);
 
           }
 		    console.log('Sno habia');
-	 res.status(200).send({Caracter:hour+""+idC, Open:0});
+	 res.status(200).send({Caracter:hour+""+idC, Open:0, idService: idServicio});
 	    }
     }
   });
@@ -643,6 +647,34 @@ function DameServicio(req,res){
       });
 }
 
+function GuardaServDomFromkitchen(Local, Nombre, correo,telefono, direccion, lat, lng ){
+    var date=new Date();
+         var fecha=formatoDate(date);
+	var servicio=new ServiceHome();
+	servicio.idLocal=Local;
+	servicio.Nombre=Nombre;
+	servicio.Correo=correo;
+	servicio.Telefono=telefono;
+	servicio.Direccion=direccion;
+	servicio.lat=lat;
+	servicio.lng=lng;
+	servicio.Fecha=fecha;
+	servicio.IsActive=1;
+	
+	servicio.save((err,ServicioGuardado) =>{
+if(err)
+  return null
+else{
+if(!ServicioGuardado)
+return null
+else
+{ 
+    console.log(ServicioGuardado);
+    return ServicioGuardado._id 
+}
+}
+});
+}
 
 function ServicioDomGuarda(req,res){
  var parametros =req.body;	

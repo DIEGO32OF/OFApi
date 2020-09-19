@@ -29,8 +29,7 @@ exports.handleMessage = async (webhookEvent) => {
 }
 
 
-handlePostback = async (webhookEvent) => {
-    console.log(webhookEvent, '>>>>>>>>>>>>>>>>>>>')
+handlePostback = async (webhookEvent) => {    
     let evento = webhookEvent.postback.payload;
     switch (evento) {
         case 'BuscPlaces':
@@ -74,8 +73,7 @@ handlePostback = async (webhookEvent) => {
 
     }
     
-    try{
-        console.log(evento, evento.type, evento.type != undefined,typeof(evento))
+    try{        
         let event = JSON.parse(evento)
         if(event.type != undefined){
         
@@ -183,13 +181,11 @@ handleLocation = (webhookEvent) => {
     // hayq ue agarrar un local y mostrarlo en las cards
 }
 
-handleNlp=(webhookEvent)=>{
-    console.log(webhookEvent.message,']]]]]]]]]]]]]]]]]]]]]')
+handleNlp=(webhookEvent)=>{    
     if(webhookEvent.message != undefined){
     let nlp=webhookEvent.message.nlp;
     if(nlp.entities.mensaje)
-    {
-        console.log(nlp.entities.mensaje,'llllllllllllllllllllllllll')
+    {        
 
         switch (nlp.entities.mensaje[0].value){
             case ('servicioDomicilio'):
@@ -208,8 +204,7 @@ handleNlp=(webhookEvent)=>{
                 let evento = null
                 let type = 0
               if(webhookEvent.postback != undefined){
-                 evento = JSON.parse(webhookEvent.postback.payload);
-                 console.log(evento,'////////////////////////')
+                 evento = JSON.parse(webhookEvent.postback.payload)                 
                  if(evento)
                  type = evento.type
               }
@@ -262,8 +257,7 @@ handleNlp=(webhookEvent)=>{
             break;
         }
     }
-    else{
-        console.log(webhookEvent,'////////////////////////2')
+    else{        
         let evento = null
         let type = 0
       if(webhookEvent.postback != undefined){
@@ -355,8 +349,7 @@ handleNlp=(webhookEvent)=>{
         actions.sendTextMessage('Disculpa no entiendo ', webhookEvent);
     }
 }    
-    else{
-        console.log(webhookEvent,'////////////////////////2')
+    else{        
         let evento = null
         let type = 0
         let texto = ''
