@@ -1,28 +1,27 @@
 require('dotenv').config();
 const request = require('request');
 const axios = require('axios')
+const prospect = requiere('/models/prospects')
 var solicitudfood = require('../models/solicitudFood');
 var Menudo = require('../models/Menu');
 var images = require('../models/img');
 const haversine = require('haversine')
+const moment = require('moment');
+const prospects = require('../models/prospects');
 
 
 exports.callSendAPI = (requestBody) => {
     const url = 'https://graph.facebook.com/v3.3/me/messages';
-    let tokenAcces = 'EAAJqBwwGCjQBABt4xFJNEZAJooZCEPNN1jtBQKsu3mY5QgKb9ps7HlbsySYFPrdP6vsBz4eOhKABvOLrgZBsjzUTG2LaCTGEW2D2wd5EkMENzZAYDF7rlmljETQF3EuSZB7hwhsiDS9zwOOkmZBZBLo9OEsfWgY8uGa1zl4e8xpu9xDC8wo1QDE'
-    console.log(tokenAcces)
+    let tokenAcces = 'EAAJqBwwGCjQBABt4xFJNEZAJooZCEPNN1jtBQKsu3mY5QgKb9ps7HlbsySYFPrdP6vsBz4eOhKABvOLrgZBsjzUTG2LaCTGEW2D2wd5EkMENzZAYDF7rlmljETQF3EuSZB7hwhsiDS9zwOOkmZBZBLo9OEsfWgY8uGa1zl4e8xpu9xDC8wo1QDE'    
     request({
         uri:url,
         qs: { access_token: tokenAcces},// process.env.ACCES_TOKEN },
         method: 'POST',
         json: requestBody,
     }, (error, Body) => {
-        if (!error) {
-            console.log('peticion enviada', Body);
-        }
-        else {
+        if (error) {
             console.log('no se pudo enviar la peticion', error);
-        }
+        }       
     }
     );
 }
@@ -59,8 +58,7 @@ return new Promise((resolve, reject) => {
                          
     },(error,_res,body)=>{
         if(!error){
-            let response=JSON.parse(body);
-            console.log(response); 
+            let response=JSON.parse(body);            
             resolve(response)           
            // return response
         }
@@ -78,8 +76,7 @@ exports.getActivesOut = (lat, lng, skip) => {
          
       
              
-                if (Searching) {
-                    console.log(Searching, '____________________________________')
+                if (Searching) {                    
                     const start = {
                         latitude: parseFloat(lat),
                         longitude: parseFloat(lng)
@@ -103,6 +100,39 @@ exports.getActivesOut = (lat, lng, skip) => {
             
     });
 })
+}
+
+exports.saveProspect = (idSender, profile) =>{
+
+    prospect.findOne({senderId: idSender}, (err, prospectFound) =>{
+        if(err)
+        console.log('error al buscar prospecto'+ err)
+        else{
+            if(prospectFound){
+            prospect.findByIdAndUpdate(prospectFound._id, {updateAt: moment().format()}, (errorUp, prospectUpdate) =>{
+
+            })
+        }
+        else{
+            let myProspecto = new prospect()
+            myProspecto.senderId = idSender
+            myProspecto.first_name = profile.first_name
+            myProspecto.last_name = profile.last_name
+            myProspecto.gender = profile.gender
+            myProspecto.locale = profile.locale
+            myProspecto.timezone = profile.timezone
+            myProspecto.email = profile.email
+            myProspecto.address = myProspecto.address
+            myProspecto.createdAt = moment().format()
+            myProspecto.updateAt = moment().format()
+            myProspecto.contacted = false
+            myProspecto.save((errorSaved, prospectSaved)=>{
+                
+            })
+        }
+        }
+    })
+
 }
 
 exports.getLocalesByNameProduct = ( tipo, prefix, skip) =>{
