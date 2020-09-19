@@ -1,7 +1,7 @@
 require('dotenv').config();
 const request = require('request');
 const axios = require('axios')
-const prospect = requiere('/models/prospects')
+const prospect = require('/models/prospects')
 var solicitudfood = require('../models/solicitudFood');
 var Menudo = require('../models/Menu');
 var images = require('../models/img');

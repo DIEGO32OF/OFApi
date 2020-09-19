@@ -176,14 +176,17 @@ function SetCaracter(req, res){
 		Origen=parames.Origen;
     }
      let idServicio = ''
-if(parametros.nombre != undefined){
-    idServicio = this.GuardaServDomFromkitchen(parametros.id_Hashed, parametros.Nombre, parametros.mail, parametros.cel, parametros.direction, parametros.lat, parametros.lng)
-}
-console.log(idServicio,'///////')
+
 		
 	 Codigos.findOne({Local: local, status:'creado',Mesa:meson}, (err, CodeFounit)=> {
       if (err) throw err;
     else{
+
+        if(parametros.nombre != undefined){
+            idServicio = this.GuardaServDomFromkitchen(parametros.id_Hashed, parametros.Nombre, parametros.mail, parametros.cel, parametros.direction, parametros.lat, parametros.lng)
+        }
+        console.log(idServicio,'///////')
+
 	    console.log(Origen+' primerPArte');
 	    console.log(CodeFounit);
 	    if(CodeFounit && Origen!=2){
