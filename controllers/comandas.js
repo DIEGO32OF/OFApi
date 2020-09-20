@@ -183,7 +183,7 @@ function SetCaracter(req, res){
     else{
 
         if(parametros.nombre != undefined){
-            idServicio = this.GuardaServDomFromkitchen(parametros.id_Hashed, parametros.Nombre, parametros.mail, parametros.cel, parametros.direction, parametros.lat, parametros.lng)
+            idServicio = GuardaServDomFromkitchen(parametros.id_Hashed, parametros.Nombre, parametros.mail, parametros.cel, parametros.direction, parametros.lat, parametros.lng)
         }
         console.log(idServicio,'///////')
 
