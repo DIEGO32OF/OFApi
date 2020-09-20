@@ -175,8 +175,6 @@ function SetCaracter(req, res){
 		meson=parames.Mesa;
 		Origen=parames.Origen;
     }
-     let idServicio = ''
-
 		
 	 Codigos.findOne({Local: local, status:'creado',Mesa:meson}, (err, CodeFounit)=> {
       if (err) throw err;
@@ -398,7 +396,7 @@ var id=parseInt(minute);
 
           }
           if(parametros.nombre != undefined){
-            idServicio = GuardaServDomFromkitchen(parametros.id_Hashed, parametros.Nombre, parametros.mail, parametros.cel, parametros.direction, parametros.lat, parametros.lng)
+            let idServicio = GuardaServDomFromkitchen(parametros.id_Hashed, parametros.Nombre, parametros.mail, parametros.cel, parametros.direction, parametros.lat, parametros.lng)
             console.log(idServicio,'lllllllllllllllllllllllll')
             setTimeout(() => {
                 console.log(idServicio,'///////')
@@ -611,7 +609,8 @@ var id=parseInt(minute);
 
           }
           if(parametros.nombre != undefined){
-            idServicio = GuardaServDomFromkitchen(parametros.id_Hashed, parametros.Nombre, parametros.mail, parametros.cel, parametros.direction, parametros.lat, parametros.lng)
+           let idServicio = GuardaServDomFromkitchen(parametros.id_Hashed, parametros.Nombre, parametros.mail, parametros.cel, parametros.direction, parametros.lat, parametros.lng)
+           console.log(idServicio,'222222222222222222')
             setTimeout(() => {
             console.log(idServicio,'///////')
             res.status(200).send({Caracter:hour+""+idC, Open:0, idService: idServicio});
