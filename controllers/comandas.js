@@ -399,7 +399,7 @@ var id=parseInt(minute);
           }
           if(parametros.nombre != undefined){
             idServicio = GuardaServDomFromkitchen(parametros.id_Hashed, parametros.Nombre, parametros.mail, parametros.cel, parametros.direction, parametros.lat, parametros.lng)
-            
+            console.log(idServicio,'lllllllllllllllllllllllll')
             setTimeout(() => {
                 console.log(idServicio,'///////')
             res.status(200).send({Caracter:hour+""+idC, Open:0, idService: idServicio});
@@ -681,6 +681,7 @@ function GuardaServDomFromkitchen(Local, Nombre, correo,telefono, direccion, lat
 	servicio.IsActive=1;
 	
 	servicio.save((err,ServicioGuardado) =>{
+        console.log(err,'[[[[[[[[[[[[',ServicioGuardado)
 if(err)
   return null
 else{
@@ -688,7 +689,7 @@ if(!ServicioGuardado)
 return null
 else
 { 
-    console.log(ServicioGuardado);
+    console.log(ServicioGuardado,'--------------------');
     return ServicioGuardado._id 
 }
 }
