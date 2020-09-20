@@ -182,10 +182,7 @@ function SetCaracter(req, res){
       if (err) throw err;
     else{
 
-        if(parametros.nombre != undefined){
-            idServicio = GuardaServDomFromkitchen(parametros.id_Hashed, parametros.Nombre, parametros.mail, parametros.cel, parametros.direction, parametros.lat, parametros.lng)
-        }
-        console.log(idServicio,'///////')
+       
 
 	    console.log(Origen+' primerPArte');
 	    console.log(CodeFounit);
@@ -400,8 +397,16 @@ var id=parseInt(minute);
 
 
           }
-		    console.log('Sno habia');
-	 res.status(200).send({Caracter:hour+""+idC, Open:0, idService: idServicio});
+          if(parametros.nombre != undefined){
+            idServicio = GuardaServDomFromkitchen(parametros.id_Hashed, parametros.Nombre, parametros.mail, parametros.cel, parametros.direction, parametros.lat, parametros.lng)
+            console.log(idServicio,'///////')
+            res.status(200).send({Caracter:hour+""+idC, Open:0, idService: idServicio});
+        }
+        else{
+            res.status(200).send({Caracter:hour+""+idC, Open:0, idService: null});
+        }
+            
+	 
 	    }
 		    
 		    
@@ -602,8 +607,14 @@ var id=parseInt(minute);
 
 
           }
-		    console.log('Sno habia');
-	 res.status(200).send({Caracter:hour+""+idC, Open:0, idService: idServicio});
+          if(parametros.nombre != undefined){
+            idServicio = GuardaServDomFromkitchen(parametros.id_Hashed, parametros.Nombre, parametros.mail, parametros.cel, parametros.direction, parametros.lat, parametros.lng)
+            console.log(idServicio,'///////')
+            res.status(200).send({Caracter:hour+""+idC, Open:0, idService: idServicio});
+        }
+        else{
+            res.status(200).send({Caracter:hour+""+idC, Open:0, idService: null});
+        }
 	    }
     }
   });
