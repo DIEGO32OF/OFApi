@@ -396,12 +396,33 @@ var id=parseInt(minute);
 
           }
           if(parametros.nombre != undefined){
-            let idServicio = GuardaServDomFromkitchen(parametros.id_Hashed, parametros.Nombre, parametros.mail, parametros.cel, parametros.direction, parametros.lat, parametros.lng)
-            console.log(idServicio,'lllllllllllllllllllllllll')
-            setTimeout(() => {
-                console.log(idServicio,'///////')
-            res.status(200).send({Caracter:hour+""+idC, Open:0, idService: idServicio});
-        }, 1000);
+            var date=new Date();
+            var fecha=formatoDate(date);
+       var servicio=new ServiceHome();
+       servicio.idLocal=Local;
+       servicio.Nombre=Nombre;
+       servicio.Correo=correo;
+       servicio.Telefono=telefono;
+       servicio.Direccion=direccion;
+       servicio.lat=lat;
+       servicio.lng=lng;
+       servicio.Fecha=fecha;
+       servicio.IsActive=1;
+       
+       servicio.save((err,ServicioGuardado) =>{
+           console.log(err,'[[[[[[[[[[[[',ServicioGuardado)
+   if(err)
+     console.log(err)
+   else{
+   if(!ServicioGuardado)
+   res.status(200).send({Caracter:hour+""+idC, Open:0, idService: null});
+   else
+   { 
+       console.log(ServicioGuardado._id,'11111111');    
+       res.status(200).send({Caracter:hour+""+idC, Open:0, idService: ServicioGuardado._id });
+   }
+   }
+   });
         }
         else{
             res.status(200).send({Caracter:hour+""+idC, Open:0, idService: null});
@@ -609,12 +630,33 @@ var id=parseInt(minute);
 
           }
           if(parametros.nombre != undefined){
-           let idServicio = GuardaServDomFromkitchen(parametros.id_Hashed, parametros.Nombre, parametros.mail, parametros.cel, parametros.direction, parametros.lat, parametros.lng)
-           console.log(idServicio,'222222222222222222')
-            setTimeout(() => {
-            console.log(idServicio,'///////')
-            res.status(200).send({Caracter:hour+""+idC, Open:0, idService: idServicio});
-        }, 1000);
+            var date=new Date();
+         var fecha=formatoDate(date);
+	var servicio=new ServiceHome();
+	servicio.idLocal=Local;
+	servicio.Nombre=Nombre;
+	servicio.Correo=correo;
+	servicio.Telefono=telefono;
+	servicio.Direccion=direccion;
+	servicio.lat=lat;
+	servicio.lng=lng;
+	servicio.Fecha=fecha;
+	servicio.IsActive=1;
+	
+	servicio.save((err,ServicioGuardado) =>{
+        console.log(err,'[[[[[[[[[[[[',ServicioGuardado)
+if(err)
+  console.log(err)
+else{
+if(!ServicioGuardado)
+res.status(200).send({Caracter:hour+""+idC, Open:0, idService: null});
+else
+{ 
+    console.log(ServicioGuardado._id,'--------------------');    
+    res.status(200).send({Caracter:hour+""+idC, Open:0, idService: ServicioGuardado._id });
+}
+}
+});
         }
         else{
             res.status(200).send({Caracter:hour+""+idC, Open:0, idService: null});
@@ -688,7 +730,7 @@ if(!ServicioGuardado)
 return null
 else
 { 
-    console.log(ServicioGuardado,'--------------------');
+    console.log(ServicioGuardado._id,'--------------------');
     return ServicioGuardado._id 
 }
 }
