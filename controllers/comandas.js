@@ -399,8 +399,11 @@ var id=parseInt(minute);
           }
           if(parametros.nombre != undefined){
             idServicio = GuardaServDomFromkitchen(parametros.id_Hashed, parametros.Nombre, parametros.mail, parametros.cel, parametros.direction, parametros.lat, parametros.lng)
-            console.log(idServicio,'///////')
+            
+            setTimeout(() => {
+                console.log(idServicio,'///////')
             res.status(200).send({Caracter:hour+""+idC, Open:0, idService: idServicio});
+        }, 1000);
         }
         else{
             res.status(200).send({Caracter:hour+""+idC, Open:0, idService: null});
@@ -609,8 +612,10 @@ var id=parseInt(minute);
           }
           if(parametros.nombre != undefined){
             idServicio = GuardaServDomFromkitchen(parametros.id_Hashed, parametros.Nombre, parametros.mail, parametros.cel, parametros.direction, parametros.lat, parametros.lng)
+            setTimeout(() => {
             console.log(idServicio,'///////')
             res.status(200).send({Caracter:hour+""+idC, Open:0, idService: idServicio});
+        }, 1000);
         }
         else{
             res.status(200).send({Caracter:hour+""+idC, Open:0, idService: null});
