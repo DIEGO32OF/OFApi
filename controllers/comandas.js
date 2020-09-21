@@ -395,7 +395,7 @@ var id=parseInt(minute);
 
 
           }
-          if(parametros.nombre != undefined){
+          if(parametros.nombre != ''){
             var date=new Date();
             var fecha=formatoDate(date);
        var servicio=new ServiceHome();
@@ -629,7 +629,7 @@ var id=parseInt(minute);
 
 
           }
-          if(parametros.nombre != undefined){
+          if(parametros.nombre != ''){
             var date=new Date();
          var fecha=formatoDate(date);
 	var servicio=new ServiceHome();
