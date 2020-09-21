@@ -164,7 +164,8 @@ function GetComandByCode(req,res){
 
 function SetCaracter(req, res){
 	
-	var parametros =req.body;
+    var parametros =req.body;
+    console.log(parametros,'[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[')
 	var parames = req.params;
 	var local=parametros.Local;
 	var meson=parametros.Mesa;
@@ -187,8 +188,7 @@ function SetCaracter(req, res){
 	    if(CodeFounit && Origen!=2){
 		    var NoloTruenes=false;
 		    if(CodeFounit.Origen==0)
-		    {
-			    if(Origen==1)
+		    {			    
 			  NoloTruenes=true
 		    }	
 		    if(CodeFounit.Origen==1)
