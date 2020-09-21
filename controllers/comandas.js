@@ -169,9 +169,10 @@ function SetCaracter(req, res){
 	var parames = req.params;
 	var local=parametros.Local;
     var meson=parametros.Mesa;
-    if (isNaN(meson) && !isFinite(meson)) {
+  try{
         meson = parseInt(meson)
     }
+    catch(ex){ console.log(meson+' '+ ex)}
 	var Origen=parametros.Origen;
 	if(local==undefined)
 	{
