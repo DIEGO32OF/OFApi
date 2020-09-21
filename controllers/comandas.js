@@ -168,7 +168,10 @@ function SetCaracter(req, res){
     console.log(parametros,'[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[')
 	var parames = req.params;
 	var local=parametros.Local;
-	var meson=parametros.Mesa;
+    var meson=parametros.Mesa;
+    if (isNaN(meson) && !isFinite(meson)) {
+        meson = parseInt(meson)
+    }
 	var Origen=parametros.Origen;
 	if(local==undefined)
 	{
