@@ -198,7 +198,7 @@ function SetCaracter(req, res){
 		    }			    
 		    if(NoloTruenes){
 
-                try{
+            /*     try{
                     var io = req.app.get('socketio');    
                         console.log('connected 2');        
                         io.emit('test', JSON.stringify(CodeFounit.Codigo));
@@ -206,7 +206,7 @@ function SetCaracter(req, res){
                 }
                 catch(err){
                     console.log(err)
-                }
+                } */
 
         res.status(200).send({Caracter:CodeFounit.Codigo, Open:1});
             }
@@ -421,12 +421,12 @@ var id=parseInt(minute);
        servicio.IsActive=1;
        
        servicio.save((err,ServicioGuardado) =>{
-           console.log(err,'[[[[[[[[[[[[',ServicioGuardado)
+           
    if(err)
      console.log(err)
    else{
    if(!ServicioGuardado){
-    try{
+  /*   try{
         var io = req.app.get('socketio');    
             console.log('connected 3');        
             io.emit('test', JSON.stringify(req.body));
@@ -434,12 +434,12 @@ var id=parseInt(minute);
     }
     catch(err){
         console.log(err)
-    }
+    } */
    res.status(200).send({Caracter:hour+""+idC, Open:0, idService: null});
    }
    else
    {          
-       try{
+   /*     try{
         var io = req.app.get('socketio');    
             console.log('connected 4');        
             io.emit('test', JSON.stringify(req.body));
@@ -447,14 +447,14 @@ var id=parseInt(minute);
     }
     catch(err){
         console.log(err)
-    }
+    } */
        res.status(200).send({Caracter:hour+""+idC, Open:0, idService: ServicioGuardado._id });
    }
    }
    });
         }
         else{
-            try{
+           /*  try{
                 var io = req.app.get('socketio');    
                     console.log('connected 5');        
                     io.emit('test', JSON.stringify(req.body));
@@ -462,7 +462,7 @@ var id=parseInt(minute);
             }
             catch(err){
                 console.log(err)
-            }
+            } */
             res.status(200).send({Caracter:hour+""+idC, Open:0, idService: null});
         }
             
@@ -666,8 +666,7 @@ var id=parseInt(minute);
                   break;
 
 
-          }
-          console.log(parametros.nombre,']]]]]]]]]]]]]]]]')
+          }          
           if(parametros.nombre != ''){
             var date=new Date();
          var fecha=formatoDate(date);

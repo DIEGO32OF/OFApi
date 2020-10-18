@@ -7,10 +7,10 @@ var io = require('socket.io')(http);
 
 var port=process.env.PORT||3977;
 
-app.set('socketio', io);
+/* app.set('socketio', io);
 io.on('connection', function (socket) {
     console.log('conectado')
-})
+}) */
 
 //mongoose.connect('mongodb://DiegoR:SALINIDAD1*@ds231568.mlab.com:31568/heroku_7xdfk9c8', (err,res) => {
     //mongodb+srv://Diego35:DEFTONES1*@cluster0.mitn0.mongodb.net/ofDB?retryWrites=true&w=majority
