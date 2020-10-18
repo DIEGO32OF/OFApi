@@ -21,7 +21,7 @@ function cambiaTipo(fechaResolve) {
 function getComandsTogo(req, res){
 	let params = req.body
 	let myFech = cambiaTipo(params.myFech).split(' ')
-	console.log(myFech, params.myFech,'/////////////')
+	
 	  var getSearch = comanda.find({ idService: {$ne : undefined}, Fecha_Creada: new RegExp(myFech[0], 'i'), local: params.local  });
         getSearch.populate({ path: 'idService', model: 'servicios_domicilio' }).exec((err, buscados) => {
 		if(err)
@@ -165,7 +165,7 @@ function GetComandByCode(req,res){
 function SetCaracter(req, res){
 	
     var parametros =req.body;
-    console.log(parametros,'[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[')
+    
 	var parames = req.params;
 	var local=parametros.Local;
     var meson=parametros.Mesa;
@@ -185,10 +185,6 @@ function SetCaracter(req, res){
       if (err) throw err;
     else{
 
-       
-
-	    console.log(Origen+' primerPArte');
-	    console.log(CodeFounit);
 	    if(CodeFounit && Origen!=2){
 		    var NoloTruenes=false;
 		    if(CodeFounit.Origen==0)
@@ -199,10 +195,21 @@ function SetCaracter(req, res){
 		    {
 			    //if(Origen==0)
 			  NoloTruenes=true
-		    }	
-		    console.log(NoloTruenes);
-		    if(NoloTruenes)
-	    res.status(200).send({Caracter:CodeFounit.Codigo, Open:1});
+		    }			    
+		    if(NoloTruenes){
+
+                try{
+                    var io = req.app.get('socketio');    
+                        console.log('connected 2');        
+                        io.emit('test', JSON.stringify(CodeFounit.Codigo));
+                
+                }
+                catch(err){
+                    console.log(err)
+                }
+
+        res.status(200).send({Caracter:CodeFounit.Codigo, Open:1});
+            }
 		    
 		    else{
       var d = new Date();
@@ -418,17 +425,44 @@ var id=parseInt(minute);
    if(err)
      console.log(err)
    else{
-   if(!ServicioGuardado)
+   if(!ServicioGuardado){
+    try{
+        var io = req.app.get('socketio');    
+            console.log('connected 3');        
+            io.emit('test', JSON.stringify(req.body));
+    
+    }
+    catch(err){
+        console.log(err)
+    }
    res.status(200).send({Caracter:hour+""+idC, Open:0, idService: null});
+   }
    else
-   { 
-       console.log(ServicioGuardado._id,'11111111');    
+   {          
+       try{
+        var io = req.app.get('socketio');    
+            console.log('connected 4');        
+            io.emit('test', JSON.stringify(req.body));
+    
+    }
+    catch(err){
+        console.log(err)
+    }
        res.status(200).send({Caracter:hour+""+idC, Open:0, idService: ServicioGuardado._id });
    }
    }
    });
         }
         else{
+            try{
+                var io = req.app.get('socketio');    
+                    console.log('connected 5');        
+                    io.emit('test', JSON.stringify(req.body));
+            
+            }
+            catch(err){
+                console.log(err)
+            }
             res.status(200).send({Caracter:hour+""+idC, Open:0, idService: null});
         }
             
@@ -633,6 +667,7 @@ var id=parseInt(minute);
 
 
           }
+          console.log(parametros.nombre,']]]]]]]]]]]]]]]]')
           if(parametros.nombre != ''){
             var date=new Date();
          var fecha=formatoDate(date);
@@ -647,16 +682,14 @@ var id=parseInt(minute);
 	servicio.Fecha=fecha;
 	servicio.IsActive=1;
 	
-	servicio.save((err,ServicioGuardado) =>{
-        console.log(err,'[[[[[[[[[[[[',ServicioGuardado)
+	servicio.save((err,ServicioGuardado) =>{        
 if(err)
   console.log(err)
 else{
 if(!ServicioGuardado)
 res.status(200).send({Caracter:hour+""+idC, Open:0, idService: null});
 else
-{ 
-    console.log(ServicioGuardado._id,'--------------------');    
+{       
     res.status(200).send({Caracter:hour+""+idC, Open:0, idService: ServicioGuardado._id });
 }
 }
@@ -779,8 +812,7 @@ function guardaCodigoCocina(req,res){
          var fecha=formatoDate(date);
     
    var mycode=new Codigos();
-    var myparames=req.body;
-	console.log(myparames);
+    var myparames=req.body;	
     mycode.Codigo=myparames.Codigo;
     mycode.Mesa=myparames.Mesa;
    mycode.Local=myparames.Local;
