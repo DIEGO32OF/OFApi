@@ -252,6 +252,7 @@ function getdashbord(req, res) {
     var separados = eldiadHoy.split('/');
 
     solicitudfood.find({ id_Hashed: locales }).exec((err, Horario) => {
+	    console.log(Horario,'////////////////////////')
         if (Horario) {
             horasLocal = Horario[0].nom_img;
             var mihorarioSplit = horasLocal.split('-');
