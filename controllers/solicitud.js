@@ -253,7 +253,7 @@ function getdashbord(req, res) {
 
     solicitudfood.find({ id_Hashed: locales }).exec((err, Horario) => {
 	    console.log(Horario,'////////////////////////')
-        if (Horario) {
+        if (Horario.length > 0) {
             horasLocal = Horario[0].nom_img;
             var mihorarioSplit = horasLocal.split('-');
             var horafin = mihorarioSplit[1].split(':');
