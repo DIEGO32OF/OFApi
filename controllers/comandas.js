@@ -804,7 +804,7 @@ else
 function getAllCodesLocal(req, res){
     var myparames=req.body;	
     
-    Codigos.find({Local: myparames.local, fecha_Creacion:{ $regex: '.*' + myparames.fecha + '.*' } , status: 'creado'}, function(err,myCodes){
+    Codigos.find({Local: myparames.local, fecha_Creacion:{ $regex: '.*' + myparames.fecha  } , status: 'creado'}, function(err,myCodes){
 if(err)
 res.status(200).send({codes: []})
 else{
