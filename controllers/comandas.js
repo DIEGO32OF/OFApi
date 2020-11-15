@@ -11,6 +11,7 @@ var Codigos=require('../models/Codigo');
 var ServiceHome=require('../models/Servicio_Domicilio');
 var mongoose = require('mongoose');
 var ObjectId = require('mongoose').Types.ObjectId; 
+var moment = require('moment');
 
 
 function cambiaTipo(fechaResolve) {
@@ -802,14 +803,18 @@ else
 }
 
 function getAllCodesLocal(req, res){
-    var myparames=req.body;	
-    
-    Codigos.find({Local: myparames.local, fecha_Creacion:{ $regex: '.*' + myparames.fecha  } , status: 'creado'}, function(err,myCodes){
+    let myparames=req.body;	
+    let date=new Date();
+         let fecha=formatoDate(date);
+         let soloDias = fecha.split(' ')
+    Codigos.find({Local: myparames.local , status: 'creado', fecha_Creacion:soloDias[0]}, function(err,myCodes){
 if(err)
 res.status(200).send({codes: []})
 else{
-    if(myCodes)
+    
+    if(myCodes){
     res.status(200).send({codes: myCodes})
+    }
     else
     res.status(200).send({codes: []})
 }
