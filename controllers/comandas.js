@@ -757,16 +757,14 @@ function GuardaServDomFromkitchen(Local, Nombre, correo,telefono, direccion, lat
 	servicio.Fecha=fecha;
 	servicio.IsActive=1;
 	
-	servicio.save((err,ServicioGuardado) =>{
-        console.log(err,'[[[[[[[[[[[[',ServicioGuardado)
+	servicio.save((err,ServicioGuardado) =>{        
 if(err)
   return null
 else{
 if(!ServicioGuardado)
 return null
 else
-{ 
-    console.log(ServicioGuardado._id,'--------------------');
+{     
     return ServicioGuardado._id 
 }
 }
@@ -803,6 +801,20 @@ else
 });
 }
 
+function getAllCodesLocal(req, res){
+    var myparames=req.body;	
+    
+    Codigos.find({Local: myparames.local, fecha_Creacion:{ $regex: '.*' + myparames.fecha + '.*' } , status: 'creado'}, function(err,myCodes){
+if(err)
+res.status(200).send({codes: []})
+else{
+    if(myCodes)
+    res.status(200).send({codes: myCodes})
+    else
+    res.status(200).send({codes: []})
+}
+    })
+}
 
 
 function guardaCodigoCocina(req,res){
@@ -1037,6 +1049,7 @@ module.exports = {GetComand,
 		  SetCaracter,
 		  ServicioDomGuarda,
 		  DameServicio,
-		  getComandsTogo
+          getComandsTogo,
+          getAllCodesLocal
       };
 //};

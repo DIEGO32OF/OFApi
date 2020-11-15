@@ -655,8 +655,10 @@ function GetInfo(req, res)
     Myvisit.Origen='0';
 
     advertising.find({type: 1, IsActive: true}).exec((err, type1)=>{
-        if(!err){            
+        if(!err){        
+            
             var x = Math.floor((Math.random() * type1.length));
+            console.log(type1,'////////',x)    
             Myvisit.imageType1 = type1[x].id
             Myvisit.fullpicture1 = type1[x].fullPicture
         }
