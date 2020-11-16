@@ -804,10 +804,7 @@ else
 
 function getAllCodesLocal(req, res){
     let myparames=req.body;	
-    let date=new Date();
-         let fecha=formatoDate(date);
-         let soloDias = fecha.split(' ')
-    Codigos.find({Local: myparames.local , status: 'creado', fecha_Creacion:soloDias[0]}, function(err,myCodes){
+    Codigos.find({Local: myparames.local , status: 'creado', fecha_Creacion: myparames.fecha}, function(err,myCodes){
 if(err)
 res.status(200).send({codes: []})
 else{
